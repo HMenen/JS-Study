@@ -1,4 +1,61 @@
+/**
+ * 查找对象原型链上的所有原型对象
+ * @param {*} obj 
+ */
+function getProto (obj) {
+    let list = [];
+    let v = obj;
+    while (v.__proto__ !== null) {
+        list.push(v.__proto__);
+        v = v.__proto__;
+    }
+    return list;
+}
 
+function A () {}
+ const ins = new A();
+ let list = getProto(ins);
+ console.log(JSON.stringify(list));
+
+/**
+ * 实现instanceof方法
+ * @param {*} obj 
+ */
+ function getInstanceOf (obj1, obj2) {
+    let v = obj1.__proto__;
+    while (v !== null) {
+        if (v === obj2.prototype) {
+            return true;
+        }
+        v = v.__proto__;
+    }
+    return false;
+ }
+
+ function  getPhone (A) {
+    const phoneStr = A.replace(/[-' ']/g, '');
+    const phoneArr = Array.prototype.slice.call(phoneStr);
+    const retArr = [];
+    const len = phoneArr.length;
+    let index = 0;
+    let retStr;
+    while (index < len) {
+        retArr.push(phoneArr.slice(index, index + 3));
+        index = index + 3;
+    }
+    if (retArr[retArr.length - 1].length === 1) {
+        retArr[retArr.length - 1].unshift(retArr[retArr.length - 2].pop());
+    }
+    retStr = retArr.map(item => {
+        return item.join('');
+    })
+    retStr = retStr.join('-');
+    return retStr;
+ }
+
+ console.log(getPhone('12344444444123'));
+
+ 
 function getCount1 (count) {
     for (let i = 0; i < count; i++) {
         ((n) => {
