@@ -129,4 +129,16 @@ async function log() {
   }
 }
 
-getCount3(5);
+
+/**
+ * 比较好的写法
+ * @param {int} timeout 
+ */
+const sleep1 = timeout => new Promise(resolve => setTimeout(resolve, timeout));
+async function log() {
+  for (let i = 1; i <= 5; i++) {
+    await sleep1(1000);
+    console.log(i);
+  }
+}
+// getCount3(5);
