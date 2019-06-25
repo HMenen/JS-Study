@@ -1,0 +1,99 @@
+<!--假设高度默认100px ，请写出三栏布局，其中左栏、右栏各为300px，中间自适应-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--方法一，左右浮动-->
+    <div>
+        <div id="box1">box1</div>
+        <div id="box3">box3</div>
+        <div id="box2">box2</div>
+    </div>
+    
+     <!--方法三，flex-->
+     <div class="demo3">
+        <div id="box111">box111</div>
+        <div id="box222">box333</div>
+        <div id="box333">box222</div>
+    </div>
+
+    <!--方法二，绝对定位-->
+    <div class="demo2">
+        <div id="box11">box1</div>
+        <div id="box22">box3</div>
+        <div id="box33">box2</div>
+    </div>
+    
+</body>
+
+<style>
+    *{
+        margin: 0 auto;
+        padding: 0;
+    }
+    #box1{
+        float: left;
+        background-color: aqua;
+        width: 300px;
+        height: 100px;
+    }
+    #box2{
+        background-color: chartreuse;
+        height: 100px;
+    }
+    #box3{
+        float: right;
+        background-color: blueviolet;
+        width: 300px;
+        height: 100px;
+    }
+
+    .demo2{
+        position: relative;
+    }
+    #box11{
+        position: absolute;
+        left: 0;
+        width: 300px;
+        background-color: aqua;
+        height: 100px;
+    }
+    #box33{
+        position: absolute;
+        right: 0;
+        width: 300px;
+        background-color: blueviolet;
+        height: 100px;
+    }
+    #box22{
+        position: absolute;
+        right: 300px;
+        left: 300px;
+        background-color: chartreuse;
+        height: 100px;
+    }
+
+    .demo3{
+        display: flex;
+    }
+    #box111{
+        width: 300px;
+        background-color: aqua;
+        height: 100px;
+    }
+    #box333{
+        width: 300px;
+        background-color: blueviolet;
+        height: 100px;
+    }
+    #box222{
+        flex: 1;
+        height: 100px;
+        background-color: red;
+    }
+</style>
+</html>

@@ -2,6 +2,7 @@ function getParent(child, parent) {
     function F() {};
     F.prototype = parent;
     child.prototype = new F();
+    child.prototype.constructor = child;
 }
 
 function Animal () {
