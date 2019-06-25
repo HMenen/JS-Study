@@ -20,6 +20,8 @@ function A () {}
 /**
  * 实现instanceof方法
  * instanceof的作用：用于判断实例属于哪个构造函数。
+ * instanceof的原理：判断实例对象的__proto__属性，
+ * 和构造函数的prototype属性，是否为同一个引用（是否指向同一个地址）。
  * @param {*} obj 
  */
  function getInstanceOf (obj1, obj2) {
