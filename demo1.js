@@ -19,6 +19,7 @@ function A () {}
 
 /**
  * 实现instanceof方法
+ * instanceof的作用：用于判断实例属于哪个构造函数。
  * @param {*} obj 
  */
  function getInstanceOf (obj1, obj2) {

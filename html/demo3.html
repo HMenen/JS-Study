@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>点我</button>
+</body>
+<script>
+    var btn = document.getElementsByTagName('button')[0];
+
+    //这种绑定事件的方式，会层叠掉之前的事件
+    // btn.onclick = function () {alert('11111')}
+    // btn.onclick = function () {alert('22222')}
+
+    //addEventListener: 事件监听器。 原事件被执行的时候，后面绑定的事件照样被执行
+    //第二种事件绑定的方法不会出现层叠。（更适合团队开发）
+    btn.addEventListener('click', fn1);
+    btn.addEventListener('click', fn2);
+    function fn1() {
+        alert("事件1");
+    }
+
+    function fn2() {
+        alert("事件2");
+    }
+ 
+    btn.addEventListener('click', getEvent);
+    function getEvent (event) {
+        event = event || window.event;
+        console.log(event);
+    }
+</script>
+</html>
