@@ -79,3 +79,5 @@ element.addEventListener('clickTest', function () {
 //元素注册事件
 element.dispatchEvent(myEvent); //注意，参数是写事件对象 myEvent，不是写 事件名 clickTest
 '''
+
+######XSS（Cross Site Scripting）：跨域脚本攻击。
