@@ -21,13 +21,10 @@
             this._value = newValue;
             myInput.value = newValue;
         }
-    });
+    })
 
-    myInput.addEventListener('change', () => {
-        data._value = myInput.value;
-    });
-
-    window.__data = data;
+    myInput.addEventListener('change', () => data._value = myInput.value);
+    window.value = data;
 
 </script>
 </html>
