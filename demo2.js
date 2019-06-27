@@ -1,17 +1,27 @@
-Function.prototype.my_bind = function (context, args) {
+Function.prototype.my_bind = function (context, ...args) {
     console.log(args);
-    console.log('======================' + this);
-    return () => this.apply(context, Array.prototype.slice.call(args).concat([].slice.call(arguments)));
+    return () => this.apply(context, args);
 }
 
-let a = {name: '111', age: 1};
+function bind(func, thisArg) {
+    var slice = Array.prototype.slice;
+    console.log('=====111======' + JSON.stringify(arguments));
+    var args = slice.call(arguments, 2);
+    console.log('=====222======' + JSON.stringify(arguments));
+    return function () {
+        return func.apply(thisArg, args.concat(slice.call(arguments)));
+    };
+}
+
+let a = {name: 'hello', age: 1, grade: 100};
 function b () {
-    let name = '123';
-    let grade = 0;
     console.log('-----' + this.name);
     console.log('-----' + this.age);
     console.log('-----' + this.grade);
 }
 
-const c = b.my_bind(a, '222', 111);
-c();
+const d = bind(b, a, [1, 2]);
+d();
+
+// const c = b.my_bind(a, '222', 111);
+// c();
