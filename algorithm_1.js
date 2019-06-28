@@ -32,5 +32,29 @@ function unique (arr) {
     return myArr;
 }
 let arr1 = [1, 3, 4, 6, 1, 9, 1]
-let arr2 = unique(arr1);
+// let arr2 = unique(arr1);
 // console.log(JSON.stringify(arr2));
+
+/**
+ * 统计一个字符串出现最多的字母
+ * @param {string} str 
+ */
+function findMaxDuplicateChar (str) {
+    let myArr = new Array(str.length);
+    let strArr = Array.prototype.slice.call(str);
+    let maxIndex = -1;
+    strArr.forEach((item, index) => {
+        if (myArr[item]) {
+            myArr[item]++;
+            if (myArr[maxIndex] <= myArr[item]) {
+                maxIndex = index;
+            }
+        } else {
+            myArr[item] = 1;
+        }
+    });
+    if (!myArr[0]) maxIndex = 0;
+    return myArr[maxIndex];
+}
+let str1 = 'afjghdfraaaasdenas';
+console.log(findMaxDuplicateChar(str1));
