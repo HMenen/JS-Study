@@ -43,6 +43,7 @@ function findMaxDuplicateChar (str) {
     let myArr = new Array(str.length);
     let strArr = Array.prototype.slice.call(str);
     let maxIndex = -1;
+    if (str.length == 1) return str;
     strArr.forEach((item, index) => {
         if (myArr[item]) {
             myArr[item]++;
@@ -54,7 +55,7 @@ function findMaxDuplicateChar (str) {
         }
     });
     if (!myArr[0]) maxIndex = 0;
-    return myArr[maxIndex];
+    return str[maxIndex];
 }
 let str1 = 'afjghdfraaaasdenas';
 console.log(findMaxDuplicateChar(str1));
