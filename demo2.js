@@ -13,9 +13,9 @@ function bind(func, thisArg) {
 
 let a = {name: 'hello', age: 1, grade: 100};
 function b () {
-    console.log('-----' + this.name);
-    console.log('-----' + this.age);
-    console.log('-----' + this.grade);
+    // console.log('-----' + this.name);
+    // console.log('-----' + this.age);
+    // console.log('-----' + this.grade);
 }
 
 // const d = bind(b, a, [1, 2]);
@@ -62,4 +62,8 @@ function deepClone(obj) {
 
 let ha = {a: 1, a2: 'aasss',b:{c: 2, d:{e: 3, f: 4}}, ha: 'hahaha'}
 let obj = deepClone(ha);
-console.log(obj);
+// console.log(obj);
+
+let str = '{ "name":"runoob", "alexa":10000, "site":"www.runoob.com" }';
+console.log(JSON.parse(str));
+console.log(eval('(' + str + ')'));
