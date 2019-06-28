@@ -13,6 +13,24 @@ function checkPalindrom (str) {
     }
     return false;
 }
-
 let str = 'asdf';
-console.log(checkPalindrom(str));
+// console.log(checkPalindrom(str));
+
+/**
+ * 去掉一组整型数组重复的值
+ * @param {Array} arr 
+ */
+function unique (arr) {
+    let myArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (myArr.indexOf(arr[i]) != -1) {
+            continue;
+        } else {
+            myArr.push(arr[i]);
+        }
+    }
+    return myArr;
+}
+let arr1 = [1, 3, 4, 6, 1, 9, 1]
+let arr2 = unique(arr1);
+// console.log(JSON.stringify(arr2));
