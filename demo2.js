@@ -5,9 +5,7 @@ Function.prototype.my_bind = function (context, ...args) {
 
 function bind(func, thisArg) {
     var slice = Array.prototype.slice;
-    console.log('=====111======' + JSON.stringify(arguments));
     var args = slice.call(arguments, 2);
-    console.log('=====222======' + JSON.stringify(arguments));
     return function () {
         return func.apply(thisArg, args.concat(slice.call(arguments)));
     };
