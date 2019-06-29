@@ -4,13 +4,17 @@
  */
 function deepClone (obj) {
     let ret = obj;
+    console.log('=======222=========');
     if (typeof obj === 'onject' && obj) {
+        console.log('=======111=========');
         obj = {};
         if (Array.isArray(obj)) obj = [];
-        Object.keys(obj).forEach((o) => {
-            obj = deepClone(o);
-            ret[o] = obj;    
-        });
+        // Object.keys(obj).forEach((o) => {
+        //     console.log('================' + o);
+        //     obj = deepClone(obj[o]);
+        //     ret[o] = obj;    
+        // });
+        Object.keys(obj).forEach();
     }
     return ret;
 }
