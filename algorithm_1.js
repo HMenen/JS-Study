@@ -104,7 +104,7 @@ function getRandomArr (arr) {
 }
 var arr4 = [1,2,3,4,5,6,7,'a','dsfs',8,9,'v'];
 console.log(getRandomArr(arr4));
-=======
+
 /**
  * 斐波那契数列
  */
@@ -126,4 +126,4 @@ function getFibnacciArr (n) {
 }
 
 console.log(getFibnacciArr(5));
->>>>>>> bd03e07b5634a52223dcfa866926c9281ffc9dd3
+
