@@ -62,6 +62,7 @@ function findMaxDuplicateChar (str) {
 let str1 = 'afjghdfraaaasdenas';
 // console.log(findMaxDuplicateChar(str1));
 
+<<<<<<< HEAD
 
 /**
  * 找出下列正数组的最大差值
@@ -103,3 +104,26 @@ function getRandomArr (arr) {
 }
 var arr4 = [1,2,3,4,5,6,7,'a','dsfs',8,9,'v'];
 console.log(getRandomArr(arr4));
+=======
+/**
+ * 斐波那契数列
+ */
+function getFibonacci (n) {
+    if (n === 1 || n === 0) {
+        return 1;
+    } 
+    while(n > 1) {
+        return getFibonacci(n - 1) + getFibonacci(n - 2)
+    }
+}
+
+function getFibnacciArr (n) {
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        arr.push(getFibonacci(i));
+    }
+    return arr;
+}
+
+console.log(getFibnacciArr(5));
+>>>>>>> bd03e07b5634a52223dcfa866926c9281ffc9dd3

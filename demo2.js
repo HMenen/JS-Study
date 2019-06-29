@@ -53,6 +53,7 @@ function deepClone(obj) {
         result = {};
         if (Array.isArray(obj)) result = [];
         Object.keys(obj).forEach(function(key) {
+            console.log('================' + key);
             result[key] = deepClone(obj[key]);
         })
         return result;
@@ -62,8 +63,8 @@ function deepClone(obj) {
 
 let ha = {a: 1, a2: 'aasss',b:{c: 2, d:{e: 3, f: 4}}, ha: 'hahaha'}
 let obj = deepClone(ha);
-// console.log(obj);
+console.log(obj);
 
 let str = '{ "name":"runoob", "alexa":10000, "site":"www.runoob.com" }';
-console.log(JSON.parse(str));
-console.log(eval('(' + str + ')'));
+// console.log(JSON.parse(str));
+// console.log(eval('(' + str + ')'));
