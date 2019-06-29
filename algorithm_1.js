@@ -62,8 +62,6 @@ function findMaxDuplicateChar (str) {
 let str1 = 'afjghdfraaaasdenas';
 // console.log(findMaxDuplicateChar(str1));
 
-<<<<<<< HEAD
-
 /**
  * 找出下列正数组的最大差值
  * @param {Array} arr 
@@ -103,7 +101,7 @@ function getRandomArr (arr) {
     return arr;
 }
 var arr4 = [1,2,3,4,5,6,7,'a','dsfs',8,9,'v'];
-console.log(getRandomArr(arr4));
+// console.log(getRandomArr(arr4));
 
 /**
  * 斐波那契数列
@@ -125,5 +123,23 @@ function getFibnacciArr (n) {
     return arr;
 }
 
-console.log(getFibnacciArr(5));
+// console.log(getFibnacciArr(5));
 
+function myBind (fun, thisArg) {
+    let args = [].slice.call(arguments, 2);
+    return (() => fun.apply(thisArg, args.concat([].slice.call(arguments)))); 
+}
+
+function deepClone (source) {
+    let obj = source;
+    if (typeof source === 'object') {
+        Array.isArray(source) ? obj = [] : obj = {};
+        Object.keys(source).forEach(item => {
+            obj[item] = deepClone(source[item]);
+        });
+    }
+    return obj;
+}
+let ha = {a: 1, a2: 'aasss',b:{c: 2, d:{e: 3, f: 4}}, ha: 'hahaha'}
+let obj = deepClone(ha);
+console.log(obj);
