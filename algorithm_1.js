@@ -125,11 +125,20 @@ function getFibnacciArr (n) {
 
 // console.log(getFibnacciArr(5));
 
+/**
+ * bind的实现
+ * @param {Function} fun 
+ * @param {object} thisArg 
+ */
 function myBind (fun, thisArg) {
     let args = [].slice.call(arguments, 2);
     return (() => fun.apply(thisArg, args.concat([].slice.call(arguments)))); 
 }
 
+/**
+ * 深度复制的实现
+ * @param {object} source 
+ */
 function deepClone (source) {
     let obj = source;
     if (typeof source === 'object') {
@@ -142,4 +151,50 @@ function deepClone (source) {
 }
 let ha = {a: 1, a2: 'aasss',b:{c: 2, d:{e: 3, f: 4}}, ha: 'hahaha'}
 let obj = deepClone(ha);
-console.log(obj);
+// console.log(obj);
+
+
+/**
+ * 请使用最基本的遍历来实现判断字符串 a 是否被包含在字符串 b 中，并返回第一次出现的位置（找不到返回 -1）。
+ * @param {string} a 
+ * @param {string} b 
+ */
+function isContain (a, b) {
+    let temp = false;
+    for (let i in b) {
+        if (a[0] === b[i]) {
+            temp = true;
+            for (let j in a) {
+                if (a[j] !== b[+i + +j]) {
+                    temp = false;
+                    break;
+                }
+            }
+            if (temp) return i;
+        }
+    }
+    return -1;
+}
+let b1 = 'qwqqekk';
+let a1 = 'qq';
+// console.log(isContain(a1, b1))
+
+/**
+ * 判断字符串 a 是否被包含在字符串 b 中，并返回第一次出现的位置（找不到返回 -1）
+ * @param {string} a 
+ * @param {string} b 
+ */
+function isContain_1 (a, b) {
+    return b.indexOf(a);
+}
+// console.log(isContain(a1, b1))
+
+/**
+ * 将一个任意长的数字变成逗号分割的格式
+ * @param {*} num 
+ */
+function parseToMone (num) {
+    // let n = ('' + num).split('.');
+
+}
+parseToMone(123.456);

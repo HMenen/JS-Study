@@ -2,7 +2,7 @@ function heapSort (arr) {
     buildMaxHeap(arr);
     for (let i = arr.length - 1; i > 0; i--) {
         swap(i, 0);
-        buildMaxHeap(arr, 0);
+        maxHeapfy(arr, 0);
     }
 }
 
