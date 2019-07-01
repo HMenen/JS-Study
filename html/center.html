@@ -8,6 +8,10 @@
 <body>
     <!-- <div></div> -->
     <div class="box1">hello</div>
+
+    <div id="parent">
+        <div id="child">Text here</div>
+    </div>
 </body>
 
 <script>
@@ -18,8 +22,24 @@
 *{
     padding: 0;
     margin: 0;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+}
+#parent{
+    /* text-align: center;
+    vertical-align: middle; */
+    background-color: orange;
+    border: 1px solid;  
+    padding: 100px 0;
+}
+#child{
+    background-color: blueviolet;
+    line-height: 200px;
+    width: 200px;
+    border: 5px solid red;
+    margin: 0 auto;
+    /* height: 200px;
+    height: 200px; */
 }
 
 /* 方法1：使用relative top margin-top / transform */
@@ -62,4 +82,16 @@
 
 </style>
 
+
+<script>
+//JS 水平居中方法： 将浏览器可视区的宽度(clientWidth) -减去 要居中元素本身的宽度(offsetWidth) /除以 2 +'px'
+//JS 垂直居中方法： 将浏览器可视区的高度(clientHeight) -减去 要居中元素本身的高度(offsetHeight) /除以 2 +'px'
+
+window.onload = function() {
+    var oMain = document.querySelector('#pop-main');
+
+    oMain.style.left = (document.documentElement.clientWidth - oMain.offsetWidth) / 2 +'px';
+    oMain.style.top = (document.documentElement.clientHeight - oMain.offsetHeight) / 2 +'px';
+}
+</script>
 </html>
