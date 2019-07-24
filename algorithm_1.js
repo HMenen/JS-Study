@@ -5,16 +5,14 @@
  * @param {string} str 
  */
 function checkPalindrom (str) {
-    let strArr = Array.prototype.slice.call(str);
-    let strArrClone = Object.assign(strArr);
-    strArrClone.reverse();
-    if (strArr.join() == strArrClone.join()) {
+    let cloneStr = str;
+    if (str == [].slice.call(cloneStr).reverse().join('')) {
         return true;
     }
     return false;
 }
-let str = 'asdf';
-// console.log(checkPalindrom(str));
+let str = 'asdfdsa1';
+console.log(checkPalindrom(str));
 
 
 /**
@@ -76,7 +74,7 @@ let arr3 = [10, 5, 11, 7, 8, -9];
  
 
 /**
- * 实现一个算法，随机生成指制定长度的字符窜
+ * 实现一个算法，随机生成指定长度的字符窜
  * @param {int} len 
  */
 function randomString (len) {
@@ -84,12 +82,12 @@ function randomString (len) {
     let temp = '';
     let randomStr = '';
     for (let i = 0; i < len; i++) {
-        randomStr = str.charAt(Math.floor(Math.random() * len));
+        randomStr = str.charAt(Math.floor(Math.random() * (str.length)));
         temp += randomStr;
     }
     return temp;
 }
-// console.log(randomString(16));
+console.log(randomString(6));
 
 /**
  * 打乱数字数组的顺序

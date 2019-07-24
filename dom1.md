@@ -7,6 +7,7 @@ DOM2写法：
 element.addEventListener('click', function () {
 
 }, false);
+当第三个参数设置为true就在捕获过程中执行，反之就在冒泡过程中执行处理函数。
 
 DOM3写法：DOM3中，增加了很多事件类型，比如鼠标事件、键盘事件等。
 element.addEventListener('keyup', function () {
@@ -73,14 +74,17 @@ event.stopImmediatePropagation();
 #### 自定义事件
 '''
 var myEvent = new Event('clickTest');
+监听：
 element.addEventListener('clickTest', function () {
     
+})
+触发：
+button.addEventListener('clickTest', function() {
+    document.dispatchEvent(myEvent);
 })
 //元素注册事件
 element.dispatchEvent(myEvent); //注意，参数是写事件对象 myEvent，不是写 事件名 clickTest
 '''
-<<<<<<< HEAD:html/dom1.md
 
 ######XSS（Cross Site Scripting）：跨域脚本攻击。
-=======
->>>>>>> e5bc0e5cc3e08db02480d019e5e7bfc911f4de24:dom1.md
+

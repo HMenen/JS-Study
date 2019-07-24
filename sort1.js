@@ -1,29 +1,52 @@
-function quickSort (arr, start, end) {
-    if (start >= end) return;
-    let s = start;
-    let e = end;
-    let point;
-    while (s < e) {
-        point = arr[Math.floor((s + e) / 2)];
-        while (s < e && arr[e] > point) e--;
-        while (s < e && arr[s] <= point) s++;
-        if (s < e) {
-            let temp = arr[s];
-            arr[s] = arr[e];
-            arr[e] = temp;
-        }
-        // console.log(JSON.stringify(arr))
+function swap(arr, index1, index2) {
+    const temp = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = temp;
+  }
+  
+function qsort(arr, s, e) {
+    if (s >= e) return;
+    const point = arr[s];
+    let start = s + 1;
+    let end = e;
+    while (start < end) {
+        while (start < end && arr[end] > point) end--;
+        while (start < end && arr[start] <= point) start++;
+        swap(arr, start, end);
     }
-    quickSort(arr, start, s - 1);
-    quickSort(arr, s + 1,  end );
+    swap(arr, s, start);
+    qsort(arr, s, start - 1);
+    qsort(arr, start + 1, e);
 }
-const arr = [3, 1, 1, 2, 5]
-// quickSort(arr, 0, arr.length - 1)
-// console.log(arr)
+// const arr = [3, 1, 1, 2, 5]
+let arr = [2,4,1,4,6,2,1,8,0]
+qsort(arr, 0, arr.length - 1)
+console.log(arr)
+
+
+// function s (s, e, arr) {
+//     if (s <= e) return;
+//     let start = s;
+//     let end = e;
+//     while(start < end) {
+//         let point = arr[Math.floor((start + end) / 2)];
+//         while (arr[end] > point) end--;
+//         while (arr[start] <= point ) start++;
+//         if (start != end) {
+//             let temp = arr[start];
+//             arr[start] = arr[end];
+//             arr[end] = temp;
+//         }
+//     }
+//     s(s, start - 1, arr);
+//     s(start + 1, e, arr);
+// }
+
+// s(0, arr.length - 1, arr)
 
 function popSort (arr) {
     let temp;
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length - 1; i++) {
         for (let j = 0; j < arr.length - i; j++) {
             if (arr[j] > arr[j + 1]) {
                 temp = arr[j];
@@ -33,7 +56,7 @@ function popSort (arr) {
         }
     }
 }
-// popSort(arr);
+popSort(arr);
 // console.log(arr)
 
 function selectSort (arr) {
@@ -60,7 +83,7 @@ function insertSort (arr) {
     for (let i = 1; i < arr.length; i++) {
         temp = arr[i];   //一定要记住，arr[i]的值是会变的，所以用temp保存这个值
         let j = i - 1;
-        while (j >= 0 && arr[j + 1] < arr[j]) {
+        while (j >= 0 && arr[j + 1] < temp) {
             // if (arr[j] > arr[j + 1]) {
                 // arr[j + 1] = arr[j];
             // }
@@ -81,7 +104,7 @@ function shellSort (arr) {
         for (let i = N; i < arr.length; i++) {
             temp = arr[i];
             let j = i - N;
-            while (j >= 0 && arr[j] > arr[j + N]) {
+            while (j >= 0 && arr[j] > temp) {
                 arr[j + N] = arr[j];
                 j -= N;
             }
@@ -102,7 +125,7 @@ function heapSort (arr) {
     }
 }
 function buildMaxHeap (arr, n) {
-    for (let i = n; i >= 0; i--){
+    for (let i = n; i >= 0; i--) {
         maxHeapfy(arr, i, arr.length);
     }
 }
@@ -126,16 +149,16 @@ function swap (arr, i, j) {
     arr[i] = arr[j];
     arr[j] = temp;
 }
-
-// heapSort(arr);
-// console.log(arr)
+let arr1 = [2,4,1,4,6,2,1,8,0,11,2,5]
+heapSort(arr1);
+console.log(arr1)
 
 // [3, 1, 1, 2, 5];
 function mergeSort (arr) {
     if (arr.length == 1) return arr
     let mid = Math.floor(arr.length / 2);
     let left = arr.slice(0, mid);
-    let right = arr.slice(mid, arr.length + 1);
+    let right = arr.slice(mid);
     return merge(mergeSort(left), mergeSort(right));
 }
 function merge(left, right) {
@@ -161,4 +184,4 @@ function merge(left, right) {
     }
     return result;
 }
-console.log(mergeSort(arr));
+// console.log(mergeSort(arr));

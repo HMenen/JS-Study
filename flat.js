@@ -44,3 +44,22 @@ function flat1 (arr) {
 // console.log(arr);
 console.log(flat(arr));
 console.log(flat1(arr));
+
+function flat1 (arr) {
+    let ret = [];
+    let s = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+        s.push(arr[i]);
+    }
+    while(s.length > 0) {
+        let obj = s.pop();
+        if(Array.isArray(obj)) {
+            for(let j = obj.length - 1; j >= 0; j--) {
+                s.push(obj[j]);
+            }
+        } else {
+            ret.push(obj);
+        }
+    }
+    return ret; 
+}
