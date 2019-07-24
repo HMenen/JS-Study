@@ -19,9 +19,9 @@ function qsort(arr, s, e) {
     qsort(arr, start + 1, e);
 }
 // const arr = [3, 1, 1, 2, 5]
-let arr = [2,4,1,4,6,2,1,8,0]
-qsort(arr, 0, arr.length - 1)
-console.log(arr)
+// let arr = [2,4,1,4,6,2,1,8,0]
+// qsort(arr, 0, arr.length - 1)
+// console.log(arr)
 
 
 // function s (s, e, arr) {
@@ -56,7 +56,7 @@ function popSort (arr) {
         }
     }
 }
-popSort(arr);
+// popSort(arr);
 // console.log(arr)
 
 function selectSort (arr) {
@@ -117,41 +117,42 @@ function shellSort (arr) {
 // shellSort(arr);
 // console.log(arr)
 
-function heapSort (arr) {
-    buildMaxHeap(arr, Math.floor(arr.length / 2));
-    for (let i = arr.length - 1; i > 0; i--) {
-        swap(arr, i, 0);
-        maxHeapfy(arr, 0, i);
-    }
-}
-function buildMaxHeap (arr, n) {
-    for (let i = n; i >= 0; i--) {
-        maxHeapfy(arr, i, arr.length);
-    }
-}
-function maxHeapfy (arr, i, len) {
-    let rightChild = i * 2 + 1;
-    let leftChild = i * 2;
-    let largest = i;
-    if (leftChild < len && arr[leftChild] > arr[largest]) {
-        largest = leftChild;
-    }
-    if (rightChild < len && arr[rightChild] > arr[largest]) {
-        largest = rightChild;
-    }
-    if (i !== largest) {
-        swap(arr, i, largest);
-    }
-}
-
-function swap (arr, i, j) {
+function sweap (arr, i, j) {
     let temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
+  }
+function heapSort (arr) {
+    let n = Math.floor(arr.length / 2);
+    for (let i = n; i >=0; i--) {
+        maxHead(arr, i, arr.length);
+    }
+    for (let j = arr.length - 1; j > 0; j--) {
+        sweap(arr, 0, j);
+        maxHead(arr, 0, j);
+    }
 }
-let arr1 = [2,4,1,4,6,2,1,8,0,11,2,5]
-heapSort(arr1);
-console.log(arr1)
+  
+function maxHead(arr, i, len) {
+    let lChild = i * 2 + 1;
+    let rChild = i * 2 + 2;
+    let max = i;
+    if (lChild < len && arr[lChild] > arr[max]) {
+        max = lChild;
+    }
+    if (rChild < len && arr[rChild] > arr[max]) {
+        max = rChild;
+    }
+    if (max != i) {
+        sweap(arr, i, max);
+        maxHead(arr, max, len);
+    } 
+}
+ 
+let arr = [2,4,1,4,6,2,1,8,0,11,2,5];
+// const arr = [3, 1, 1, 2, 5]
+heapSort(arr);
+console.log(arr)
 
 // [3, 1, 1, 2, 5];
 function mergeSort (arr) {
