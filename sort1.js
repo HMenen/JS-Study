@@ -19,9 +19,9 @@ function qsort(arr, s, e) {
     qsort(arr, start + 1, e);
 }
 // const arr = [3, 1, 1, 2, 5]
-// let arr = [2,4,1,4,6,2,1,8,0]
-// qsort(arr, 0, arr.length - 1)
-// console.log(arr)
+let arr2 = [3,2,1]
+qsort(arr2, 0, arr2.length - 1)
+console.log(arr2)
 
 
 // function s (s, e, arr) {
