@@ -23,6 +23,7 @@ function getClassType() {
   return classType;
  }
 //  console.log(getClassType())
+
 /**
  * 输入要类型判断的对象；返回类型（String）
  * @param {object} obj 
@@ -41,3 +42,18 @@ function type(obj) {
 }
 const a = function a(){}
 console.log(type(a))
+
+/**
+ * isElement 判断是不是 DOM 元素。
+ */
+isElement = function(obj) {
+  return !!(obj && obj.nodeType === 1);
+};
+
+/**
+ * Window 对象作为客户端 JavaScript 的全局对象，它有一个 window 属性指向自身
+ * @param {object} obj 
+ */
+function isWindow( obj ) {
+  return obj != null && obj === obj.window;
+}
