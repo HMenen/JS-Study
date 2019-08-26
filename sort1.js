@@ -5,21 +5,22 @@ function quickSort (arr, start, end) {
     let point;
     while (s < e) {
         point = arr[Math.floor((s + e) / 2)];
-        while (s < e && arr[e] > point) e--;
+        // while (s < e && arr[e] > point) e--;
         while (s < e && arr[s] <= point) s++;
+        while (s < e && arr[e] > point) e--;
         if (s < e) {
+            console.log('--s---' + arr[s] + '--e---' + arr[e]);
             let temp = arr[s];
             arr[s] = arr[e];
             arr[e] = temp;
         }
-        // console.log(JSON.stringify(arr))
     }
     quickSort(arr, start, s - 1);
     quickSort(arr, s + 1,  end );
 }
-const arr = [3, 1, 1, 2, 5]
-// quickSort(arr, 0, arr.length - 1)
-// console.log(arr)
+const arr = [3, 1, 1, 2, 5] //1 1 3 2 5 1235
+quickSort(arr, 0, arr.length - 1)
+console.log(arr)
 
 function popSort (arr) {
     let temp;
@@ -161,4 +162,4 @@ function merge(left, right) {
     }
     return result;
 }
-console.log(mergeSort(arr));
+// console.log(mergeSort(arr));
