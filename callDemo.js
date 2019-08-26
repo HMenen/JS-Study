@@ -21,7 +21,7 @@ const obj = {
 }
 function bar(name, age) {
   console.log(this.value);
-  console.log(name);
+  console.log('name:' + name);
   console.log(age);
   return name;
 }
@@ -47,5 +47,20 @@ Function.prototype.myapply = function(context) {
   return result;
 }
 
-const name = bar.myapply(obj, ['hahaha', 18]);
-console.log(name)
+// const name = bar.myapply(obj, ['hahaha', 18]);
+// console.log(name)
+
+Function.prototype.mybind = function(contextThis) {
+  const myContext = this;
+  const args = [].slice.call(arguments, 1);
+  // return function() {
+  //   myContext.apply(contextThis, args.concat([].slice.call(arguments)))
+  // }
+  return (...rest) => {
+    console.log(rest)
+    myContext.apply(contextThis, args.concat([].slice.call(rest)))
+  }
+}
+
+const b = bar.mybind(obj)
+b('hahaha', 18);
