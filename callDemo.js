@@ -26,5 +26,26 @@ function bar(name, age) {
   return name;
 }
 
-const name = bar.mycall(obj, 'hahaha', 18);
+// const name = bar.mycall(obj, 'hahaha', 18);
+// console.log(name)
+
+/**
+ * apply的实现
+ */
+Function.prototype.myapply = function(context) {
+  const myContext = context || window;
+  let args = [];
+  let result;
+  myContext.fn = this;
+  args = arguments[1];
+  if (!Array.isArray(args)) {
+    result = myContext.fn();
+  } else {
+    result = myContext.fn(...args);
+  }
+  delete myContext.fn;
+  return result;
+}
+
+const name = bar.myapply(obj, ['hahaha', 18]);
 console.log(name)
