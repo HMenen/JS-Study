@@ -5,8 +5,25 @@ function getParent(child, parent) {
     child.prototype.constructor = child;
 }
 
-function Animal () {
+function extend1 (parent, child) {
+    function F() {};
+    F.prototype = parent;
+    child.prototype = new F();
+    child.prototype.constructor = child;
+}
+
+function myNew (Parent, ...args) {
+    let newObj = Object.create(Parent.prototype);
+    Parent.apply(newObj, args);
+    return newObj;
+}
+
+let a1 = myNew(Animal, 'dsad');
+
+function Animal (name) {
     let ha = 'animal111';
+    this.name = name
+    console.log(this.name);
 }
 Animal.prototype.ha = 'qqqq';
 
