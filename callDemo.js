@@ -57,7 +57,6 @@ Function.prototype.mybind = function(contextThis) {
   //   myContext.apply(contextThis, args.concat([].slice.call(arguments)))
   // }
   return (...rest) => {
-    console.log(rest)
     myContext.apply(contextThis, args.concat([].slice.call(rest)))
   }
 }
