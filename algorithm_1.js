@@ -196,3 +196,39 @@ function parseToMone (num) {
 
 }
 parseToMone(123.456);
+
+/**
+ * 斐波那契数列
+ * 非递归版
+ * @param {number} n 
+ */
+function fibonacci1(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    let n1 = 1;
+    let n2 = 1;
+    let ret;
+    for (let index = 2; index <= n; index++) {
+        ret = n1 + n2;
+        n1 = n2;
+        n2 = ret;
+    }
+    return ret;
+}
+  
+console.log(fibonacci1(4))
+/**
+ * 斐波那契数列
+ * 动态规划版
+ * @param {number} n 
+ */
+function fibonacci2(n) {
+    const arr = [1, 1];
+    for (let i = 2; i <= n; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2]
+    }
+    return arr[n];
+}
+
+console.log(fibonacci2(4))
