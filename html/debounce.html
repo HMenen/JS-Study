@@ -53,6 +53,7 @@
         timeout = setTimeout(func.bind(that, arguments), wait);
       }
     }
+    //取消防抖，这样再去触发，就可以又立刻执行啦
     debounced.cancel = () => {
       clearTimeout(timeout);
       timeout = null;
