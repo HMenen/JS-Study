@@ -98,6 +98,22 @@ function getRandomArr (arr) {
     arr.sort(() => Math.random() - 0.5);
     return arr;
 }
+
+//每次生成的随机交换位置:
+Array.prototype.shuffle = function() {
+    var input = this;
+
+    for (var i = input.length-1; i >=0; i--) {
+
+        var randomIndex = Math.floor(Math.random()*(i+1));
+        var itemAtIndex = input[randomIndex];
+
+        input[randomIndex] = input[i];
+        input[i] = itemAtIndex;
+    }
+    return input;
+}
+
 var arr4 = [1,2,3,4,5,6,7,'a','dsfs',8,9,'v'];
 // console.log(getRandomArr(arr4));
 
