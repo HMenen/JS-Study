@@ -17,7 +17,7 @@ function flat (arr) {
     return arr.reduce((prev, cur) =>{
         return [...prev, ...(Array.isArray(cur) ? flat(cur) : [cur])];
     }, [])
-}
+}          
 
 /**
  * flat非递归实现

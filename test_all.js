@@ -97,4 +97,62 @@ function getName() {
   console.log(this.name)
   console.log(arguments)
 }
-console.log(getName.myApply(b1, [12]))
+// console.log(getName.myApply(b1, [12]))
+
+/**
+ * qie ke na
+ * 递归版
+ */
+function fac(n) {
+  if (n <= 0) return;
+  if (n === 1|| n===2) {
+    return 1;
+  } else {
+    return fac(n - 1) + fac(n - 2);
+  }
+}
+// console.log(fac(6))
+
+function fac1(n) {
+  if (n <= 0) return;
+  if (n === 1 || n === 2) {
+    return 1;
+  }
+  let sum = 0;
+  let left = 1;
+  let right = 1;
+  while(n > 2) {
+    sum = left + right;
+    left = right;
+    right = sum;
+    n--;
+  }
+  return sum;
+}
+// console.log(fac1(6))
+
+/**
+ * 阶乘
+ * @param {Number} n 
+ */
+function fac2(n) {
+  if (n === 1) return 1;
+  return n * fac2(n - 1);
+}
+// console.log(fac2(5));
+
+/**
+ * 继承
+ * @param {Class} subClass 
+ * @param {Class} superClass 
+ */
+function inherits(subClass, superClass) {
+  const brige = function() {};
+  brige.prototype = superClass.prototype;
+  const newPrototype = new brige();
+  const oldPrototype = subClass.prototype;
+  newPrototype.constructor = subClass;
+  subClass.prototype = Object.assign(oldPrototype, newPrototype);
+}
+
+console.log({}.toString())

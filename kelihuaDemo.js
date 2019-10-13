@@ -26,7 +26,7 @@ function curryEnhance() {
   return function() {
     let newArgs = [].slice.call(arguments).concat(args);
     if(fn.length > newArgs.length) {
-      return curryEnhance(fn, ...newArgs);
+      return curryEnhance(fn, ...newArgs); 
     } else {
       return fn.apply(this, newArgs);
     }
