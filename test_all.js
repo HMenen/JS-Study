@@ -155,4 +155,23 @@ function inherits(subClass, superClass) {
   subClass.prototype = Object.assign(oldPrototype, newPrototype);
 }
 
-console.log({}.toString())
+// console.log({}.toString())
+
+let returnData = {
+  12: {reportedNums: null, category: "12", ywx: "教学", onlineBugTotal: 10, P2UPLIST: 0},
+  121: {reportedNums: null, category: "121", ywx: "教学"},
+  1211: {reportedNums: 0, category: "1211", ywx: "教学-Android组", onlineBugTotal: -1, P2UPLIST: 0},
+  11: {reportedNums: null, category: "121", ywx: "教学", onlineBugTotal: 10, P2UPLIST: 0},
+  111: {reportedNums: null, category: "121", ywx: "教学", onlineBugTotal: 10, P2UPLIST: 0},
+  1121: {reportedNums: 0, category: "1211", ywx: "教学-Android组", onlineBugTotal: -1, P2UPLIST: 0},
+  13: {reportedNums: null, category: "121", ywx: "教学", onlineBugTotal: 10, P2UPLIST: 0},
+  '13a': {reportedNums: null, category: "121", ywx: "教学", onlineBugTotal: 10, P2UPLIST: 0},
+  '13b': {reportedNums: 0, category: "1211", ywx: "教学-Android组", onlineBugTotal: -1, P2UPLIST: 0},
+}
+
+function sortStrLen(prevStr, nextStr) {
+  return prevStr.length < nextStr.length;
+}
+// console.log(Array.from(returnData))
+Array.from(returnData).sort(sortStrLen);
+console.log(returnData['12'])
