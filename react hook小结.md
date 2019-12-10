@@ -35,6 +35,7 @@ this.setState({count: 1});
 ```
 useEffect 意思为副作用,常在该函数中请求数据
 执行时机：useEffect是在componentDidMount和componentDidUpdate之后执行的
+useEffect 是 dom更新完，浏览器渲染完，然后发生的事情,不会阻止浏览器渲染
 入参：函数，数组（useEffect执行的依赖项）; 其中第二个参数是一个数组，空数组的情况下代表其只在componentDidMount后执行一次；若数组不为空，则在数组中的内容发生改变后执行useEffect
 返回值：清除函数，在componentUnMount时执行
 
@@ -48,7 +49,8 @@ useEffect(() => {
 3. useLayoutEffect
 ```
 useLayoutEffect和useEffect有点类似；但useLayoutEffect但执行时机时早于useEffect的；
-执行时机：在componentDidMount和componentDidUpdate时执行的
+执行时机：在componentDidMount和componentDidUpdate时执行的;
+useLayoutEffect 是dom更新完，但是还没渲染，它会阻止浏览器渲染
 入参：函数、数组（useLayoutEffect执行的依赖项）；若第二个参数是一个空数组，则仅在componentDidMount时执行一次
 返回值：清除函数，在componentUnMount时执行
 
