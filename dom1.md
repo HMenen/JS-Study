@@ -86,9 +86,9 @@ button.addEventListener('clickTest', function() {
 element.dispatchEvent(myEvent); //注意，参数是写事件对象 myEvent，不是写 事件名 clickTest
 ```
 
-######XSS（Cross Site Scripting）：跨域脚本攻击。
+###### XSS（Cross Site Scripting）：跨域脚本攻击。
 
-#####数据属性和访问器属性
+##### 数据属性和访问器属性
 数据属性：configurable ,writable, enumerable, value
 访问器属性：configurable, enumerable,set, get
 
