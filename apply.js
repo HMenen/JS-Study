@@ -21,7 +21,7 @@ function getName() {
   console.log(this.name)
   console.log(arguments)
 }
-// getName.myApply(b1, [12]);
+getName.myApply(b1, [12]);
 
 
 /**

@@ -46,3 +46,9 @@ const C = B.bind({ age: 2 });
 const D = C.bind({ age: 3}).bind({ age: 4 });
 D();
 */
+
+
+CSS: 绘制一个 田
+
+
+实现一个红路灯

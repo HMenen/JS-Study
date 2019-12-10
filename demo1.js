@@ -113,6 +113,19 @@ function sleep () {
     });
 }
 
+
+async function getC (count) {
+    for(var i = 0; i < count; i++) {
+        await sleep2(1000);
+        console.log(i + 1);
+    }
+}
+function sleep2 (time) {
+    return new Promise((resolve, rejected) => {
+        setTimeout(() => resolve, time)
+    })
+}
+
 function setNum (n) {
     var num = n;
     return new Promise((resolve, rejected) => {

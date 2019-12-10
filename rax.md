@@ -1,6 +1,6 @@
 ##### native updateChild
 1. 遍历nextChildElement所有节点
-1） 更新prevChild节点
+1）更新prevChild节点
 2）prevChild中不可更新的节点则记录为删除（之后进行删除，令unmount=true）
 3）对新增的childElement，创建其渲染容器（nextChildren[name] = instantiateComponent(nextElement);）
 '''
