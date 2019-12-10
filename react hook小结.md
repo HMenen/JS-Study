@@ -112,4 +112,11 @@ const useMountState = () => {
   return mountRef.currnet;
 }
 
+实现一个异步
+function useSetTimeout(cb, delay, params) {
+  useEffect(() => {
+    let timer = setTimeout(cb, delay);
+    return () => clearTimeout(timer);
+  }, params)
+}
 ```
