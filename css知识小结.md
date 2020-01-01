@@ -7,6 +7,7 @@ IE：content + padding + border
 W3C（标准和模型）: content
 
 2. 用css隐藏元素
+```
 1) opacity: opatity为0时则为透明
 2）visibility: hidden
 3）display: none
@@ -16,9 +17,10 @@ W3C（标准和模型）: content
   top: -99999px;
   left: -99999px;
 }
+```
 
 4. .CSS 清除浮动的几种方法（至少两种）
-'''
+```
 伪元素：在页面上不存在的元素，但是可以通过 css 添加上去
 1) 在浮动的盒子下面再放一个标签，使用 clear:both;来清除浮动（不推荐使用）
 2) 先找到浮动盒子的父元素，给父元素添加一个属性：overflow:hidden;就会清除子元素对页面的影响（不推荐使用）
@@ -34,7 +36,7 @@ clearfix:after{
 .clearfix{
   zoom: 1;/_为了兼容 IE6_/
 }
-'''
+```
 5. 页面导入样式时，使用 link 和@import 有什么区别？
 Link 属于 html 标签，而@import 是 CSS 中提供的
 在页面加载的时候，link 会同时被加载，而@import 引用的 CSS 会在页面加载完成后才会加载引用的 CSS
@@ -42,16 +44,16 @@ Link 属于 html 标签，而@import 是 CSS 中提供的
 Link 引入样式的权重大于@import 的引用（@import 是将引用的样式导入到当前的页面中）
 
 6. 伪元素和伪类的区别？
-'''
+```
 伪元素：伪元素添加了一个页面中没有的元素（只是从视觉效果上添加了，不是在文档树中添加
 ::before, ::after, ::section, ::placeholder, ::first-line, ::first-letter
 
 伪类：伪类是给页面中已经存在的元素添加一个类
 :hover, :link, :active, :focus, :target
-'''
+```
 
 7. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3 新增伪类有那些？
-'''
+```
 1.id选择器（ # myid）
 2.类选择器（.myclassname）
 3.标签选择器（div, h1, p）
@@ -80,10 +82,10 @@ p:only-child    选择属于其父元素的唯一子元素的每个 <p> 元素�
 p:nth-child(2)  选择属于其父元素的第二个子元素的每个 <p> 元素。
 :enabled、:disabled 控制表单控件的禁用状态。
 :checked，单选框或复选框被选中。
-'''
+```
 
 8. 行内元素和块级元素的具体区别是什么？行内元素的 padding 和 margin 可设置吗？
-'''
+```
 块级元素(block)特性：
 总是独占一行，表现为另起一行开始，而且其后的元素也必须另起一行显示;
 宽度(width)、高度(height)、内边距(padding)和外边距(margin)都可控制;
@@ -93,13 +95,13 @@ p:nth-child(2)  选择属于其父元素的第二个子元素的每个 <p> 元�
 宽度(width)、高度(height)、内边距的 top/bottom(padding-top/padding-bottom)和外边距的 top/bottom(margin-top/margin-bottom)都不可改变（也就是 padding 和 margin 的 left 和 right 是可以设置的），就是里面文字或图片的大小。
 那么问题来了，浏览器还有默认的天生 inline-block 元素（拥有内在尺寸，可设置高宽，但不会自动换行），有哪些？
 答案：<input> 、<img> 、<button> 、<texterea> 、<label>
-'''
+```
 
 9. px 和 em 的区别
-'''
+```
 px 和 em 都是长度单位，区别是，px 的值是固定的，指定是多少就是多少，计算比较容易。em 得值不是固定的，并且 em 会继承父级元素的字体大小。
 浏览器的默认字体高都是 16px。所以未经调整的浏览器都符合: 1em=16px。那么 12px=0.75em, 10px=0.625em。
-'''
+```
 
 10. BFC
 '''

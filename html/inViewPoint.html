@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      width: 200px;
+      height: 200px;
+      border: 1px solid green;
+      overflow-y: scroll;
+    }
+
+    li {
+      border-top: 1px solid gray;
+      width: 100%;
+      height: 40px
+    }
+
+    #target {
+      background: red;;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul id="container">
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li id="target">看见我 会alert</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+      <li>111111</li>
+    </ul>
+  </div>
+  
+  <script>
+
+const scrollParent = (element) => {
+  if (!(element instanceof HTMLElement)) {
+    return window;
+  }
+
+  let parent = element;
+
+  while (parent) {
+    if (parent === document.body || parent === document.documentElement) {
+      break;
+    }
+
+    if (!parent.parentNode) {
+      break;
+    }
+
+    console.log('--------overflow---', overflow(parent));
+    if (/(scroll|auto|overlay)/.test(overflow(parent))) {
+      return parent;
+    }
+
+    parent = parent.parentNode;
+  }
+
+  return window;
+};
+
+// const style = (element, prop) => (typeof getComputedStyle !== 'undefined'
+//   ? getComputedStyle(element, null).getPropertyValue(prop)
+//   : element.style[prop]);
+
+const style = (element, prop) => {
+  if (typeof getComputedStyle !== 'undefined') {
+    // console.log('------', getComputedStyle(element, null));
+    console.log('------prop-----', element, prop, '=====', getComputedStyle(element, null).getPropertyValue(prop))
+    return getComputedStyle(element, null).getPropertyValue(prop);
+  } else {
+    return element.style[prop];
+  }
+}
+
+
+const overflow = element =>
+  style(element, 'overflow') + style(element, 'overflow-y') + style(element, 'overflow-x');
+
+const isHidden = element =>{
+  // console.log('-----offsetParent-----', element.offsetParent);
+  element.offsetParent === null;
+}
+
+function getElementPosition(element) {
+  const rect = element.getBoundingClientRect();
+
+  return {
+    top: rect.top + window.pageYOffset,
+    left: rect.left + window.pageXOffset,
+  };
+}
+
+function inViewport(element) {
+  // console.log(element)
+  if (isHidden(element)) {
+    return false;
+  }
+
+  let top;
+  let bottom;
+  let left;
+  let right;
+
+  const container = scrollParent(element);
+
+  if (container === window) {
+    top = window.pageYOffset;
+    left = window.pageXOffset;
+    bottom = top + window.innerHeight;
+    right = left + window.innerWidth;
+  } else {
+    const containerPosition = getElementPosition(container);
+    top = containerPosition.top;
+    left = containerPosition.left;
+    bottom = top + container.offsetHeight;
+    right = left + container.offsetWidth;
+  }
+
+  const elementPosition = getElementPosition(element);
+
+  return (
+    top <= elementPosition.top + element.offsetHeight &&
+    bottom >= elementPosition.top &&
+    left <= elementPosition.left + element.offsetWidth &&
+    right >= elementPosition.left
+  );
+}
+
+document.getElementById('container').addEventListener('scroll', function() {
+  if (inViewport(document.getElementById('target'))) {
+    console.log('看见我了');
+  }
+})
+  
+  </script>
+</body>
+</html>

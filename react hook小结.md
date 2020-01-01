@@ -1,5 +1,21 @@
 ##### hook使用范围：在函数组件中使用的
 ##### 常用的hook
+```
+React Hooks要解决的问题是状态共享，这里的状态共享是指只共享状态逻辑复用，并不是指数据之间的共享。
+
+React 假设当你多次调用 useState 的时候，你能保证每次渲染时它们的调用顺序是不变的
+
+Hook 规则
+Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。并且React要求强制执行这两条规则，不然就会出现异常的bug
+只在最顶层使用 Hook
+不要在循环，条件或嵌套函数中调用 Hook， 确保总是在你的 React 函数的最顶层调用他们
+只在 React 函数中调用 Hook
+不要在普通的 JavaScript 函数中调用 Hook
+
+useEffect
+如果你熟悉 React class 的生命周期函数，你可以把 useEffect Hook 看做 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
+Effect在组件渲染后执行即可
+```
 1. useState
 ```
 用法：const [count, setCount] = useState(0)

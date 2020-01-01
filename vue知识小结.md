@@ -15,6 +15,7 @@ const router = new VueRouter({
 3) <router-link to='路由地址'></router-link>
 4. vue-router跳转方法
 1) this.$router.raplace('/xxx');
+  跳转到指定url路径，但是history栈中不会有记录，点击返回会跳转到上上个页面
 2) this.router.replace({name: 'xxx'});
 3) this.$router.push('/xxx');
 4) this.$router.push({name: 'xxx'});
@@ -251,4 +252,16 @@ token -> AST树 -> vDom -> dom
 ```
 AST是指抽象语法树（abstract syntax tree），或者语法树（syntax tree），是源代码的抽象语法结构的树状表现形式。Vue在mount过程中，template会被编译成AST语法树。
 
+```
+
+22. 
+```
+为什么不直接修改dom而需要加一层virtual dom呢？
+很多时候手工优化dom确实会比virtual dom效率高，对于比较简单的dom结构用手工优化没有问题，但当页面结构很庞大，结构很复杂时，手工优化会花去大量时间，而且可维护性也不高，不能保证每个人都有手工优化的能力。至此，virtual dom的解决方案应运而生。
+virtual dom是“解决过多的操作dom影响性能”的一种解决方案。
+virtual dom很多时候都不是最优的操作，但它具有普适性，在效率、可维护性之间达平衡。
+
+virutal dom的意义：
+1、提供一种简单对象去代替复杂的dom对象，从而优化dom操作
+2、提供一个中间层，js去写ui，ios安卓之类的负责渲染，就像reactNative一样。
 ```

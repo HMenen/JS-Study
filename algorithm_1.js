@@ -278,3 +278,47 @@ add(1)(2)(3)                // 6
 add(1, 2, 3)(4)             // 10
 add(1)(2)(3)(4)(5)          // 15
 add(2, 6)(1)                // 9
+
+
+// 非递归算法
+function binary_search(arr, key) {
+    var low = 0,
+        high = arr.length - 1;
+    while(low <= high){
+        var mid = parseInt((high + low) / 2);
+        if(key == arr[mid]){
+            return  mid;
+        }else if(key > arr[mid]){
+            low = mid + 1;
+        }else if(key < arr[mid]){
+            high = mid -1;
+        }else{
+            return -1;
+        }
+    }
+};
+var arr = [1,2,3,4,5,6,7,8,9,10,11,23,44,86];
+var result = binary_search(arr,10);
+alert(result); // 9 返回目标元素的索引值
+
+new Promise((resolve, rejected) => {
+    rejected('error');
+}).then(null, () => console.log('-------'))
+
+new Promise((resolve, rejected) => {
+    rejected('error');
+}).catch(err => console.log('====')).then(null, (err) => console.log('------123-', err));
+
+var demo1 = async ()=>{
+    let result = await new Promise(resolve => {
+        setTimeout(()=>{
+        console.log('我延迟了一秒');
+        resolve('我延迟了一秒')
+        }, 1000)
+    })
+    console.log('我由于上面的程序还没执行完，先不执行“等待一会”');
+    return result
+}
+demo().then(result=>{
+  console.log('输出',result);
+})
