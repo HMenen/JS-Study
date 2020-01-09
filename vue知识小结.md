@@ -265,3 +265,116 @@ virutal dom的意义：
 1、提供一种简单对象去代替复杂的dom对象，从而优化dom操作
 2、提供一个中间层，js去写ui，ios安卓之类的负责渲染，就像reactNative一样。
 ```
+
+23. 自定义指令
+```
+directives与data平级，其中el就是当前指令的元素。binding.value就是绑定的值
+
+// 注册一个全局自定义指令 `v-focus`
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+
+如果想注册局部指令，组件中也接受一个 directives 的选项：
+directives: {
+  focus: {
+    // 指令的定义
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+}
+
+
+template>
+  <div>
+    <p v-color="'red'">{{message}}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'app',
+    data() {
+      return{
+        color: "green"
+      }
+    },
+    directives: {
+      color:function (el, binding) {   //默认的简写方式会在钩子函数bind，update中执行
+        el.style.color = binding.value
+      }
+    }
+  };
+</script>
+
+```
+
+22. 组件注册
+```
+全局注册:
+到目前为止，我们只用过 Vue.component 来创建组件：
+Vue.component('my-component-name', {
+  // ... 选项 ...
+})
+这些组件是全局注册的。也就是说它们在注册之后可以用在任何新创建的 Vue 根实例 (new Vue) 的模板中。比如：
+Vue.component('component-a', { /* ... */ })
+Vue.component('component-b', { /* ... */ })
+Vue.component('component-c', { /* ... */ })
+
+new Vue({ el: '#app' })
+
+
+
+局部注册:
+
+全局注册往往是不够理想的。比如，如果你使用一个像 webpack 这样的构建系统，全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中。这造成了用户下载的 JavaScript 的无谓的增加。
+在这些情况下，你可以通过一个普通的 JavaScript 对象来定义组件：
+var ComponentA = { /* ... */ }
+var ComponentB = { /* ... */ }
+var ComponentC = { /* ... */ }
+然后在 components 选项中定义你想要使用的组件：
+new Vue({
+  el: '#app',
+  components: {
+    'component-a': ComponentA,
+    'component-b': ComponentB
+  }
+})
+```
+
+23. keep-alive
+```
+<keep-alive>是Vue的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。
+
+<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 <transition> 相似，<keep-alive> 是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中。
+
+<keep-alive include="test-keep-alive">
+  <!-- 将缓存name为test-keep-alive的组件 -->
+  <component></component>
+</keep-alive>
+
+<keep-alive include="a,b">
+  <!-- 将缓存name为a或者b的组件，结合动态组件使用 -->
+  <component :is="view"></component>
+</keep-alive>
+
+<!-- 使用正则表达式，需使用v-bind -->
+<keep-alive :include="/a|b/">
+  <component :is="view"></component>
+</keep-alive>
+
+<!-- 动态判断 -->
+<keep-alive :include="includedComponents">
+  <router-view></router-view>
+</keep-alive>
+
+<keep-alive exclude="test-keep-alive">
+  <!-- 将不缓存name为test-keep-alive的组件 -->
+  <component></component>
+</keep-alive>
+```

@@ -104,7 +104,7 @@ px 和 em 都是长度单位，区别是，px 的值是固定的，指定是多�
 ```
 
 10. BFC
-'''
+```
 什么是 BFC
 BFC（Block Formatting Context）格式化上下文，是 Web 页面中盒模型布局的 CSS 渲染模式，指一个独立的渲染区域或者说是一个隔离的独立容器。
 
@@ -119,7 +119,7 @@ BFC 的特性
 bfc 的区域不会与 float 的元素区域重叠。
 计算 bfc 的高度时，浮动元素也参与计算
 bfc 就是页面上的一个独立容器，容器里面的子元素不会影响外面元素。
-'''
+```
 
 11. Sass、LESS 是什么？大家为什么要使用他们
 '''
@@ -151,3 +151,202 @@ css3 的 transform 属性，设置值为 scale(x,y) 定义 2D 缩放转换
 14. 边框1px问题
 window.devicePixelRatio 
 可以直接通过window.devicePixelRatio这个值来获取DRP，打印结果是2个像素
+
+15. position(默认值是static)
+```
+static(静态) 没有特别的设定，不脱离文档流，遵循基本的定位规定，不能通过z-index进行层次分级，在普通流中，各个元素默认的属性。
+relative(相对定位) 对象不可层叠、不脱离文档流，参考自身静态位置通过 top,bottom,left,right 定位。
+absolute(绝对定位) 脱离文档流，通过 top,bottom,left,right 定位。选取其最近一个最有定位设置的父级对象进行绝对定位，如果对象的父级没有设置定位属性，absolute元素将以body坐标原点进行定位。
+fixed（固定定位）脱离文档流，这里所固定的参照对像是可视窗口而并非是body或是父级元素。使用了fixed的元素不会随着窗口的滚动而滚动。属于absolute的子集。
+```
+
+16. BFC
+```
+一、何为BFC
+BFC（Block Formatting Context）格式化上下文，是Web页面中盒模型布局的CSS渲染模式，指一个独立的渲染区域或者说是一个隔离的独立容器。
+
+二、形成BFC的条件
+1、浮动元素，float 除 none 以外的值； 
+2、定位元素，position（absolute，fixed）； 
+3、display 为以下其中之一的值 inline-block，table-cell，table-caption； 
+4、overflow 除了 visible 以外的值（hidden，auto，scroll）；
+
+三、BFC的特性
+1.内部的Box会在垂直方向上一个接一个的放置。
+2.垂直方向上的距离由margin决定
+3.bfc的区域不会与float的元素区域重叠。
+4.计算bfc的高度时，浮动元素也参与计算
+5.bfc就是页面上的一个独立容器，容器里面的子元素不会影响外面元素。
+
+```
+
+17. IFC(Inline Formatting Contexts)
+```
+直译为”内联格式化上下文”，IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)
+IFC
+Inline Formatting Contexts，也就是“内联格式化上下文”。
+
+符合以下任一条件即会生成一个IFC
+块级元素中仅包含内联级别元素
+形成条件非常简单，需要注意的是当IFC中有块级元素插入时，会产生两个匿名块将父元素分割开来，产生两个IFC，这里不做过多介绍。
+
+IFC布局规则
+子元素水平方向横向排列，并且垂直方向起点为元素顶部。
+子元素只会计算横向样式空间，【padding、border、margin】，垂直方向样式空间不会被计算，【padding、border、margin】。
+在垂直方向上，子元素会以不同形式来对齐（vertical-align）
+能把在一行上的框都完全包含进去的一个矩形区域，被称为该行的行框（line box）。行框的宽度是由包含块（containing box）和与其中的浮动来决定。
+IFC中的“line box”一般左右边贴紧其包含块，但float元素会优先排列。
+IFC中的“line box”高度由 CSS 行高计算规则来确定，同个IFC下的多个line box高度可能会不同。
+当 inline-level boxes的总宽度少于包含它们的line box时，其水平渲染规则由 text-align 属性值来决定。
+当一个“inline box”超过父元素的宽度时，它会被分割成多个boxes，这些 oxes 分布在多个“line box”中。如果子元素未设置强制换行的情况下，“inline box”将不可被分割，将会溢出父元素。
+
+
+**BFC的布局规则例如以下：**
+
+1.ifc中的元素会在一行中从左到右排列。
+2.在一行上的所有元素会在该区域形成一个行框。
+3.行宽的高度为包含框的高度，高度为行框中最高元素的高度。
+4.浮动的元素不会在行框中，并且浮动元素会压缩行框的宽度。
+5.行框的宽度容纳不下子元素时，子元素会换到下一行显示，并且会产生新的行框。
+6.行框的元素内遵循text-align和vertical-align。
+
+```
+
+18. FFC -- Flex Formatting Contexts
+```
+触发条件
+当 display 的值为 flex 或 inline-flex 时，将生成弹性容器（Flex Containers）, 一个弹性容器为其内容建立了一个新的弹性格式化上下文环境（FFC）
+
+布局规则
+设置为 flex 的容器被渲染为一个块级元素
+设置为 inline-flex 的容器则渲染为一个行内元素
+弹性容器中的每一个子元素都是一个弹性项目。弹性项目可以是任意数量的。弹性容器外和弹性项目内的一切元素都不受影响。简单地说，Flexbox 定义了弹性容器内弹性项目该如何布局
+
+```
+
+19. display有哪些值？说明他们的作用?
+```
+inline（默认）--内联
+none--隐藏
+block--块显示
+table--表格显示
+list-item--项目列表
+inline-block
+```
+
+20. 请解释一下CSS3的flexbox（弹性盒布局模型）,以及适用场景？
+```
+该布局模型的目的是提供一种更加高效的方式来对容器中的条目进行布局、对齐和分配空间。在传统的布局方式中，block 布局是把块在垂直方向从上到下依次排列的；而 inline 布局则是在水平方向来排列。弹性盒布局并没有这样内在的方向限制，可以由开发人员自由操作。
+试用场景：弹性布局适合于移动前端开发，在Android和ios上也完美支持。
+
+```
+
+21. 实现一个三角形
+```
+
+.sanjiao{
+  width: 0;
+  height: 0;
+  border-top: 100px solid transparent;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 100px solid blue;
+}
+
+```
+
+22. 常见的兼容性问题？
+```
+不同浏览器的标签默认的margin和padding不一样。
+*{margin:0;padding:0;}
+
+IE6双边距bug：块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大。hack：display:inline;将其转化为行内属性。
+渐进识别的方式，从总体中逐渐排除局部。首先，巧妙的使用“9”这一标记，将IE浏览器从所有情况中分离出来。接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+
+{
+background-color:#f1ee18;/*所有识别*/
+.background-color:#00deff\9; /*IE6、7、8识别*/
++background-color:#a200ff;/*IE6、7识别*/
+_background-color:#1e0bd1;/*IE6识别*/
+}
+
+设置较小高度标签（一般小于10px），在IE6，IE7中高度超出自己设置高度。hack：给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度。
+IE下，可以使用获取常规属性的方法来获取自定义属性,也可以使用getAttribute()获取自定义属性；Firefox下，只能使用getAttribute()获取自定义属性。解决方法:统一通过getAttribute()获取自定义属性。
+Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
+超链接访问过后hover样式就不出现了，被点击访问过的超链接样式不再具有hover和active了。解决方法是改变CSS属性的排列顺序:L-V-H-A ( love hate ): a:link {} a:visited {} a:hover {} a:active {}
+```
+
+23. 浏览器是怎样解析CSS选择器的
+```
+CSS选择器的解析是从右向左解析的。若从左向右的匹配，发现不符合规则，需要进行回溯，会损失很多性能。若从右向左匹配，先找到所有的最右节点，对于每一个节点，向上寻找其父节点直到找到根元素或满足条件的匹配规则，则结束这个分支的遍历。两种匹配规则的性能差别很大，是因为从右向左的匹配在第一步就筛选掉了大量的不符合条件的最右节点（叶子节点），而从左向右的匹配规则的性能都浪费在了失败的查找上面。
+
+而在 CSS 解析完毕后，需要将解析的结果与 DOM Tree 的内容一起进行分析建立一棵 Render Tree，最终用来进行绘图。在建立 Render Tree 时（WebKit 中的「Attachment」过程），浏览器就要为每个 DOM Tree 中的元素根据 CSS 的解析结果（Style Rules）来确定生成怎样的 Render Tree。
+```
+
+24. margin和padding分别适合什么场景使用？
+```
+何时使用margin：
+需要在border外侧添加空白
+空白处不需要背景色
+上下相连的两个盒子之间的空白，需要相互抵消时。
+
+何时使用padding：
+需要在border内侧添加空白
+空白处需要背景颜色
+上下相连的两个盒子的空白，希望为两者之和。
+兼容性的问题：在IE5 IE6中，为float的盒子指定margin时，左侧的margin可能会变成两倍的宽度。通过改变padding或者指定盒子的display：inline解决。
+
+```
+
+25.  怎么让Chrome支持小于12px 的文字？
+```
+p{font-size:10px;-webkit-transform:scale(0.8);} //0.8是缩放比例
+```
+
+26. 有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度
+```
+<div class="outer">
+  <div class="A"></div>
+  <div class="B"></div>
+</div>
+
+.outer{
+  position: relative;
+  border: yellowgreen 1px solid;
+  height: 100%;
+}
+.A{
+  height: 100px; background: #BBE8F2;
+}
+.B{
+  background: #D9C666;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  bottom: 0;
+}
+```
+
+##### display、visibility、opacity
+```
+display: none (不占空间，不能点击)（场景，显示出原来这里不存在的结构）
+visibility: hidden（占据空间，不能点击）（场景：显示不会导致页面结构发生变动，不会撑开）
+opacity: 0（占据空间，可以点击）（场景：可以跟transition搭配）
+
+总结一下：
+结构：
+display:none: 会让元素完全从渲染树中消失，渲染的时候不占据任何空间, 不能点击，
+visibility: hidden:不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，不能点击
+opacity: 0: 不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，可以点击
+
+继承：
+display: none和opacity: 0：是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示。
+visibility: hidden：是继承属性，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显式。
+
+性能：
+displaynone : 修改元素会造成文档回流,读屏器不会读取display: none元素内容，性能消耗较大
+visibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少读屏器读取visibility: hidden元素内容
+opacity: 0 ： 修改元素会造成重绘，性能消耗较少
+
+```
