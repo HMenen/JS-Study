@@ -319,6 +319,69 @@ var demo1 = async ()=>{
     console.log('我由于上面的程序还没执行完，先不执行“等待一会”');
     return result
 }
-demo().then(result=>{
+demo1().then(result=>{
   console.log('输出',result);
 })
+
+// 递归遍历
+
+let result1 = [];
+// 前序遍历
+let dfs1 = function (node) {
+    if (node) {
+        result1.push(node.value);
+        dfs1(node.left);
+        dfs1(node.right);
+    }
+}
+
+// 中序遍历
+let result2 = [];
+let dfs2 = function (node) {
+    if(node) {
+        dfs2(node.left);
+        result2.push(node.value); // 直到该结点无左子树 将该结点存入结果数组 接下来并开始遍历右子树
+        dfs2(node.right);
+    }
+}
+
+// 后序遍历
+let result3 = [];
+let dfs3  = function(node) {
+    if(node) {
+        dfs3(node.left);
+        dfs3(node.right);
+        result3.push(node.value);
+    }
+}
+dfs(tree);
+
+//广度遍历
+let rusult4 = [];
+let stack = [tree]; // 先将要遍历的树压入栈
+let count = 0;
+let bfs4 = function() {
+    let node = stack.pop();
+    if (node) {
+        result4.push(node.value);
+        if (node.left) result4.push(node.left.value);
+        if (node.left) result4.push(node.left.value);
+        count++;
+        bfs4();
+     }
+}
+
+//非递归算法
+function bfs(node) {
+    let result = [];
+    let queue = [];
+    queue.push(node);
+    let pointer = 0;
+    while(pointer < queue.length) {
+        let node = queue[pointer++]; // // 这里不使用 shift 方法（复杂度高），用一个指针代替
+        result.push(node.value);
+        node.left && queue.push(node.left);
+        node.right && queue.push(node.right);
+    }
+    return result;
+}
