@@ -99,6 +99,7 @@ function getRandomArr (arr) {
     return arr;
 }
 
+
 //每次生成的随机交换位置:
 Array.prototype.shuffle = function() {
     var input = this;
@@ -356,6 +357,21 @@ let dfs3  = function(node) {
 }
 dfs(tree);
 
+// 非递归遍历（利用栈：将遍历到的结点都依次存入栈中，拿结果时从栈中访问）
+let dfs = function (nodes) {
+    let result = [];
+    let stack = [];
+    stack.push(nodes);
+    while(stack.length) { // 等同于 while(stack.length !== 0) 直到栈中的数据为空
+        let node = stack.pop(); // 取的是栈中最后一个j
+        result.push(node.value);
+        if(node.right) stack.push(node.right); // 先压入右子树
+        if(node.left) stack.push(node.left); // 后压入左子树
+    }
+    return result;
+}
+dfs(tree);
+
 //广度遍历
 let rusult4 = [];
 let stack = [tree]; // 先将要遍历的树压入栈
@@ -365,10 +381,10 @@ let bfs4 = function() {
     if (node) {
         result4.push(node.value);
         if (node.left) result4.push(node.left.value);
-        if (node.left) result4.push(node.left.value);
+        if (node.right) result4.push(node.right.value);
         count++;
         bfs4();
-     }
+    }
 }
 
 //非递归算法
@@ -385,3 +401,54 @@ function bfs(node) {
     }
     return result;
 }
+
+
+//1.深度优先遍历的递归写法
+function deepTraversal(node){
+    let nodes=[];
+    if(node!=null){
+        nodes.push[node];
+        let childrens=node.children;
+        for(let i=0;i<childrens.length;i++)
+            deepTraversal(childrens[i]);
+    }
+    return nodes;
+}
+
+function dfs(node) {
+    let result = [];
+    let stack = [];
+    while(stack.length || node) { // 是 || 不是 &&
+        if(node) {
+            stack.push(node);
+            node = node.left;
+        } else {
+            node = stack.pop();
+            result.push(node.value);
+            //node.right && stack.push(node.right);
+            node = node.right; // 如果没有右子树 会再次向栈中取一个结点即双亲结点
+        }
+    }
+    return result;
+}
+
+dfs(tree);
+
+
+
+// 递归算法
+function binary_search(arr,low, high, key) {
+    if (low > high){
+        return -1;
+    }
+    var mid = parseInt((high + low) / 2);
+    if(arr[mid] === key){
+        return mid;
+    }else if (arr[mid] > key){
+        high = mid - 1;
+        return binary_search(arr, low, high, key);
+    }else if (arr[mid] < key){
+        low = mid + 1;
+        return binary_search(arr, low, high, key);
+    }
+};

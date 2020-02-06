@@ -4,7 +4,7 @@ https://github.com/yisainan/web-interview/blob/master/content/CSS.md
 
 两种盒子模型：IE、W3C盒子模型
 IE：content + padding + border
-W3C（标准和模型）: content
+W3C（标准和模型）: content    可设置box-sizing:border-box; 转为IE盒子模型
 
 2. 用css隐藏元素
 ```
@@ -51,6 +51,7 @@ Link 引入样式的权重大于@import 的引用（@import 是将引用的样�
 伪类：伪类是给页面中已经存在的元素添加一个类
 :hover, :link, :active, :focus, :target
 ```
+
 
 7. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3 新增伪类有那些？
 ```
@@ -152,7 +153,7 @@ css3 的 transform 属性，设置值为 scale(x,y) 定义 2D 缩放转换
 window.devicePixelRatio 
 可以直接通过window.devicePixelRatio这个值来获取DRP，打印结果是2个像素
 
-15. position(默认值是static)
+15. position(默认值是static) 
 ```
 static(静态) 没有特别的设定，不脱离文档流，遵循基本的定位规定，不能通过z-index进行层次分级，在普通流中，各个元素默认的属性。
 relative(相对定位) 对象不可层叠、不脱离文档流，参考自身静态位置通过 top,bottom,left,right 定位。
@@ -346,7 +347,62 @@ visibility: hidden：是继承属性，子孙节点消失由于继承了hidden�
 
 性能：
 displaynone : 修改元素会造成文档回流,读屏器不会读取display: none元素内容，性能消耗较大
-visibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少读屏器读取visibility: hidden元素内容
+visibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少 读屏器读取visibility: hidden元素内容
 opacity: 0 ： 修改元素会造成重绘，性能消耗较少
 
+```
+
+##### flex-grow flex-shrink flex-basis
+```
+这三个属性都是相对于主轴来说的
+
+flex-grow 针对放大的情况， 即有剩余空间的情况，分配的是剩余的占据空间, 即比例乘以剩余空间 比如
+
+  <div class="parent">
+    <div class="child1"></div> 
+    <div class="child2"></div> 
+  </div>
+  .parent {
+    width: 100px;
+  }
+  .child1 {
+    width: 50px;
+    height: 10px;
+    flex-grow: 3;
+    background: green;
+  }
+
+  .child2 {
+    width: 10px;
+    flex-grow: 1;
+    background: yellow;
+  }
+按照上面计算的话就是 .child1 width = 50 + ( 100 - 60 ) * 3 / 4 = 80px .child2 width = 10 + ( 100 - 60 ) * 1 / 4 = 20px;
+
+
+
+flex-shrink 针对的是缩小的情况，即子大小的和大于父 比如
+
+  <div class="parent">
+    <div class="child1"></div> 
+    <div class="child2"></div> 
+  </div>
+  .parent {
+    width: 50px;
+  }
+  .child1 {
+    width: 150px;
+    height: 10px;
+    flex-shrink: 3;
+    background: green;
+  }
+
+  .child2 {
+    width: 50px;
+    flex-shrink: 1;
+    background: yellow;
+  }
+注意 flex-shrink的比例是相对于自身大小来说 由于上面 (150 + 50) > 50 所以 flex-shrink起作用 计算公式为 child1的缩小比例为child2的三倍, 即 child1缩小 3x, child2 缩小x 50 = 150 * (1- 3x) + 50 * (1 - x) x = 0.3
+
+child1 width = 150 * (1 - 3 * 0.3) = 15 child2 width = 50 * (1- 0.3) = 35
 ```

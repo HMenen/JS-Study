@@ -136,3 +136,9 @@ function useSetTimeout(cb, delay, params) {
   }, params)
 }
 ```
+
+使用forwardRef和useImperativeHandle的方案
+思路：
+子组件内部自建一个_innerRef来获取ref元素
+将通过forwarfRef传入的ref元素通过useImperativeHandle来进行绑定，指定该子组件对外暴露的方法或属性
+通过_innerRef调用响应的方法然后同时在useImperativeHandle中写代码即可，这样可以只暴露一部分方法属性，而不是整个底层的input原生DOM节点

@@ -31,7 +31,7 @@ Object.prototype.myCall = function (context) {
   context = context || window;
   context.fn = this;
   let result;
-  // let args = Array.from(arguments).slice(1); //效果和下面一行一样meimei
+  // let args = Array.from(arguments).slice(1); //效果和下面一行一样
   let args = [...arguments].slice(1);
   if (args) {
     result = context.fn(...args);

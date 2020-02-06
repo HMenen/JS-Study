@@ -24,6 +24,38 @@
 // console.log(demo2.name)
 
 
+var Singleton = function(name) {
+  this.name = name;
+  this.instance = null;
+}
+Singleton.getInstance = function(name) {
+  if(!this.instance) {
+      this.instance = new Singleton(name);
+  }
+  return this.instance;
+}
+var a = Singleton.getInstance('sven1');
+var b = Singleton.getInstance('sven2');
+// 指向的是唯一实例化的对象
+console.log(a === b);
+
+es6
+
+class Singleton {
+    constructor(name) {
+        this.name = name;
+        this.instance = null;
+    }
+    // 构造一个广为人知的接口，供用户对该类进行实例化
+    static getInstance(name) {
+        if(!this.instance) {
+            this.instance = new Singleton(name);
+        }
+        return this.instance;
+    }
+}
+
+
 /**
  * 工厂模式
  * 工厂模式类似于现实生活中的工厂可以产生大量相似的商品，去做同样的事情，实现同样的效果;这时候需要使用工厂模式。

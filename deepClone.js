@@ -42,14 +42,6 @@ function deepClone2(obj) {
     }
     return result;
 }
-  
-// let ha = {a: 1, a2: 'aasss',b:{c: 2, d:{e: 3, f: 4}}, ha: 'hahaha'}
-// let obj = deepClone1(ha);
-// obj.a = 222;
-// console.log(obj);
-// console.log(ha);
-
-
 
 // function deepClone (obj) {
 //     if (Array.isArray(obj)) {
