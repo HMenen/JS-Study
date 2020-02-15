@@ -6,6 +6,18 @@
   <title>Document</title>
 </head>
 <body>
-  
+
+  <div id='parentID' onclick="parentfunc()">
+    <div id='childID' onclick="childfunc()">你好</div>
+  </div>
+  <script>
+    function parentfunc() {
+        alert('父级事件触发了！')
+    }
+
+    function childfunc(){
+        alert('子级事件触发了！')
+    }
+  </script>
 </body>
 </html>

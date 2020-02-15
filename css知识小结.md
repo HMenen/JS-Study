@@ -120,6 +120,7 @@ BFC 的特性
 bfc 的区域不会与 float 的元素区域重叠。
 计算 bfc 的高度时，浮动元素也参与计算
 bfc 就是页面上的一个独立容器，容器里面的子元素不会影响外面元素。
+
 ```
 
 11. Sass、LESS 是什么？大家为什么要使用他们
@@ -356,7 +357,7 @@ opacity: 0 ： 修改元素会造成重绘，性能消耗较少
 ```
 这三个属性都是相对于主轴来说的
 
-flex-grow 针对放大的情况， 即有剩余空间的情况，分配的是剩余的占据空间, 即比例乘以剩余空间 比如
+1. flex-grow 针对放大的情况， 即有剩余空间的情况，分配的是剩余的占据空间, 即比例乘以剩余空间 比如
 
   <div class="parent">
     <div class="child1"></div> 
@@ -381,7 +382,7 @@ flex-grow 针对放大的情况， 即有剩余空间的情况，分配的是剩
 
 
 
-flex-shrink 针对的是缩小的情况，即子大小的和大于父 比如
+2. flex-shrink 针对的是缩小的情况，即子大小的和大于父 比如
 
   <div class="parent">
     <div class="child1"></div> 
@@ -405,4 +406,24 @@ flex-shrink 针对的是缩小的情况，即子大小的和大于父 比如
 注意 flex-shrink的比例是相对于自身大小来说 由于上面 (150 + 50) > 50 所以 flex-shrink起作用 计算公式为 child1的缩小比例为child2的三倍, 即 child1缩小 3x, child2 缩小x 50 = 150 * (1- 3x) + 50 * (1 - x) x = 0.3
 
 child1 width = 150 * (1 - 3 * 0.3) = 15 child2 width = 50 * (1- 0.3) = 35
+
+3. flex-basis 可以理解成用来替代width的
+当flex-basis和width属性同时存在时，width属性不生效，flex item的宽度为flex-basis设置的宽度
+max-width决定了flex items的最大宽度
+max-width决定了flex items的最大宽度
 ```
+
+##### flex
+flex-direction属性决定主轴的方向（即项目的排列方向）。
+justify-content属性定义了项目在主轴上的对齐方式。
+align-items属性定义项目在交叉轴上如何对齐。
+align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+flex-wrap属性：默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。
+flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+order属性：定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+flex属性：是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+align-self属性：允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+
+
+##### rgba和opacity区别
+1.opacity属性的值，可以被其子元素继承，给父级div设置opacity属性，那么所有子元素都会继承这个属性，并且，该元素及其继承该属性的所有子元素的所有内容透明度都会改变。而RGBA设置的元素，只对该元素的背景色有改变，并且，该元素的后代不会继承该属性。

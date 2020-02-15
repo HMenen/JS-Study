@@ -40,6 +40,39 @@
       flex-shrink: 1;
       background: yellow;
     }
+
+    .flex-wrap{
+      display: flex;
+      width: 600px;
+      height: 100px;
+      border: 1px solid #ddd;
+    }
+    .flex-item{
+      width: 200px;
+      flex-basis: 200px;
+      min-width: 10px;
+    }
+    .item1{
+      background: #66efab;
+      /* width: 100px; */
+      order: 11;
+    }
+    .item2{
+      background: #efe24e;
+      order: 11;
+    }
+    .item3{
+      background: #ef6754;
+      order: 31;
+    }
+    .item4{
+      background: #ef9fef;
+      order: 4;
+    }
+    .item5{
+      background: #191def;
+      order: 4;
+    }
   </style>
 </head>
 <body>
@@ -51,6 +84,14 @@
   <div class="parent11">
     <div class="child11"></div> 
     <div class="child21"></div> 
+  </div>
+
+  <div class="flex-wrap">
+    <div class="flex-item item1">item1</div>
+    <div class="flex-item item2">item2</div>
+    <div class="flex-item item3">item3</div>
+    <div class="flex-item item4">item4</div>
+    <div class="flex-item item5">item4</div>
   </div>
 </body>
 </html>

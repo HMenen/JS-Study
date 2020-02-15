@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--nodeName nodeValue实验-->
+<div id="container" class="d">
+    这是一个元素节点
+</div>
+ 
+<script type="text/javascript">
+    //nodeName;nodeValue实验
+ 
+    var divNode=document.getElementById("container");
+ 
+    //元素节点
+    document.write("元素节点nodeName是"+divNode.nodeName);
+    document.write("<br/>元素节点nodeValue是"+divNode.nodeValue);
+ 
+    //属性节点
+    var attrNode=divNode.attributes;
+    console.log(attrNode);//一个类数组
+    document.write("<br/>div的第一个属性节点nodeName是"+attrNode[0].nodeName);
+    document.write("<br/>div的第一个属性节点nodeValue是"+attrNode[0].nodeValue);
+ 
+    //文本节点
+    var textNode=divNode.childNodes;
+    console.log(textNode);//一个类数组
+    document.write("<br/>文本节点nodeName是"+textNode[0].nodeName);
+    document.write("<br/>文本节点nodeValue是"+textNode[0].nodeValue); //div后的空白没有当成文本节点
+ 
+    //注释节点
+    var commentNode=document.body.childNodes;
+    console.log(commentNode);
+    document.write("<br/>注释节点的nodeName是"+commentNode[1].nodeName);
+    document.write("<br/>注释节点的nodeValue是"+commentNode[1].nodeValue); //script标签里的内容也是body的子标签
+ 
+    //文档类型节点，不需要获取，直接输出就可以
+    document.write("<br/>文档节点的nodeName是"+document.doctype.nodeName);
+    document.write("<br/>文档节点的nodeValue是"+document.doctype.nodeValue);
+    document.write("<br/>文档节点的nodeType是"+document.doctype.nodeType);
+ 
+    //文档片段节点
+    var frag=document.createDocumentFragment();
+    document.write("<br/>文档片段节点的nodeName是"+frag.nodeName);
+    document.write("<br/>文档片段节点的nodeValue是"+frag.nodeValue);
+</script>
+</body>
+</html>
