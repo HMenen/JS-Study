@@ -452,3 +452,58 @@ function binary_search(arr,low, high, key) {
         return binary_search(arr, low, high, key);
     }
 };
+
+
+function binary_search1(arr,low, high, key) {
+    let left = low;
+    let right = high;
+    while(left < right) {
+        let mid = Math.floor((low + high) / 2);
+        if (arr[mid] === key) {
+            return mid;
+        }
+        else if (arr[mid] > key) {
+            right = mid - 1;
+        }
+        else if (arr[mid] < key) {
+            left = mid + 1;
+        }
+    }
+    return -1;
+};
+
+
+function reverse( linkList ) {
+    let head = linkList.head;
+    if (head === null || head.next === null) {
+        return;
+    }
+    let p = head;
+    let q = p.next;
+    head.next = null;
+    while(q.next) {
+        r = q.next;
+        q.next = p;
+        p = q;
+        q = r;
+    }
+    linkList.head = q;
+}
+
+//最长公共前缀 -- JavaScript
+var longestCommonPrefix = function(strs) {
+    var firstStrs = strs[0];
+    var result ='';
+    if(!strs.length){
+        return result;
+    }
+    for (var i = 0; i < firstStrs.length; i++) {
+        for (var j =  1; j < strs.length; j++) {
+            if(firstStrs[i] != strs[j][i]){
+                return result;
+            }
+         }
+         result += firstStrs[i];
+     }
+     return result;
+  };

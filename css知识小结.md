@@ -427,3 +427,50 @@ align-self属性：允许单个项目有与其他项目不一样的对齐方式�
 
 ##### rgba和opacity区别
 1.opacity属性的值，可以被其子元素继承，给父级div设置opacity属性，那么所有子元素都会继承这个属性，并且，该元素及其继承该属性的所有子元素的所有内容透明度都会改变。而RGBA设置的元素，只对该元素的背景色有改变，并且，该元素的后代不会继承该属性。
+
+##### px、em、rem、vw、vh
+px：像素（pixel）相对长度单位，，是相对于屏幕显示器分辨率而言的；
+em：em的值并不是固定的，会集成父级元素的字体大小；
+　　注意：　　
+　　1.body选择其中声明Font-size=62.5%；
+　　2.将原来的px数值除以10，然后换上em作为单位；
+　　3.重新计算那些被放大的字体的em数值。避免字体大小的重复声明。
+　　任何浏览器默认字体大小都是16px，所有未经调整的浏览器都符合1em=16px，南无0.75em=12px，10px=0.625em。为了简化Font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em的值变为16px*62.5%=10px，这样12px就是1.2em，10px就是1em，也就是将原来的px数值除以10换上em的单位就可以了。
+rem：相对单位，（root em 即rem），使用rem为单位设置字体大小时，是相对于HTML根元素的大 小，可通过该根元素就成比例的修改调整所有字体大小，一般用的时候都是写在body或html上面，body{fontsize:625%;}也就是1rem=100px；
+vw：视口的最大宽度，1vw=视口宽度的百分之一；
+vh：视口得最大高度，1vh=视口高度的百分之一；
+vmin/vm：相对于视口的宽度或高度中较小的那个。其中最小的那个被均分为100单位的vmin（即vm）。
+
+
+##### 
+//一行
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+//两行
+ text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+
+
+##### DNS预解析具体用法
+//用meta信息来告知浏览器, 当前页面要做DNS预解析
+<meta http-equiv="x-dns-prefetch-control" content="on">
+在页面header中使用link标签来强制对DNS预解析: 
+<link rel="dns-prefetch" href="//www.zhix.net">
+
+
+##### getComputedStyle与style的区别
+```
+我们使用element.style也可以获取元素的CSS样式声明对象，但是其与getComputedStyle方法还有有一些差异的。
+只读与可写
+正如上面提到的getComputedStyle方法是只读的，只能获取样式，不能设置；而element.style能读能写，能屈能伸。
+获取的对象范围
+getComputedStyle方法获取的是最终应用在元素上的所有CSS属性对象（即使没有CSS代码，也会把默认的祖宗八代都显示出来）；而element.style只能获取元素style属性中的CSS样式。因此对于一个光秃秃的元素<p>，getComputedStyle方法返回对象中length属性值（如果有）就是190+(据我测试FF:192, IE9:195, Chrome:253, 不同环境结果可能有差异), 而element.style就是0。
+```

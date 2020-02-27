@@ -6,7 +6,7 @@
 </head>
 <body>
 <!--nodeName nodeValue实验-->
-<div id="container" class="d">
+<div id="container" class="d" style="width: 100px;">
     这是一个元素节点
 </div>
  
@@ -14,6 +14,8 @@
     //nodeName;nodeValue实验
  
     var divNode=document.getElementById("container");
+    console.log(window.getComputedStyle(divNode), '------getComputedStyle------')
+    console.log(divNode.style, '------style------')
  
     //元素节点
     document.write("元素节点nodeName是"+divNode.nodeName);
