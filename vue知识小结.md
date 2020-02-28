@@ -51,14 +51,14 @@ destory 在 vue 实例销毁之后调用，vue 实例指示的所有东西都会
 * @param { Object } obj 对象
 */
 function observable (obj) {
-    if (!obj || typeof obj !== 'object') {
-        return;
-    }
-    let keys = Object.keys(obj);
-    keys.forEach((key) =>{
-        defineReactive(obj,key,obj[key])
-    })
-    return obj;
+  if (!obj || typeof obj !== 'object') {
+      return;
+  }
+  let keys = Object.keys(obj);
+  keys.forEach((key) =>{
+      defineReactive(obj,key,obj[key])
+  })
+  return obj;
 }
 /**
 * 使一个对象转化成可观测对象

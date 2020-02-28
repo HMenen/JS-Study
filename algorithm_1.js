@@ -502,8 +502,45 @@ var longestCommonPrefix = function(strs) {
             if(firstStrs[i] != strs[j][i]){
                 return result;
             }
-         }
-         result += firstStrs[i];
-     }
-     return result;
-  };
+        }
+        result += firstStrs[i];
+    }
+    return result;
+};
+
+
+/**
+ * 从数组中找到第n个大的值
+ * @param {*} arr 
+ * @param {*} start 
+ * @param {*} end 
+ * @param {*} th 
+ */
+function QuicklySortedMind(arr, start, end, th) {
+    let low = start;
+    let high = end;
+    let temp = arr[start];
+    //边界：start>end时返回
+    if (start > end) return;
+    while(low < high) {
+        while(arr[high] >= temp && low < high) {
+            high--;
+        }
+        arr[low] = arr[high];
+        while(arr[low] < temp && low < high) {
+            low++;
+        }
+        arr[high] = arr[low];
+    }
+    arr[low] = temp;
+    if (high === th - 1) return temp;
+    if (th - 1 < low) {
+        return QuicklySortedMind(arr, start, low - 1, th);
+    }
+    if (th - 1 > low) {
+        return QuicklySortedMind(arr, low + 1, end, th);
+    }
+}
+
+let arr = [1, 4, 6, 2, 2, 0, 1];
+console.log(QuicklySortedMind(arr, 0, arr.length - 1, 7), '-------', arr);
