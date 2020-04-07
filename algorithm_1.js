@@ -458,7 +458,7 @@ function binary_search1(arr,low, high, key) {
     let left = low;
     let right = high;
     while(left < right) {
-        let mid = Math.floor((low + high) / 2);
+        let mid = Math.floor((left + right) / 2);
         if (arr[mid] === key) {
             return mid;
         }
