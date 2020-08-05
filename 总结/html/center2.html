@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS垂直居中</title>
+    <style>
+        .wrapper{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+
+            text-align: center;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 auto;
+        }
+
+        .help{
+            width: 0;
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="box"></div>
+    <div class="help"></div>
+</div>
+</body>
+</html>     
+
+<!-- https://www.jianshu.com/p/dea069fecb62 -->

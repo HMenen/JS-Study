@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    function observeInterse () {
+      const child = document.querySelector('.child');
+      const root = document.querySelector('.parent');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(item => {
+          console.log(item.isIntersecting ? "可见" : "不可见");
+        })
+      });
+      observer.observe(child);
+    }
+    window.onload = observeInterse;
+  </script>
+</head>
+<body>
+  <div class="parent">
+    <div class="child"></div>
+  </div>
+
+  <!-- 数据列表 -->
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+    <li>index</li>
+    <li>index</li>
+    <li>index</li>
+  </ul>
+  
+  <!-- 参照元素 -->
+  <div class="reference"></div>
+</body>
+<style>
+.child{
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  margin: 0 auto;
+}
+.parent{
+  width: 500px;
+  height: 1000px;
+  background-color: turquoise;
+}
+</style>
+</html>

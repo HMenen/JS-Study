@@ -18,18 +18,17 @@ class Parent extends React.Component {
       <div style={{ width: this.state.width }}>
         {this.props.children}
       </div>
-      React.createElement({
-        type: 'div',
-        props: {
-          style: {{ width: this.state.width }}
-          children: React.createElement({
-            type: ToolBar,
-            props: {}
-          });
-        }
-      });
-    )
-  }
+      // React.createElement({
+      //   type: 'div',
+      //   props: {
+      //     style: {{ width: this.state.width }}
+      //     children: React.createElement({
+      //       type: ToolBar,
+      //       props: {}
+      //     });
+      //   }
+      // });
+  )
 }
 
 

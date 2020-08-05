@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div style="font-size: 12px;">
+    <span class="test">test：</span>
+    <span class="ellipsis">testsadasda沙发沙发沙发沙发沙发沙发发顺丰sd</span>
+  </div>
+</body>
+<style>
+  .ellipsis{
+    /* overflow: hidden;
+    width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block; */
+
+    width:200px;/*必须是固定宽度值*/
+	  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+	  overflow:hidden;/*超出部分隐藏*/
+  }
+  .test{
+    vertical-align: top;
+  }
+</style>
+</html>

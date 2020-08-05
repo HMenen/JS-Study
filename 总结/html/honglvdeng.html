@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .boll{
+      width: 200px;
+      height: 100px;
+      background-color: chartreuse;
+    }
+  </style>
+</head>
+<body>
+  <div class="boll" id="boll">
+  </div>
+  <div>
+    <button type="submit" id="btn_submit" onclick="click1()"> submit </button>
+  </div>
+</body>
+
+<script>
+  // const element = document.getElementById('boll');
+  async function click1() {
+    const element = document.getElementById('boll');
+    while(true) {
+      await changeColor(1000, 'red', element);
+      await changeColor(1000, 'yellow', element);
+      await changeColor(1000, 'green', element);
+    }
+  }
+  function changeColor(time, color, element) {
+    // return new Promise(function (resolve){
+    //   return function (element){
+    //     setTimeout(() => {
+    //       element.style.background = color;
+    //       resolve();
+    //     }, time);
+    //   }(element);
+    // });
+     
+    //使用注释内容时注意需要在全局定义element！
+    // return new Promise(function (resolve){
+    //   setTimeout(() => {
+    //     element.style.background = color;
+    //     resolve();
+    //   }, time);
+    // });
+
+    return new Promise(function (resolve){
+      setTimeout(function (element){
+        element.style.background = color;
+        resolve();
+      }, time, element);
+    })
+
+  // setTimeout(function(a,b){
+  //   console.log(a+b);
+  // },1000,4,5);
+  }
+  
+</script>  
+</html>

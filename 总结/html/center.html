@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div></div> -->
+    <div class="box1">hello</div>
+
+    <div id="parent">
+        <div id="child">Text here</div>
+    </div>
+
+    <div class="box">hello</div>
+</body>
+
+<script>
+
+</script>
+
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    /* width: 100%;
+    height: 100%; */
+}
+#parent{
+    /* text-align: center;
+    vertical-align: middle; */
+    background-color: orange;
+    border: 1px solid;  
+    padding: 100px 0;
+}
+#child{
+    background-color: blueviolet;
+    line-height: 200px;
+    width: 200px;
+    border: 5px solid red;
+    margin: 0 auto;
+    /* height: 200px;
+    height: 200px; */
+}
+
+/* 方法1：使用relative top margin-top / transform */
+/* .box1{
+  height: 100px;  
+  background-color: aqua;
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  margin-top: -50px;
+  transform: translateY(-50%); //和上一行margin-top: -50px;效果一样
+  
+} */
+
+/* 方法2：使用flex布局  justify-content 主轴方向  align-item 侧轴方向 */
+/* body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box1{
+  height: 100px;  
+  background-color: aqua;
+  width: 100px;
+} */
+
+/*利用absolute 、 fixed布局 top、left、right、bottom 均设为0*/
+.box1{
+  height: 100px;  
+  background-color: aqua;
+  width: 100px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+} 
+
+.box {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    margin: 20px;
+    background: red;
+    border: 20px solid black;
+    box-sizing: border-box;
+}
+
+</style>
+
+
+<script>
+//JS 水平居中方法： 将浏览器可视区的宽度(clientWidth) -减去 要居中元素本身的宽度(offsetWidth) /除以 2 +'px'
+//JS 垂直居中方法： 将浏览器可视区的高度(clientHeight) -减去 要居中元素本身的高度(offsetHeight) /除以 2 +'px'
+
+window.onload = function() {
+    var oMain = document.querySelector('#pop-main');
+
+    oMain.style.left = (document.documentElement.clientWidth - oMain.offsetWidth) / 2 +'px';
+    oMain.style.top = (document.documentElement.clientHeight - oMain.offsetHeight) / 2 +'px';
+}
+</script>
+</html>
+
+<!-- 16种方法实现水平居中垂直居中
+https://juejin.im/post/58f818bbb123db006233ab2a -->

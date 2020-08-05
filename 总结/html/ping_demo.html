@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header"></div>
+  <div class="main">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+
+  <div class="box1">eqwewevs v</div>
+  <div class="box2">cdsfdsfs</div class="box1">
+
+  <div class="outer">
+    <div class="A"></div>
+    <div class="B"></div>
+  </div>
+</body>
+
+<style>
+.outer{
+  /* position: relative;
+  border: yellowgreen 1px solid;
+  height: 100%; */
+
+  height: 100%; padding: 100px 0 0; box-sizing: border-box ; position: relative;
+}
+.A{
+  /* height: 100px; background: #BBE8F2; */
+
+  height: 100px; background: red; position: absolute; top: 0 ; left: 0 ; width: 100%;
+}
+.B{
+  background: #D9C666;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  bottom: 0;
+
+  /* height: 100%;
+  background: #D9C666; */
+}
+
+.box1{
+  font-size: 10px;
+  height: 100px;
+  width: 100px;
+}
+.box2{
+  font-size: 10px;
+  transform: scale(0.8);
+  height: 100px;
+  width: 100px;
+}
+.header{
+  margin: 0 auto;
+  background-color: teal;
+  height: 50%;
+  width: 50%;
+}
+.main .left, .main .right{
+  background-color: tomato;
+  height: 100%;
+  float: left;
+  width: 50%;
+}
+.main .right{
+  background-color:yellowgreen;
+}
+</style>
+</html>
