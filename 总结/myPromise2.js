@@ -3,6 +3,18 @@ const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
 
+let Image = undefined;
+if (typeof Image === 'undefined') {
+  Image = function(width = 0, height = 0) {
+    const image = document.createElement('img');
+    image.width = width;
+    image.height = height;
+    return image;
+  }
+}
+Image = Image;
+console.log(Image)
+
 function myPromise(fn) {
   let self = this;
   self.state = PENDING;
@@ -163,51 +175,59 @@ myPromise.race = function(arr) {
   })
 }
 
+var firstName = 'Michael';
+var lastName = 'Jackson';
+var year = 1958;
+
+// export default firstName;
+var sex="boy";
+
+module.exports = { sex } 
+
+// let a1 = new myPromise((resolved,rejected)=>{
+// //   setTimeout(()=>{
+// //       resolved(111);
+// //   },3000)
+// // });
+
+// // a1.then(res => console.log('----', res));
+
+// // new myPromise(resolve => resolve(8))
+// //   .then()
+// //   .then()
+// //   .then(value => {
+// //     console.log('====', value)
+// //   })
+
 // let a1 = new myPromise((resolved,rejected)=>{
 //   setTimeout(()=>{
-//       resolved(111);
-//   },3000)
+//       resolved(1)
+//   },300)
 // });
-
-// a1.then(res => console.log('----', res));
-
-// new myPromise(resolve => resolve(8))
+// // a1.then(res => console.log('---a----', res));
+// let a2 = new myPromise((resolved,rejected)=>{
+//   setTimeout(()=>{
+//       resolved(2)
+//   },20)
+// });
+// let a3 = new myPromise((resolved,rejected)=>{
+//   setTimeout(()=>{
+//       resolved(3)
+//   },0)
+// });
+// let a4 = new myPromise((resolved,rejected)=>{
+//   setTimeout(()=>{
+//       resolved(4)
+//   },30)
+// });
+// let a5 = new myPromise(resolve => resolve(8))
 //   .then()
 //   .then()
-//   .then(value => {
-//     console.log('====', value)
-//   })
-
-
-let a1 = new myPromise((resolved,rejected)=>{
-  setTimeout(()=>{
-      resolved(1)
-  },300)
-});
-// a1.then(res => console.log('---a----', res));
-let a2 = new myPromise((resolved,rejected)=>{
-  setTimeout(()=>{
-      resolved(2)
-  },20)
-});
-let a3 = new myPromise((resolved,rejected)=>{
-  setTimeout(()=>{
-      resolved(3)
-  },0)
-});
-let a4 = new myPromise((resolved,rejected)=>{
-  setTimeout(()=>{
-      resolved(4)
-  },30)
-});
-let a5 = new myPromise(resolve => resolve(8))
-  .then()
-  .then()
   
-myPromise.all([a1, a2, a3, a4, a5]).then(res => {
-  console.log(res);
-})
+// myPromise.all([a1, a2, a3, a4, a5]).then(res => {
+//   console.log(res);
+// })
 
-myPromise.race([a1, a2, a3, a4, a5]).then(res => {
-  console.log(res);
-})
+// myPromise.race([a1, a2, a3, a4, a5]).then(res => {
+//   console.log(res);
+// })

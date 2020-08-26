@@ -1,3 +1,6 @@
+var cat = require('./myPromise2')
+console.log(cat.sex) // boy
+
 const PENDING = 'pending'
 const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
