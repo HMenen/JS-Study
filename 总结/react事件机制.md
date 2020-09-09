@@ -1,0 +1,1 @@
+1. constructor 函数在事件绑定前就执行了，而 componentDidMount 则在事件绑定之后才执行

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='progress' style="background: lightblue; height: 20px; width: 0;"></div>
+  <button id='btn'>开始</button>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const progress = document.getElementById('progress');
+    let startTime;
+
+    function getProgress () {
+      progress.style.width = progress.offsetWidth + 1;
+      progress.innerHTML = progress.style.width + '%';
+      if (progress.offsetWidth < 100) {
+        let currentTime = new Date().getTime();
+        console.log('----', currentTime - startTime);
+        startTime = currentTime;
+        requestAnimationFrame(getProgress);
+        // getProgress();
+        // setTimeout(getProgress, 0)
+        // new Promise((resolve, rejected) => {
+        //   getProgress()
+        //   resolve();
+        // })
+      }
+    }
+
+    btn.addEventListener('click', () => {
+      progress.style.width = 0;
+      startTime = new Date().getTime();
+      getProgress();
+    })
+  </script>
+
+</body>
+</html>
