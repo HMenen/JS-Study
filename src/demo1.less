@@ -1,0 +1,27 @@
+@bgColor: #ccc;
+@colorName1: color;
+@base: #f938ab;
+// @max100: ~"(width: 100px)";
+// @max100: (width: 100px);
+.border {
+  border: 1px solid black;
+}
+.box1{
+  @{colorName1}: @base;
+}
+
+.box{
+  background-color: @bgColor;
+  @{colorName1}: blue;
+  .border();
+  &:before{
+    content: 'before';
+    width: '20px';
+    height: '20px';
+  }
+  &:hover{
+    background-color: yellowgreen;
+    cursor: pointer;
+  }
+  .box1()
+}
