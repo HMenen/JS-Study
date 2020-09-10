@@ -22,6 +22,7 @@ let obj = deepClone(ha);
 // console.log(ha, '----old');
 
 
+
 function getDataType(obj) {
   return Object.prototype.toString.call(obj).slice(8, -1)
 }
@@ -66,7 +67,6 @@ function deepCloneEnhance(obj) {
 }
 
 // console.log(deepCloneEnhance(/234/igm))
-// console.log(getDataType([1, 2]))
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let obj1 = {
