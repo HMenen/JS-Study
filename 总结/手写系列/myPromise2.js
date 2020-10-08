@@ -3,18 +3,6 @@ const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
 
-let Image = undefined;
-if (typeof Image === 'undefined') {
-  Image = function(width = 0, height = 0) {
-    const image = document.createElement('img');
-    image.width = width;
-    image.height = height;
-    return image;
-  }
-}
-Image = Image;
-console.log(Image)
-
 function myPromise(fn) {
   let self = this;
   self.state = PENDING;
@@ -231,3 +219,22 @@ module.exports = { sex }
 // myPromise.race([a1, a2, a3, a4, a5]).then(res => {
 //   console.log(res);
 // })
+
+
+
+
+
+
+
+
+let Image = undefined;
+if (typeof Image === 'undefined') {
+  Image = function(width = 0, height = 0) {
+    const image = document.createElement('img');
+    image.width = width;
+    image.height = height;
+    return image;
+  }
+}
+Image = Image;
+console.log(Image)
