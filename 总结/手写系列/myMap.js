@@ -54,4 +54,4 @@ Array.prototype.myFilter = function(fn) {
   }
   return newArr;
 }
-// console.log(arr1.myFilter((value, index) => value % 2 === 0))
+console.log(arr1.myFilter((value, index) => value % 2 === 0))

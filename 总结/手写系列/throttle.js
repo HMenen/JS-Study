@@ -2,8 +2,9 @@ function throttle(func, await = 1000) {
   let time = 0;
   return (...args) => {
     let nowTime = new Date().getTime();
+    const context = this;
     if (nowTime - time > await) {
-      func.apply(this, args);
+      func.apply(context, args);
       time = nowTime;
     }
   }
@@ -13,8 +14,9 @@ function throttle(func, await = 1000) {
   let timer = null;
   return (...args) => {
     if (timer) return
+    const context = this;
     timer = setTimeout(() => {
-      func.apply(this, args);
+      func.apply(context, args);
       timer = null;
     }, await);
   }

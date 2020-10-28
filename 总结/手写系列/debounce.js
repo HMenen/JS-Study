@@ -1,13 +1,12 @@
 function debounce(func, await = 1000) {
   let timer;
-  console.log('---0--timer')
   return function(...args) {
-    console.log('-----timer')
+    const context = this;
     if (timer) {
       clearTimeout(timer);
     }
     timer = setTimeout(() => {
-      func.apply(this, args)
+      func.apply(context, args)
     }, await);
   }
 }
@@ -28,3 +27,30 @@ debounce(task, 1000)
 debounce(task, 1000)
 
 // const debounceTask = debounce(task, 1000)
+
+
+function debounce(fn, wait) {
+  let timer;
+  return function(...arg) {
+    const context = this;
+    if(timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn.apply(context, arg)
+    }, wait);
+  }
+}
+
+
+function debounce(fn, delay) {
+  var timer;
+  return function () { // 闭包
+    var ctx = this; // this上下文
+    var args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(ctx, args); // this上下文调用
+    }, delay);
+  }
+}

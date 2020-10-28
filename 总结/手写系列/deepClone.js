@@ -22,6 +22,18 @@ let obj = deepClone(ha);
 // console.log(ha, '----old');
 
 
+function deepClone(obj) {
+  let ret = obj;
+  if (typeof obj === 'object' && obj) {
+    Array.isArray(obj) ? ret = []: ret = {};
+    Object.keys(obj).forEach(key => {
+      typeof obj[key] === 'object'? ret[key] = deepClone(obj[key]): ret[key] = obj[key];
+    })
+  }
+  return obj;
+}
+
+
 
 function getDataType(obj) {
   return Object.prototype.toString.call(obj).slice(8, -1)

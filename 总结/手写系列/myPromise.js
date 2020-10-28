@@ -97,24 +97,24 @@ myPromise.prototype.catch = function(onRejected) {
   return this.then(null, onRejected)
 }
 
-myPromise.all1 = arr => {
-  let aResult = [];    //用于存放每次执行后返回结果
-  return new myPromise(function (resolve, reject) {
-    let i = 0;
-    next();    // 开始逐次执行数组中的函数(重要)
-    function next() {
-      arr[i].then(function (res) {
-        aResult.push(res);    // 存储每次得到的结果
-        i++;
-        if (i == arr.length) {    // 如果函数数组中的函数都执行完，便resolve
-          resolve(aResult);
-        } else {
-          next();
-        }
-      })
-    }
-  })
-};
+// myPromise.all1 = arr => {
+//   let aResult = [];    //用于存放每次执行后返回结果
+//   return new myPromise(function (resolve, reject) {
+//     let i = 0;
+//     next();    // 开始逐次执行数组中的函数(重要)
+//     function next() {
+//       arr[i].then(function (res) {
+//         aResult.push(res);    // 存储每次得到的结果
+//         i++;
+//         if (i == arr.length) {    // 如果函数数组中的函数都执行完，便resolve
+//           resolve(aResult);
+//         } else {
+//           next();
+//         }
+//       })
+//     }
+//   })
+// };
 
 myPromise.all = function(arr) {
   let values = [];
@@ -173,10 +173,10 @@ var sex="boy";
 module.exports = { sex } 
 
 // let a1 = new myPromise((resolved,rejected)=>{
-// //   setTimeout(()=>{
-// //       resolved(111);
-// //   },3000)
-// // });
+//   setTimeout(()=>{
+//       resolved(111);
+//   },3000)
+// });
 
 // // a1.then(res => console.log('----', res));
 
@@ -187,34 +187,34 @@ module.exports = { sex }
 // //     console.log('====', value)
 // //   })
 
-// let a1 = new myPromise((resolved,rejected)=>{
-//   setTimeout(()=>{
-//       resolved(1)
-//   },300)
-// });
+let a1 = new myPromise((resolved,rejected)=>{
+  setTimeout(()=>{
+      resolved(1)
+  },300)
+});
 // // a1.then(res => console.log('---a----', res));
-// let a2 = new myPromise((resolved,rejected)=>{
-//   setTimeout(()=>{
-//       resolved(2)
-//   },20)
-// });
-// let a3 = new myPromise((resolved,rejected)=>{
-//   setTimeout(()=>{
-//       resolved(3)
-//   },0)
-// });
-// let a4 = new myPromise((resolved,rejected)=>{
-//   setTimeout(()=>{
-//       resolved(4)
-//   },30)
-// });
-// let a5 = new myPromise(resolve => resolve(8))
-//   .then()
-//   .then()
+let a2 = new myPromise((resolved,rejected)=>{
+  setTimeout(()=>{
+      resolved(2)
+  },20)
+});
+let a3 = new myPromise((resolved,rejected)=>{
+  setTimeout(()=>{
+      resolved(3)
+  },0)
+});
+let a4 = new myPromise((resolved,rejected)=>{
+  setTimeout(()=>{
+      resolved(4)
+  },30)
+});
+let a5 = new myPromise(resolve => resolve(8))
+  .then()
+  .then()
   
-// myPromise.all([a1, a2, a3, a4, a5]).then(res => {
-//   console.log(res);
-// })
+myPromise.all([a1, a2, a3, a4, a5]).then(res => {
+  console.log(res);
+})
 
 // myPromise.race([a1, a2, a3, a4, a5]).then(res => {
 //   console.log(res);
