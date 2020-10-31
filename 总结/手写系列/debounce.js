@@ -54,3 +54,29 @@ function debounce(fn, delay) {
     }, delay);
   }
 }
+
+//防抖
+function debounce(fn, wait) {
+  let timeout = null;
+  return function() {
+    let context = this;
+    let args = arguments;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      fn.apply(context, args);
+    }, wait);
+  }
+}
+//函数节流
+function throttle(fn, wait) {
+  let  pre = new Date();
+  return function() {
+    let context = this;
+    let args = arguments;
+    let now = new  Date();
+    if (now - pre >= wait) {
+      fn.apply(context, args);
+      pre = now;
+    }
+  }
+}
