@@ -403,9 +403,9 @@ opacity: 0 ： 修改元素会造成重绘，性能消耗较少
     flex-shrink: 1;
     background: yellow;
   }
-注意 flex-shrink的比例是相对于自身大小来说 由于上面 (150 + 50) > 50 所以 flex-shrink起作用 计算公式为 child1的缩小比例为child2的三倍, 即 child1缩小 3x, child2 缩小x 50 = 150 * (1- 3x) + 50 * (1 - x) x = 0.3
+注意 flex-shrink的比例是相对于自身大小来说 由于上面 (150 + 50) > 50 所以 flex-shrink起作用 计算公式为 child1的缩小比例为child2的三倍, 即 child1缩小 3x, child2 缩小x 50 = 150 * (1- 3x) + 50 * (1 - x), x = 0.3
 
-child1 width = 150 * (1 - 3 * 0.3) = 15 child2 width = 50 * (1- 0.3) = 35
+child1 width = 150 * (1 - 3 * 0.3) = 15; child2 width = 50 * (1- 0.3) = 35
 
 3. flex-basis 可以理解成用来替代width的
 当flex-basis和width属性同时存在时，width属性不生效，flex item的宽度为flex-basis设置的宽度
@@ -426,7 +426,7 @@ align-self属性：允许单个项目有与其他项目不一样的对齐方式�
 
 
 ##### rgba和opacity区别
-1.opacity属性的值，可以被其子元素继承，给父级div设置opacity属性，那么所有子元素都会继承这个属性，并且，该元素及其继承该属性的所有子元素的所有内容透明度都会改变。而RGBA设置的元素，只对该元素的背景色有改变，并且，该元素的后代不会继承该属性。
+1.opacity属性的值，可以被其子元素继承(不能被继承吧？？？)，给父级div设置opacity属性，那么所有子元素都会继承这个属性，并且，该元素及其继承该属性的所有子元素的所有内容透明度都会改变。而RGBA设置的元素，只对该元素的背景色有改变，并且，该元素的后代不会继承该属性。
 
 ##### px、em、rem、vw、vh
 px：像素（pixel）相对长度单位，，是相对于屏幕显示器分辨率而言的；

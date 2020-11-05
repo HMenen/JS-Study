@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        <?= $data['topic_info']['topic_name'] ?>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <script type="text/javascript">
+        /*eslint-disable*/
+        (function (baseWidth) {
+            let _baseWidth = baseWidth || 375;
+            let timeouter = null;
+            const win = window;
+            const doc = win.document.documentElement;
+            const dpr = win.devicePixelRatio || 1;
+            function refreshRem() {
+                let clientWidth = doc.clientWidth;
+                win.rem = (clientWidth / _baseWidth) * 100;
+                doc.style.fontSize = win.rem + 'px';
+            }
+            win.dpr = dpr;
+            let dprRound = Math.round(dpr);
+            doc.setAttribute('data-ckdpr', dprRound);
+            doc.setAttribute('data-dpr', 1);
+            win.addEventListener('resize', function () {
+                clearTimeout(timeouter), timeouter = setTimeout(refreshRem, 300);
+            },
+                false);
+            win.addEventListener('pageshow', function (a) {
+                win.persisted && (clearTimeout(timeouter), timeouter = setTimeout(refreshRem, 300));
+            },
+                false);
+            refreshRem();
+        })();
+
+    </script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="https://tb1.bdstatic.com/tb/cms/client-static/tbutils.min.js"></script>
+    <script type="text/javascript">
+        var opts = {
+            topic_info: <?= json_encode($data['topic_info']) ?>,
+            pk_module: <?= json_encode($data['pk_module']) ?>,
+            time_line: <?= json_encode($data['time_line']) ?>,
+            special_topic: <?= json_encode($data['special_topic']) ?>,
+            relate_thread: <?= json_encode($data['relate_thread']) ?>,
+            user: <?= json_encode($data['user']) ?>,
+            wreq: <?= json_encode($data['wreq']) ?>,
+        };
+    </script>
+</body>
+
+</html>

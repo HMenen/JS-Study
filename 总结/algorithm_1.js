@@ -99,6 +99,14 @@ function getRandomArr (arr) {
     return arr;
 }
 
+function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+        let j = Math.floor(Math.random() * i--);
+        [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+    return arr;
+}
 
 //每次生成的随机交换位置:
 Array.prototype.shuffle = function() {
@@ -114,9 +122,9 @@ Array.prototype.shuffle = function() {
     }
     return input;
 }
-
+ 
 var arr4 = [1,2,3,4,5,6,7,'a','dsfs',8,9,'v'];
-// console.log(getRandomArr(arr4));
+console.log('=getRandomArr=====', getRandomArr(arr4));
 
 /**
  * 斐波那契数列
@@ -250,7 +258,6 @@ function fibonacci2(n) {
 
 console.log(fibonacci2(4))
 
-
 // 实现一个add方法，使计算结果能够满足如下预期：
 add(1)(2)(3) = 6;
 add(1, 2, 3)(4) = 10;
@@ -298,6 +305,7 @@ function binary_search(arr, key) {
         }
     }
 };
+
 var arr = [1,2,3,4,5,6,7,8,9,10,11,23,44,86];
 var result = binary_search(arr,10);
 alert(result); // 9 返回目标元素的索引值
@@ -481,7 +489,7 @@ function reverse( linkList ) {
     let p = head;
     let q = p.next;
     head.next = null;
-    while(q.next) {
+    while(q) {
         r = q.next;
         q.next = p;
         p = q;

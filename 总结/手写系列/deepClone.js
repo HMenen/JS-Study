@@ -36,7 +36,7 @@ function deepClone(obj) {
 
 
 function getDataType(obj) {
-  return Object.prototype.toString.call(obj).slice(8, -1)
+  return Object.prototype.toString .call(obj).slice(8, -1)
 }
 
 function cloneRegExp(data) {

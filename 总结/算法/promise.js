@@ -43,6 +43,7 @@ myPromise.prototype.then = function (onResolved, onRejected) {
       if (ret instanceof myPromise) {
         return ret.then(resolve, rejected)
       }
+      resolve(ret)
     })
   }
 
@@ -52,6 +53,7 @@ myPromise.prototype.then = function (onResolved, onRejected) {
       if (ret instanceof myPromise) {
         ret.then(resolved, rejected)
       }
+      rejected(ret);
     })
   }
 

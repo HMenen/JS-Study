@@ -14,7 +14,6 @@ function myPromise(fn) {
     if (self.state === PENDING) {
       self.state = FULFILLED;
       self.value = value;
-      // console.log('-resolved-222-----', self.value, self.state, self.onResolvedCallback)
       self.onResolvedCallback.forEach(cb => cb(self.value))
     }
   }
@@ -53,12 +52,14 @@ myPromise.prototype.then = function(onResolved, onRejected) {
   }
 
   if (self.state === REJECTED) {
+    console.log('====')
     return new myPromise((resolved, rejected) => {
       try {
         let x = onRejected(self.data)
         if (x instanceof myPromise) {
           x.then(resolved, rejected)
         }
+        rejected(x);
       } catch (error) {
         rejected(error);
       }
@@ -220,6 +221,28 @@ myPromise.all([a1, a2, a3, a4, a5]).then(res => {
 //   console.log(res);
 // })
 
+
+
+const p1 = new myPromise((resolved, rejected) => {
+  setTimeout(() => {
+    resolved('sucess111');
+  }, 100)
+})
+
+const p2 = new myPromise((resolved, rejected) => {
+  setTimeout(() => {
+    resolved('sucess222');
+  }, 1000)
+})
+
+const p3 = new myPromise((resolved, rejected) => {
+  setTimeout(() => {
+    resolved('sucess333');
+  }, 1000)
+})
+myPromise.all([p1, p2, p3]).then(res => {
+  console.log(res);
+})
 
 
 
