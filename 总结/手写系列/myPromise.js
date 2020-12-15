@@ -261,3 +261,16 @@ if (typeof Image === 'undefined') {
 }
 Image = Image;
 console.log(Image)
+
+
+new Promise((resolved, rejected) => {
+  setTimeout(() => {
+    console.log('-----5----');
+    resolved('6')
+  }, 0)
+}).then(res => {
+  console.log('-----7----', res)
+  setTimeout(() => {
+    console.log('-----8----', res);
+  }, 0)
+})

@@ -1,4 +1,11 @@
 ####
+```
+Object.getPrototypeOf()
+Object.getPrototypeOf方法可以用来从子类上获取父类。
+
+Object.getPrototypeOf(ColorPoint) === Point // true
+```
+
 class 的继承精华：
 ```
 function _inherits(subClass, superClass) {
@@ -29,7 +36,7 @@ var B = /*#__PURE__*/ (function(_A) {
 ```
 
 
-js中实现继承的方法很多，常提起的有原型链继承，构造函数继承，实例继承（原型式继承），组合继承，寄生式继承，寄生组合继承等。 在es6出现了class继承，class继承等出现一方面完美解决了继承既可以保证每个实例对象具有自身等属性，又可以保证共享原型中的方法。如下示例所示。
+js中实现继承的方法很多，常提起的有原型链继承，构造函数继承，实例继承（原型式继承），组合继承，寄生式继承，寄生组合继承等。 在es6出现了class继承，class继承等出现一方面完美解决了继承既可以保证每个实例对象具有自身属性，又可以保证共享原型中的方法。如下示例所示。
 
 ```
 class Animal {

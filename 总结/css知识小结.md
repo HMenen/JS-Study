@@ -3,7 +3,7 @@ https://github.com/yisainan/web-interview/blob/master/content/CSS.md
 包括：外边距（margin）、边框（border）、内边距（padding）、实际内容（content）四个属性
 
 两种盒子模型：IE、W3C盒子模型
-IE：content + padding + border
+IE ：content + padding + border
 W3C（标准和模型）: content    可设置box-sizing:border-box; 转为IE盒子模型
 
 2. 用css隐藏元素

@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button>click</button>
+    <span>test</span>
+  </div>
+</body>
+<script>
+  var div = document.getElementsByTagName('div')[0];
+  var button = document.getElementsByTagName('button')[0];
+  var span = document.getElementsByTagName('span')[0];
+  button.addEventListener('click',(e)=>{
+    // e.stopPropagation()
+    console.log('button', e.target, e.currentTarget)
+  })
+  // div.addEventListener('click',(e)=>{
+  //   console.log('div1', e.target, e.currentTarget)
+  // },true)
+  div.addEventListener('click',(e,)=>{
+    console.log('div2', e.target, e.currentTarget)
+  })
+  span.addEventListener('click', e => {
+    console.log('--span--', e.target, e.currentTarget)
+  })
+</script>
+</html>

@@ -17,7 +17,7 @@ class EventEmitter {
   once(eventName, callback) {
     const fn = () => {
       callback();
-      this.remove(eventName, fn);
+      this.remove(eventName, callback);
     }
     this.on(eventName, fn)
   }

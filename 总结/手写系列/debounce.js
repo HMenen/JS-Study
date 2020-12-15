@@ -69,11 +69,11 @@ function debounce(fn, wait) {
 }
 //函数节流
 function throttle(fn, wait) {
-  let  pre = new Date();
+  let  pre = new Date().now();
   return function() {
     let context = this;
     let args = arguments;
-    let now = new  Date();
+    let now = new  Date().now();
     if (now - pre >= wait) {
       fn.apply(context, args);
       pre = now;

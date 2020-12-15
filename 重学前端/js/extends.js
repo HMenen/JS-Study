@@ -134,3 +134,12 @@ let c = new Cat();
 console.log(c.getCatInfo())
 
 //这里的super():super虽然代表父类的构造函数，但是返回的是子类的实例。super() => Animal.prototype.constructor.call('Cat类的this')
+
+
+
+Object.getPrototypeOf()
+Object.getPrototypeOf方法可以用来从子类上获取父类。
+
+Object.getPrototypeOf(ColorPoint) === Point
+// true
+

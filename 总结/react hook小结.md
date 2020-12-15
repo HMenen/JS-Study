@@ -13,7 +13,7 @@ Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规
 不要在普通的 JavaScript 函数中调用 Hook
 
 useEffect
-如果你熟悉 React class 的生命周期函数，你可以把 useEffect Hook 看做 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
+如果你熟悉 React class 的生命周期函数，你可以把   Hook 看做 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
 Effect在组件渲染后执行即可
 ```
 1. useState
@@ -82,6 +82,8 @@ useLayoutEffect(() => {
 入参：函数、依赖项数组
 返回值：返回一个计算值
 执行时机：render时
+
+把“创建”函数和依赖项数组作为参数传入 useMemo，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。
 
 用法：
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);

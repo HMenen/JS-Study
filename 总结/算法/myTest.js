@@ -267,18 +267,3 @@ const arr = [-2, 1, -3, 4, -1, 2, 1, 13, -10, -5, 4];
 console.log('getMaxSum: ', getMaxSum(arr));
 
 
-function a(arr, key) {
-  let low = 0;
-  let high = arr.length - 1;
-  while(low < high) {
-    let mid = Math.floor((low + high) / 2);
-    if (arr[mid] === key) return key;
-    else if (arr[mid] < key) {
-      low = mid + 1;
-    } 
-    else if (arr[mid] > key) {
-      high = low - 1;
-    }
-  }
-  return -1;
-}
