@@ -20,7 +20,6 @@ function myPromise(fn) {
     } catch (error) {
       callback.rejected(error);
     }
-    
   }
 
   function resolve(newValue) {

@@ -1,4 +1,11 @@
-####
+#### https://zhuanlan.zhihu.com/p/57336944
+ES6 extends 继承，主要就是：
+
+把子类构造函数(Child)的原型(__proto__)指向了父类构造函数(Parent)，
+把子类实例child的原型对象(Child.prototype) 的原型(__proto__)指向了父类parent的原型对象(Parent.prototype)。这两点也就是图中用不同颜色标记的两条线。
+子类构造函数Child继承了父类构造函数Preant的里的属性。使用super调用的(ES5则用call或者apply调用传参)。
+也就是图中用不同颜色标记的两条线。
+
 ```
 Object.getPrototypeOf()
 Object.getPrototypeOf方法可以用来从子类上获取父类。
