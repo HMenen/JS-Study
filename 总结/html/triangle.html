@@ -5,26 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-  .triangle{
-    width: 0px;
-    height: 0px;
-    border: solid;
-    border-color: transparent transparent blue transparent;
-    border-width: 0px 50px 50px 50px;;
-  }
-  .tixing{
-    margin-top: 30px;;
-    width: 100px;
-    border: solid;
-    border-color: transparent transparent blue transparent;
-    border-width: 0px 50px 50px 50px;
-  }
-  .tian{
-    
-  }
+    .triangle{
+      width: 0px;
+      height: 0px;
+      border: solid;
+      border-color: transparent transparent blue transparent;
+      border-width: 0px 50px 50px 50px;;
+    }
+    .tixing{
+      margin-top: 30px;;
+      width: 100px;
+      border: solid;
+      border-color: transparent transparent blue transparent;
+      border-width: 0px 50px 50px 50px;
+    }
+    .tian{
+      
+    }
   </style>
 </head>
 <body>
+  <ul id="ul">ul
+    <li>li<a href="">a</a></li>
+    <li>li<a href="">a</a></li>
+    <li>li<a href="">a</a></li>
+  </ul>
   <div class="triangle"></div>
   <div class="tixing"></div>
 
@@ -35,5 +40,15 @@
     <div class="tian"></div>
   </div>
   
+  
 </body>
+<script>
+  var ul = document.getElementById("ul");
+  ul.onclick = function(event){
+      var tar = event.target;
+      var tagName = tar.nodeName.toLowerCase();
+      console.log("你点击了:"+tagName, event.currentTarget.nodeName.toLowerCase());
+      event.preventDefault();
+  }
+</script>
 </html>
