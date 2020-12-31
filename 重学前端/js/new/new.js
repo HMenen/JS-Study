@@ -36,3 +36,17 @@ function new2() {
   }
   return obj;
 }
+
+function new1(Parent, ...args) {
+  let obj = new Object();
+  obj.__proto__ = Parent.prototype;
+  let ret = Parent.apply(obj, args);
+  if (ret && (typeof ret === 'object' || typeof ret === 'function')) {
+    return ret;
+  }
+  return obj;
+}
+
+const a1 = new1(Student, 'tom');
+console.log(a1)
+console.log(a1.__proto__ === Student.prototype)
