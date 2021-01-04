@@ -11,9 +11,9 @@
 
 var moduleA = require('./a');
 
-console.log(moduleA.counter);
+console.log(moduleA.counter1);
 console.log(moduleA.inCounter());
-console.log(moduleA.counter);
+console.log(moduleA.counter1);
 
 
 var moduleB = require('./a');

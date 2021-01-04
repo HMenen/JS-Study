@@ -13,12 +13,13 @@
 var counter = 3;
 function inCounter(){
   counter += 1;
+  return counter
 }
 
 
 module.exports = {
   inCounter,
-  counter
+  counter1: counter
   // get counter() {
   //   return counter;
   // }
