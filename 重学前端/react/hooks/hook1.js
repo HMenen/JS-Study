@@ -34,7 +34,6 @@ function useState(initialState) {
 
     do{
       const action = firstUpdate.action;
-      console.log('----------', baseState, action)
       baseState = action(baseState);
       firstUpdate = firstUpdate.next;
     } while (firstUpdate !== hook.queue.pending.next);

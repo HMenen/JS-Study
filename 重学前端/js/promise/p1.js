@@ -216,7 +216,7 @@ const a2 = new myPromise((resolve, rejected) => {
   }, 1000)
 });
 
-// myPromise.all([a1, a2]).then(res => console.log('==all===', res))
+// myPromise.all([]).then(res => console.log('==all===', res))
 
 // myPromise.race([a1, a2]).then(res => console.log('==race===', res))
 
