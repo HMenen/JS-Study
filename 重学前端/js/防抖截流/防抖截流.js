@@ -1,4 +1,4 @@
-/**
+/** https://my.oschina.net/u/4310671/blog/4658174
  * 简易版防抖
  * @param {Function} fn 
  * @param {number} delay 
@@ -15,6 +15,28 @@ function debounce(fn, delay=1000) {
   }
 }
 
+/**
+ * 立即执行版本
+ */
+debounce11(func, sleep=1000, immediate) {
+  let timer = null;
+  let isNow = true;
+  return (...args) => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    if (immediate && isNow) {
+      isNow = false;
+      func.apply(this, args);
+      timer = setTimeout(() => isNow = true, sleep);
+    } else {
+      timer = setTimeout(() => {
+        func.apply(this, args);
+        timer = null;
+      }, sleep)
+    }
+  }
+}
 
 // function a(i) {
 //   console.log('------1------', i)
@@ -32,7 +54,18 @@ function debounce(fn, delay=1000) {
  * @param {Function} fn 
  * @param {number} delay 
  */
-function throttle(fn, delay=1000) {
+throttle1 = (fn, sleep=1000) => {
+  let timer;
+  return (...args) => {
+    if (timer) return;
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+      timer = null;
+    }, sleep)
+  }
+}
+
+function throttle2(fn, delay=1000) {
   let flag = false;
   return (...args) => {
     if (flag) return;
