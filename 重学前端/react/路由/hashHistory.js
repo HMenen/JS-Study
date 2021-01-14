@@ -1,6 +1,8 @@
 // https://segmentfault.com/a/1190000015992872?utm_source=tag-newest
 
 //维护一个订阅者列表，当hash变更的时候通知到相关的函数。
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
 const createTransitionManager = () => {
   // 内部维护的订阅者列表
   let listeners = [];
