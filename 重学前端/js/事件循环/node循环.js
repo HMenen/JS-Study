@@ -1,5 +1,6 @@
 //15 17 16 18 1 2 4 14 3 5 6 13 7 8 10 12 9 11  node结果
-//15 17 16 18 1 2 4 3 5 14 6 13 7 8 10 9 11 12   
+//15 17 16 18 1 2 4 3 5 14 6 13 7 8 10 9 11 12  
+//15 17 16 18 1 2 4 14 3 5 6 13 7 8 10 12 9 11
 setTimeout(() => {                                                // settimeout1
   console.log('1')
   new Promise((resolve) => { console.log('2'); resolve(); })      // Promise3
