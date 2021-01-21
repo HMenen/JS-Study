@@ -1,4 +1,6 @@
 https://segmentfault.com/a/1190000018730085
+
+输入数据阶段(incoming data)->轮询阶段(poll)->检查阶段(check)->关闭事件回调阶段(close callback)->定时器检测阶段(timers)->I/O事件回调阶段(I/O callbacks)->闲置阶段(idle, prepare)->轮询阶段...
 ##### nodejs执行JS代码过程及事件循环过程
 1. node初始化
 初始化node环境
