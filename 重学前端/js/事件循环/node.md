@@ -1,5 +1,8 @@
 https://segmentfault.com/a/1190000018730085
 
+##### node 和 浏览器 eventLoop的主要区别
+两者最主要的区别在于浏览器中的微任务是在每个相应的宏任务中执行的，而nodejs中的微任务是在不同阶段之间执行的。
+
 输入数据阶段(incoming data)->轮询阶段(poll)->检查阶段(check)->关闭事件回调阶段(close callback)->定时器检测阶段(timers)->I/O事件回调阶段(I/O callbacks)->闲置阶段(idle, prepare)->轮询阶段...
 ##### nodejs执行JS代码过程及事件循环过程
 1. node初始化
