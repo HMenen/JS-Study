@@ -73,3 +73,8 @@ fetch(url, {
 })
 
 ```
+
+##### fetch和XMLHttpRequest相比，主要有以下优点:
+语法简洁，更加语义化
+基于标准 Promise 实现，支持 async/await
+同构方便，使用 isomorphic-fetch
