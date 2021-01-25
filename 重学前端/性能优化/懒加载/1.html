@@ -1,0 +1,54 @@
+<!--http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #full {
+          height: 200px;
+          background-color: #f22;
+        }
+        #container {
+          height: 200px;
+          background-color: #22f;
+          overflow: scroll;
+        }
+        #other {
+          height: 200px;
+          background-color: aqua;
+        }
+        #test {
+          height: 100px;
+          background-color: #3f3;
+        }
+    </style>
+
+  <body>
+    <div id="full"></div>
+    <div id="container">
+      <div id="other"></div>
+      <div id="test"></div>
+    </div>
+    <script>
+      //方法1
+      var io = new IntersectionObserver((entries) => {
+          console.log('entries: ', entries
+          );
+      }, {
+          threshold: [0, 0.5, 1],
+          root: document.getElementById('container')
+      })
+      io.observe(document.getElementById('test'));
+
+      //方法2
+      const testDom = document.getElementById('test');
+      document.getElementById('container').addEventListener('scroll', () => {
+        const a = testDom.getBoundingClientRect().top < document.documentElement.clientHeight;
+        console.log('-a---------', a);
+      })
+    </script>
+  </body>
+
+</html>
