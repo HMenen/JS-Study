@@ -71,7 +71,6 @@ var checkInclusion = function(s1, s2) {
       } 
     }
     while(right - left >= s1.length) {
-      // console.log('----window-----', window, needs, valid)
       if (valid === Object.keys(needs).length) return true;
       const leftChar = s2[left];
       left++;
@@ -82,7 +81,6 @@ var checkInclusion = function(s1, s2) {
         window[leftChar]--;
       }
     }
-    // console.log('----window-----', window, needs, valid)
   }
   return false;
 };
