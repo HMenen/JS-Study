@@ -1,0 +1,32 @@
+<!--
+  -----onmousedown---
+ -----onfocus---
+ -----onmouseup---
+ -----onclick---
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <div id='demo'>sdsad</div> -->
+  <input id='demo'/>
+</body>
+<script>
+  var a = document.getElementById('demo');
+  a.onclick = function() {
+    console.log('-----onclick---')
+  }
+  a.onfocus = function() {
+    console.log('-----onfocus---')
+  }
+  a.onmouseup = function() {
+    console.log('-----onmouseup---')
+  }
+  a.onmousedown = function() {
+    console.log('-----onmousedown---')
+  }
+</script>
+</html>
