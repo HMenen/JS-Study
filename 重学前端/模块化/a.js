@@ -10,12 +10,12 @@
 // }
 // module.exports = a;
 
-var counter = 3;
+var counter = 1;
 function inCounter(){
   counter += 1;
   return counter
 }
-
+setTimeout(() => ++counter, 500)
 
 module.exports = {
   inCounter,

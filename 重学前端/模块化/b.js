@@ -12,10 +12,11 @@
 var moduleA = require('./a');
 
 console.log(moduleA.counter1);
-console.log(moduleA.inCounter());
-console.log(moduleA.counter1);
+setTimeout(() => console.log(moduleA.counter1), 1000)
+// console.log(moduleA.inCounter());
+// console.log(moduleA.counter1);
 
 
-var moduleB = require('./a');
-console.log('moduleB', moduleB.counter);
-console.log(moduleB.inCounter());
+// var moduleB = require('./a');
+// console.log('moduleB', moduleB.counter);
+// console.log(moduleB.inCounter());
