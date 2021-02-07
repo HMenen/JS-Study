@@ -1,0 +1,1 @@
+// https://github.com/LuckyWinty/fe-weekly-questions/issues/49

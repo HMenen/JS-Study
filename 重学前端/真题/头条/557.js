@@ -40,7 +40,7 @@
  */
 var reverseWords = function(s) {
   const arr = s.split(' ');
-  return arr.map(item => reverse(item))
+  return arr.map(item => reverse(item)).join(' ')
 };
 
 const reverse = (str) => {
