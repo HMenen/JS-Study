@@ -37,11 +37,11 @@ function deepClone2(obj) {
       return obj;
     case 'Date':
       return new Date(obj.getTime());
-    case 'Array':
-      ret = [];
-      break;
     case 'RegExp':
       ret = cloneRegExp(obj);
+      break;
+    case 'Array':
+      ret = [];
       break;
     default:
       // if (obj) {
@@ -69,5 +69,19 @@ var o1 = {
 }
 var d1 = deepClone2(o1);
 d1.a = 121;
-console.log('---o1--', o1)
-console.log('---d1--', d1)
+// console.log('---o1--', o1)
+// console.log('---d1--', d1)
+
+
+function getType(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1)
+}
+
+function cloneRegExp1(data) {
+  let partten = data.valueOf();
+  let flag = '';
+  flag += partten.global? 'g': '';
+  flag += partten.ignoreCase? 'i': '';
+  flag += partten.multiline? 'm': '';
+  return new RegExp(partten.source, flag);
+}
