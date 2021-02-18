@@ -1,6 +1,9 @@
 //https://zhuanlan.zhihu.com/p/57336944
 /**
- * 
+ * 子类构造函数的__proto__指向父类构造器，继承父类的静态方法。  Child.__proto__ === Parent   // true
+ * 子类构造函数的prototype的__proto__指向父类构造器的prototype，继承父类的方法。 Child.prototype.__proto__ === Parent.prototype   // true
+ * 子类构造器里调用父类构造器，继承父类的属性。   super()
+
  * ES6 extends 继承，主要就是：
  * 把子类构造函数(Child)的原型(__proto__)指向了父类构造函数(Parent)，
  * 把子类实例child的原型对象(Child.prototype) 的原型(__proto__)指向了父类parent的原型对象(Parent.prototype)。
@@ -13,22 +16,27 @@
  * 子类构造函数的__proto__指向父类构造器，继承父类的静态方法
  * 子类构造函数的prototype的__proto__指向父类构造器的prototype，继承父类的方法。
  * 
- * 继承：
- * https://github.com/LuckyWinty/blog/blob/master/markdown/JavaScript/%E4%B8%80%E6%96%87%E5%AE%8C%E5%85%A8%E5%90%83%E9%80%8F%20JavaScript%20%E7%BB%A7%E6%89%BF.md
- * 基本思想
- * 借用构造函数的基本思想就是利用call或者apply把父类中通过this指定的属性和方法复制（借用）到子类创建的实例中。因为this对象是在运行时基于函数的执行环境绑定的。
- * 也就是说，在全局中，this等于window，而当函数被作为某个对象的方法调用时，this等于那个对象。
- * call 、apply方法可以用来代替另一个对象调用一个方法。call、apply 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。 　　
- * 所以，这个借用构造函数就是，new对象的时候(注意，new操作符与直接调用是不同的，以函数的方式直接调用的时候，this指向window，new创建的时候，this指向创建的这个实例)，
- * 创建了一个新的实例对象，并且执行SubType里面的代码，而SubType里面用call调用了SuperTyep，也就是说把this指向改成了指向新的实例，所以就会把SuperType里面的this相关属性和方法赋值到新的实例上，而不是赋值到SupType上面。所有实例中就拥有了父类定义的这些this的属性和方法。
+ * // 1、构造器原型链
+ * Child.__proto__ === Parent; // true
+ * Parent.__proto__ === Function.prototype; // true
+ * Function.prototype.__proto__ === Object.prototype; // true
+ * Object.prototype.__proto__ === null; // true
  * 
- * 优势
- * 相对于原型链而言，借用构造函数有一个很大的优势，即可以在子类型构造函数中向超类型构造函数传递参数。因为属性是绑定到this上面的，所以调用的时候才赋到相应的实例中，
- * 各个实例的值就不会互相影响了。
-
+ * // 2、实例原型链
+ * child.__proto__ === Child.prototype; // true
+ * Child.prototype.__proto__ === Parent.prototype; // true
+ * Parent.prototype.__proto__ === Object.prototype; // true
+ * Object.prototype.__proto__ === null; // true
+ * 
  * @param {*} name 
  */
 // ES5 实现ES6 extends的例子
+
+// 组合继承
+// 组合继承（combination inheritance），有时候也叫做伪经典继承。是将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式。
+
+// 基本思想
+// 思路是使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又能够保证每个实例都有它自己的属性。
 function Parent(name){
   this.name = name;
 }

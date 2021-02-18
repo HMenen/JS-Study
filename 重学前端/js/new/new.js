@@ -17,13 +17,14 @@ function myNew() {
   return typeof ret === 'object' ? ret: obj;
 }
 
-function Student(name) {
+function Student(name, age) {
   this.name = name;
+  this.age = age;
 }
 
-const a = myNew(Student, 'tom');
-console.log(a)
-console.log(a.__proto__ === Student.prototype)
+// const a = myNew(Student, 'tom');
+// console.log(a)
+// console.log(a.__proto__ === Student.prototype)
 
 function new2() {
   const constructor = arguments[0];
@@ -48,5 +49,30 @@ function new1(Parent, ...args) {
 }
 
 const a1 = new1(Student, 'tom');
-console.log(a1)
-console.log(a1.__proto__ === Student.prototype)
+// console.log(a1)
+// console.log(a1.__proto__ === Student.prototype)
+
+function myNew(func, ...arg) {
+  let obj = {};
+  obj.__proto__ = func.prototype;
+  let res = func.apply(obj, arg);
+  return res instanceof Object? res: obj;
+}
+
+function new111(Parent, ...args) {
+  function F() {}
+  F.prototype = Parent.prototype;
+  let f = new F();
+  const ret = Parent.apply(f, args);
+  if (ret && (typeof ret === 'object' || typeof ret === 'function')) {
+    return ret;
+  }
+  return f;
+}
+
+let a0 = new Student('tom', 1);
+console.log('--0---', a0)
+console.log(a0.__proto__ === Student.prototype)
+let a111 = new111(Student, 'tom', 1);
+console.log('-1----', a111)
+console.log(a111.__proto__ === Student.prototype)
