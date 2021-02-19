@@ -11,7 +11,7 @@ function P2(exector) {
     const next = state === 'fullfield'? cb.resolve: cb.reject;
     const callback = state === 'fullfield'? cb.onFulfilled: cb.onRejected;
     if (!callback) {
-      next();
+      next(value);
       return;
     } 
     try {
