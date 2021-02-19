@@ -103,6 +103,17 @@ function throttle112(fn, sleep = 100) {
   }
 }
 
+function throttle113(fn, sleep = 100) {
+  let time = 0;
+  return (...args) => {
+    let now = new Date().getTime();
+    if (now - time > sleep) {
+      fn.apply(this, args);
+      time = new Date().getTime();
+    }
+  }
+}
+
 function a(i) {
   console.log('------1------', i)
 }
