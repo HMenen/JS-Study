@@ -18,5 +18,35 @@ function mySum() {
   return func(...arguments); 
 }
 
+function mySum2() {
+  let args = [];
+  var sumFun = function() {
+    if (arguments.length === 0) {
+      return args.reduce((pre, now) => pre + now, 0)
+    } else {
+      args = [...args, ...arguments];
+      return sumFun
+    }
+  }
+  return sumFun(...arguments);
+}
 
-console.log(mySum(1, 2)(1, 2, 3)(111)(1)(1)(2)(1)())
+function add() {
+  let sum = 0;
+  var sumFun = function(...args) {
+    sum = args.reduce((pre, now) => pre + now, sum);
+    return sumFun;
+  }
+
+  sumFun.toString = function() {
+    return sum
+  }
+
+  return sumFun(...arguments);
+}
+
+console.log(mySum(1, 2)(1, 2, 3)(111)(1)(1)(2)(1)(22)());
+console.log(mySum2(1, 2)(1, 2, 3)(111)(1)(1)(2)(1)(22)());
+console.log(add(1, 2)(1, 2, 3)(111)(1)(1)(2)(1)(22) + 0);
+// var s1 = add(1)(2, 3)(100);
+// console.log('---------', s1, s1(1) + 2)
