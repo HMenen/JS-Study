@@ -18,7 +18,7 @@ function debounce(fn, delay=1000) {
 /**
  * 立即执行版本
  */
-debounce11(func, sleep=1000, immediate) {
+function debounce11(func, sleep=1000, immediate) {
   let timer = null;
   let isNow = true;
   return (...args) => {
@@ -38,16 +38,32 @@ debounce11(func, sleep=1000, immediate) {
   }
 }
 
-// function a(i) {
-//   console.log('------1------', i)
-// }
+//immediate
+function debounce111(func, sleep=1000, immediate) {
+  let timer = null;
+  let isNow = true;
+  return (...args) => {
+    if (timer) clearTimeout(timer);
+    if (isNow && immediate) {
+      isNow = false;
+      func.apply(this, args);
+      timer = setTimeout(() => isNow = true, sleep);
+    } else {
+      timer = setTimeout(() => func.apply(this, args), sleep)
+    }
+  }
+}
 
-// const newA = debounce(a);
+function a(i) {
+  console.log('------1------', i)
+}
+
+// const newA = debounce111(a, 1000);
 // newA(1);
 // newA(11);
 // newA(111);
-// setTimeout(() => newA(2), 1001);
-// setTimeout(() => newA(3), 2001);
+// setTimeout(() => newA(2), 1011);
+// setTimeout(() => newA(3), 2124);
 
 /**
  * 简易版截流
@@ -77,11 +93,21 @@ function throttle2(fn, delay=1000) {
   }
 }
 
+function throttle112(fn, sleep = 100) {
+  let time = 0;
+  return (...args) => {
+    let now = new Date().getTime();
+    if (now - time < sleep) return;
+    time = new Date().getTime();
+    setTimeout(() => fn.apply(this, args), sleep)
+  }
+}
+
 function a(i) {
   console.log('------1------', i)
 }
 
-const newA = throttle(a);
+const newA = throttle112(a, 1000);
 newA(1);
 newA(11);
 newA(111);

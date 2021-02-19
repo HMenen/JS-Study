@@ -30,3 +30,5 @@ new Promise((resolve) => { console.log('15'); resolve() })        // Promise1
 
 new Promise((resolve) => { console.log('17'); resolve() })        // Promise2
 .then(() => { console.log('18') })
+
+// 15 17 16 18 1 2 4 3 5 14 6 13 7 8 10 9 11 12
