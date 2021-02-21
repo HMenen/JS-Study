@@ -7,9 +7,11 @@
 function swap1(a, b) {
   a = a + b;
   b = a - b;  // b = a + b - b = a
-  a = a - b;  // a = a - (a - b) = b
+  a = a - b;  // a = a + b - a
   console.log('a：', a, 'b：', b)
 }
+swap1(2, 6)
+// console.log()
 
 /**
  * ^ 按位异或 若参加运算的两个二进制位值相同则为0，否则为1

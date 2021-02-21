@@ -92,3 +92,29 @@ var isPossible = function(nums) {
 console.log('=====', isPossible([1,2,3,3,4,4,5,5]))
 // @lc code=end
 
+function isPossible2(arr) {
+  let map = {};
+  let tail = {};
+  for (let i = 0; i < arr.length; i++) {
+    map[arr[i]]? map[arr[i]]++ : map[arr[i]] = 1;
+  }
+  for (let j = 0; j < arr.length; j++) {
+    let num = arr[j];
+    if (map[num] && tail[num - 1]) {
+      map[num]--;
+      tail[num - 1]--;
+      tail[num]? tail[num]++ : tail[num] = 1;
+    } else if (map[num] && map[num + 1] && map[num + 2]) {
+      map[num]--;
+      map[num + 1]--;
+      map[num + 2]--;
+      tail[num]? tail[num]++ : tail[num] = 1;
+    } else if (map[num] === 0) {
+      continue;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}
+console.log('=====', isPossible2([1,2,3,3,4,4,5,5]))

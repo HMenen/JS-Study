@@ -7,6 +7,7 @@ var a = function () { this.b = 3 }
 var c = new a();
 a.prototype.b = 9;
 var b = 7;
+
 // a();   // ---------- 主要问题在这里，a()执行时this指向问题
 
 // console.log(b);
@@ -19,7 +20,6 @@ var b = 7;
  * 给定一个升序整型数组[0,1,2,4,5,7,13,15,16],找出其中连续出现的数字区间，
  * 输出为["0->2","4->5","7","13","15->16"] 
 **/
-
 function summaryRanges(arr){
   let left = 0, right = 0;
   let len = arr.length;

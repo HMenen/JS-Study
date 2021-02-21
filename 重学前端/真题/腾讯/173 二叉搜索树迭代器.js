@@ -75,6 +75,7 @@ var BSTIterator = function(root) {
  * @return {number}
  */
 BSTIterator.prototype.next = function() {
+  console.log('--this.numList:', this.numList)
   const val = this.numList.shift();
   console.log('---next----', val);
   return val;
@@ -107,15 +108,15 @@ const t1 = new TreeNode(2, null, null);
 
 const root = new TreeNode(3, t1, t2)
 let iterator = new BSTIterator(root);
-// iterator.hasNext();
-// iterator.next();    // 返回 3
-// iterator.next();    // 返回 7
-// iterator.hasNext(); // 返回 true
-// iterator.next();    // 返回 9
-// iterator.hasNext(); // 返回 true
-// iterator.next();    // 返回 15
-// iterator.hasNext(); // 返回 true
-// iterator.next();    // 返回 20
-// iterator.hasNext(); // 返回 false
+iterator.hasNext();
+iterator.next();    // 返回 3
+iterator.next();    // 返回 7
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 9
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 15
+iterator.hasNext(); // 返回 true
+iterator.next();    // 返回 20
+iterator.hasNext(); // 返回 false
 // @lc code=end
 

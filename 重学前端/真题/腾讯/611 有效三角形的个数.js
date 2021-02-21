@@ -62,3 +62,21 @@ var triangleNumber = function(nums) {
 console.log('------', triangleNumber([24,3,82,22,35,84,19]))
 // @lc code=end
 
+function triangleNumber2(arr) {
+  let result = 0;
+  let nums = arr.sort((a, b) => a - b);
+  for (let i = nums.length - 1; i >= 2; i--) {
+    let l = 0;
+    let r = i - 1;
+    while(l < r) {
+      if (nums[l] + nums[r] > nums[i]) {
+        result += (r - l);
+        r--;
+      } else {
+        l++;
+      }
+    }
+  }
+  return result;
+}
+console.log('------', triangleNumber2([24,3,82,22,35,84,19]))

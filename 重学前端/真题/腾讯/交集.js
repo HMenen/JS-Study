@@ -43,6 +43,7 @@ var intersect = function(nums1, nums2) {
       }
     }
   }
+  console.log('---retMap---', retMap)
   Object.keys(retMap).forEach(c => {
     const arr = new Array(retMap[c]).fill(+c);
     ret = [...ret, ...arr];
