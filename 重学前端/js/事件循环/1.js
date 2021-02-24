@@ -68,3 +68,33 @@ setImmediate(() => {
 });
 setImmediate(() =>console.log('timeout3'));
 setImmediate(() =>console.log('timeout4'));
+
+
+
+// setTimeout(()=>{
+//   console.log('setTimeout1');
+//   Promise.resolve().then(() => console.log('promise1'));
+// });
+
+// setTimeout(()=>{
+//   console.log('setTimeout2');
+//   Promise.resolve().then(() => console.log('promise2'));
+// });
+
+// setImmediate(() => {
+//   console.log('setImmediate1');
+//   Promise.resolve().then(() => console.log('promise3'));
+// });
+
+// setImmediate(() => {
+//   console.log('setImmediate2');
+//   Promise.resolve().then(() => console.log('promise4'));
+// });
+//setImmediate1
+// promise3
+// setImmediate2
+// promise4
+// setTimeout1
+// promise1
+// setTimeout2
+// promise2

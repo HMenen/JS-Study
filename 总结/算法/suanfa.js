@@ -15,7 +15,8 @@ function reverse(list) {
   while(q.next) {
     r = q.next;
     q.next = p;
-    q = p;
+    p = q;
+    q = r;
   }
   head = q;
 }
