@@ -35,28 +35,30 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-let res = [];
-var permute = function(nums) {
-  // res = [];
-  let track = [];
-  backtrack(nums, track);
+var permuteUnique = function(nums) {
+  let used = [], res = [], track = [];
+  backtrack(nums.sort(), used, res, track);
   return res;
 };
 
-function backtrack(nums, track) {
+function backtrack(nums, used, res, track) {
   if (track.length === nums.length) {
-    res.push(track);
+    res.push([...track]);
     return;
   }
   for (let i = 0; i < nums.length; i++) {
-    if (track.includes(nums[i])) {
+    if (used[i] || (i > 0 && nums[i] === nums[i - 1] && used[i - 1] == false)) {
       continue;
     }
     track.push(nums[i]);
-    backtrack(nums, [].concat(track));
+    used[i] = true;
+    backtrack(nums, used, res, track);
     track.pop();
+    used[i] = false;
   }
 }
 // @lc code=end
 
-console.log(permute([0, 1]))
+// console.log(permuteUnique([1, 1, 2]))
+console.log(permuteUnique([1, 2, 3]))
+// console.log(permuteUnique([1, 2, 1]))
