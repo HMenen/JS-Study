@@ -128,25 +128,50 @@ MyPromise.race = function(arr) {
 // p1.then(res => console.log('---111---', res))
 
 
-const a1 = new MyPromise((resolve, rejected) => {
-  setTimeout(() => {
-    resolve('end1')
-  }, 3000)
-})
-const a2 = new MyPromise((resolve, rejected) => {
-  setTimeout(() => {
-    resolve('myPromise2 end')
-  }, 1000)
-});
+// const a1 = new MyPromise((resolve, rejected) => {
+//   setTimeout(() => {
+//     resolve('end1')
+//   }, 3000)
+// })
+// const a2 = new MyPromise((resolve, rejected) => {
+//   setTimeout(() => {
+//     resolve('myPromise2 end')
+//   }, 1000)
+// });
 
-MyPromise.all([a1, a2]).then(res => {
-  console.log('--all---', res)
-})
+// MyPromise.all([a1, a2]).then(res => {
+//   console.log('--all---', res)
+// })
 
-MyPromise.race([a1, a2]).then(res => {
-  console.log('--race---', res)
-})
+// MyPromise.race([a1, a2]).then(res => {
+//   console.log('--race---', res)
+// })
 
 // MyPromise.all([]).then(res => {
 //   console.log('-----', res)
 // })
+
+
+const a1 = new Promise((resolve, rejected) => {
+  setTimeout(() => {
+    console.log('---1end1---')
+    resolve('end1')
+  }, 3000)
+})
+const a2 = new Promise((resolve, rejected) => {
+  setTimeout(() => {
+    console.log('---1end2---')
+    rejected('myPromise2 end')
+  }, 1000)
+});
+
+const a3 = new Promise((resolve, rejected) => {
+  setTimeout(() => {
+    console.log('---1end3---')
+    resolve('myPromise3 end')
+  }, 2000)
+});
+
+Promise.all([a1, a2, a3]).then(res => {
+  console.log('--all---', res)
+})
