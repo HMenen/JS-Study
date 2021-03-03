@@ -83,3 +83,55 @@ function reverse(head) {
   }
   head.next = null;
 }
+
+/**
+ * 全排列
+ * @param {Array} arr 
+ */
+function fullRange(arr) {
+  let res = [], track = [], used = [];
+  backtrack(arr.sort(), used, res, track);
+  return res;
+}
+function backtrack(arr, used, res, track) {
+  if (arr.length === track.length) {
+    res.push([...track]);
+    return
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (used[i] || i > 0 && arr[i - 1] === arr[i] && !used[i - 1]) {
+      continue;
+    }
+    track.push(arr[i]);
+    used[i] = true;
+    backtrack(arr, used, res, track);
+    track.pop();
+    used[i] = false;
+  }
+}
+// console.log(fullRange([1, 1, 2]))
+// console.log('--', fullRange(['A', 'B', 'C', 'A']))
+// console.log(fullRange([1, 2, 3]));
+
+/**
+ * 最长回文字串
+ * @param {*} s 
+ */
+function longestPalindrome(s) {
+  let str = '';
+  for(let i = 0; i < s.length; i++) {
+    let s1 = getPalindrome(s, i, i);
+    let s2 = getPalindrome(s, i, i + 1);
+    str = str.length > s1.length? str: s1;
+    str = str.length > s2.length? str: s2;
+  }
+  return str;
+}
+function getPalindrome(s, left, right) {
+  while (left >= 0 && right < s.length && s[left] === s[right]) {
+    left--;
+    right++;
+  }
+  return s.substr(left + 1, right - left - 1);
+}
+console.log(longestPalindrome('cbbd'))

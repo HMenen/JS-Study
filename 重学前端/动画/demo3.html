@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .li{
+      height: 20px;
+      color: #fff;
+      font-size: 12px;
+    }
+    .wrap{
+      background-color: #064FFF;
+      overflow: hidden;
+      height: 30px;
+    }
+    @keyframes scroll{
+      0%{
+        transform: translate(0, 0);
+      }
+      100%{
+        transform: translate(0, -80px);
+      }
+    }
+    .ul{
+      animation-name: scroll;
+      animation-duration: 5s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+</style>
+<body>
+  <div class="wrap">
+    <div class="ul">
+      <div class="li">小刘同学加入了凹凸实验室</div>
+      <div class="li">小邓同学加入了凹凸实验室</div>
+      <div class="li">小李同学加入了凹凸实验室</div>
+      <div class="li">小王同学加入了凹凸实验室</div>
+      <!--   插入用于填充的数据数据 -->
+      <div class="li">小刘同学加入了凹凸实验室</div>
+    </div>
+  </div>
+</body>
+</html>

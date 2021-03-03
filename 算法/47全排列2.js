@@ -60,5 +60,5 @@ function backtrack(nums, used, res, track) {
 // @lc code=end
 
 // console.log(permuteUnique([1, 1, 2]))
-console.log(permuteUnique([1, 2, 3]))
+console.log(permuteUnique(['A', 'B', 'C', 'A']))
 // console.log(permuteUnique([1, 2, 1]))
