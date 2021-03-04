@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div data-local="test1">
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+    这部分内容非常多将会缓存起来
+  </div>
+</body>
+<script>
+  function cacheOne(attrid) {
+    const content = document.querySelector('[data-local=' + attrid + ']').outerHTML;
+    window.localStorage.setItem(attrid, content)
+  }
+  
+  function readOne(attrid) {
+    var content = localStorage.getItem(attrid);
+    document.querySelector('[data-local="' + attrid + '"]').outerHTML = content;
+  }
+
+  function test(attrid) {
+    if (window.localStorage.getItem(attrid)) {
+      readOne(attrid)
+    } else {
+      cacheOne(attrid);
+    }
+  }
+  
+  test('test1');
+</script>
+</html>

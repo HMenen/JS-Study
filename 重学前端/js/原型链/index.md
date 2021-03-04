@@ -1,3 +1,15 @@
+Object.prototype.isPrototypeOf()方法用于判断对象是否在某个对象的原型链上。
+
+###### 判断类型的方法：https://www.cnblogs.com/yadiblogs/p/10750775.html
+1. Object.prototype.toString.call()
+2. constructor
+constructor是原型prototype的一个属性，当函数被定义时候，js引擎会为函数添加原型prototype，并且这个prototype中constructor属性指向函数引用， 因此重写prototype会丢失原来的constructor。
+
+不过这种方法有问题：
+1：null 和 undefined 无constructor，这种方法判断不了。
+2：还有，如果自定义对象，开发者重写prototype之后，原有的constructor会丢失，因此，为了规范开发，在重写对象原型时一般都需要重新给 constructor 赋值，以保证对象实例的类型不被篡改。
+
+
 ```
 Array.__proto__  === Function.__proto__
 Array.__proto__.__proto__ === Object.prototype

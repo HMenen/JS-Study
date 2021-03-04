@@ -135,3 +135,8 @@ function getPalindrome(s, left, right) {
   return s.substr(left + 1, right - left - 1);
 }
 console.log(longestPalindrome('cbbd'))
+
+
+function getCoinsCount(summary) {
+
+}
