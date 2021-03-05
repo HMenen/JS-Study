@@ -11,7 +11,8 @@
    }
 
    static getDerivedStateFromError(error) {
-     return { isError: true }
+      // 更新 state 使下一次渲染能够显示降级后的 UI
+      return { isError: true }
    }
 
    componentDidCatch(error, errorInfo) {
