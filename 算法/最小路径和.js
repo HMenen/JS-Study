@@ -58,7 +58,7 @@ var minPathSum = function(grid) {
   let row = grid[0].length - 1;
   let memo = [];
   for (let i = 0; i < col + 1; i++) {
-    let item = new Array(row + 1).fill(-1)
+    let item = new Array(row + 1).fill(Infinity)
     memo.push(item);
   }
   // console.log('======', memo)
@@ -66,13 +66,14 @@ var minPathSum = function(grid) {
 };
 
 function dp(grid, col, row, memo) {
+  // console.log('-------', col, row, memo);
   if (col === 0 && row === 0) {
     return grid[0][0];
   }
   if (col < 0 || row < 0) {
     return Infinity;
   }
-  if (memo[col][row] !== -1) {
+  if (memo[col][row] !== Infinity) {
     return memo[col][row]
   }
   memo[col][row] = Math.min(dp(grid, col - 1, row, memo), dp(grid, col, row - 1, memo)) + grid[col][row];
