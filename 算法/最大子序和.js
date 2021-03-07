@@ -1,4 +1,4 @@
-/*
+ /*
  * @lc app=leetcode.cn id=53 lang=javascript
  *
  * [53] 最大子序和
@@ -42,9 +42,10 @@ var maxSubArray = function(nums) {
       sum += nums[i];
       maxSum = Math.max(maxSum, sum);
     } else {
-      if (nums[i] > sum)
+      if (nums[i] > sum) {
         sum = nums[i];
         maxSum = Math.max(maxSum, sum);
+      }
     }
   }
   return maxSum
