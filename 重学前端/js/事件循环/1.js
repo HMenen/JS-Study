@@ -31,6 +31,7 @@
 // async function async1() {
 //     await async2()
 //     console.log('async1 end')
+//     console.log('async111 end')
 // }
 // async function async2() {
 //     console.log('async2 end')
@@ -54,12 +55,17 @@
 // .then(function() {
 //     console.log('promise2')
 // })
+// .then(function() {
+//   console.log('promise21111')
+// })
+
 
 // console.log('script end')
 
 setImmediate(() => {
   console.log('timeout1')
-  Promise.resolve().then(() =>console.log('promise resolve'))
+  // Promise.resolve().then(() =>console.log('promise resolve'))
+  new Promise((resolve) => resolve()).then(() =>console.log('promise resolve111'))
   process.nextTick(() =>console.log('next tick1'))
 });
 setImmediate(() => {
