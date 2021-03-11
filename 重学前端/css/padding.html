@@ -1,0 +1,75 @@
+<!-- padding的百分比是相对于父元素宽度，如果父元素有宽度，相对于父元素宽度，如果没有，找其父辈元素的宽度，均没设宽度时，相对于屏幕的宽度。 -->
+<!-- 
+padding百分比的使用场景
+对于PC端来说，我们可以随意设置图片的宽高，但是在移动端，随着各手持设备屏幕的宽度的不同，我们没有办法给满屏图片设置固定宽高，这时候padding就很有作用了。
+我们可以给图片设置固定的宽高比，也可以给图片外层加一个固定宽高比的盒子，来达到图片的自适应。
+————————————————
+原文链接：https://blog.csdn.net/weboof/article/details/102725419 
+-->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* .padding-test {
+    width: 200px;
+    height: 100px;
+    padding-top: 25%;
+    padding-bottom: 25%;
+    border: 1px solid red;
+  } */
+
+  .padding-wrap {
+    width: 400px;
+  }
+  .padding-test {
+    width: 200px;
+    height: 100px;
+    padding-top: 25%;
+    padding-bottom: 25%;
+    border: 1px solid red;
+  }
+
+/* 2、使用vw实现 */
+  .inner1 {
+    text-align: center;
+    background: blue;
+    color: #fff;
+    width: 100vw;
+    height: 50vw;
+  }
+  body {
+    margin: 0;
+  }
+  .inner2 {
+    text-align: center;
+    background: blue;
+    color: #fff;
+    padding: 25% 0;
+    height: 0;
+  }
+  .box1{
+    width: 300px;
+  }
+  .box2{
+    padding: 25% 0;
+    background: aqua;
+    height: 0;
+    text-align: center;
+  }
+</style>
+<body>
+  <!-- <div class="padding-wrap">
+    <div class="padding-test">大煞风景啊来得及发来的飞机啊打飞机啊搡地方大煞风景啊来得及发来的飞机啊</div>
+  </div>  -->
+  <!-- <div class="inner1"> A </div>
+  <div class="inner2"></div> -->
+  <div class="box1">
+    <div class="box2"></div>
+  </div>
+</body>
+</html>
