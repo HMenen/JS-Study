@@ -173,5 +173,23 @@ function sortStrLen(prevStr, nextStr) {
   return prevStr.length < nextStr.length;
 }
 // console.log(Array.from(returnData))
-Array.from(returnData).sort(sortStrLen);
-console.log(returnData['12'])
+// Array.from(returnData).sort(sortStrLen);
+// console.log(returnData['12'])
+
+
+function flat(arr) {
+  let ret = [];
+  let newArr = [...arr].reverse();
+  while(newArr.length > 0) {
+    let item = newArr.pop();
+    if (!Array.isArray(item)) {
+      ret.push(item);
+    } else {
+      newArr.push(...item.reverse())
+    }
+  }
+  return ret;
+}
+
+var aa = [[1, 2, [3, 4, 5]], [2, [1]], 3];
+console.log('------', flat(aa))
