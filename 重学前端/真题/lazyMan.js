@@ -37,7 +37,7 @@ class LazyMan{
       let task = this.tasks.shift();
       task && task();
     }
-    setTimeout(this.next, 0);
+    setTimeout(this.next, 0);   //异步任务，事件循环机制
   }
 
   eat(food) { 

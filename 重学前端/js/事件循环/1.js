@@ -1,33 +1,45 @@
-// // console.log('script start')
+/**
+  async function foo() {
+    await 1
+    console.log('async')
+  }
+  上面的函数实际上等价于：
 
-// // async function async1() {
-// // await async2()
-// // console.log('async1 end')
-// // }
-// // async function async2() {
-// // console.log('async2 end')
-// // }
-// // async1()
-
-// // setTimeout(function() {
-// // console.log('setTimeout')
-// // }, 0)
-
-// // new Promise(resolve => {
-// // console.log('Promise')
-// // resolve()
-// // })
-// // .then(function() {
-// // console.log('promise1')
-// // })
-// // .then(function() {
-// // console.log('promise2')
-// // })
-
+  function foo() {
+    return Promise.resolve(1).then(() => console.log('async'))
+  }
+*/
 
 
 // console.log('script start')
 
+// async function async1() {
+// await async2()
+// console.log('async1 end')
+// }
+// async function async2() {
+// console.log('async2 end')
+// }
+// async1()
+
+// setTimeout(function() {
+// console.log('setTimeout')
+// }, 0)
+
+// new Promise(resolve => {
+// console.log('Promise')
+// resolve()
+// })
+// .then(function() {
+// console.log('promise1')
+// })
+// .then(function() {
+// console.log('promise2')
+// })
+
+
+
+// console.log('script start')
 // async function async1() {
 //     await async2()
 //     console.log('async1 end')
@@ -40,11 +52,9 @@
 //     })
 // }
 // async1()
-
 // setTimeout(function() {
 //     console.log('setTimeout')
 // }, 0)
-
 // new Promise(resolve => {
 //     console.log('Promise')
 //     resolve()
@@ -58,22 +68,20 @@
 // .then(function() {
 //   console.log('promise21111')
 // })
-
-
 // console.log('script end')
 
-setImmediate(() => {
-  console.log('timeout1')
-  // Promise.resolve().then(() =>console.log('promise resolve'))
-  new Promise((resolve) => resolve()).then(() =>console.log('promise resolve111'))
-  process.nextTick(() =>console.log('next tick1'))
-});
-setImmediate(() => {
-  console.log('timeout2')
-  process.nextTick(() =>console.log('next tick2'))
-});
-setImmediate(() =>console.log('timeout3'));
-setImmediate(() =>console.log('timeout4'));
+// setImmediate(() => {
+//   console.log('timeout1')
+//   // Promise.resolve().then(() =>console.log('promise resolve'))
+//   new Promise((resolve) => resolve()).then(() =>console.log('promise resolve111'))
+//   process.nextTick(() =>console.log('next tick1'))
+// });
+// setImmediate(() => {
+//   console.log('timeout2')
+//   process.nextTick(() =>console.log('next tick2'))
+// });
+// setImmediate(() =>console.log('timeout3'));
+// setImmediate(() =>console.log('timeout4'));
 
 
 

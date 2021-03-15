@@ -41,3 +41,4 @@ export default function fetchMiddleware(_ref2) {
     };
     return fetchMiddleware;
 }
+

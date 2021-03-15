@@ -16,7 +16,7 @@ dpr:物理像素与设备像素比
 ```
 border-1px($color)
    position: relative
-   &::after
+   &::after                //& 表示当前选择器的父级
      dispaly:block
      position:absolute
      left: 0
