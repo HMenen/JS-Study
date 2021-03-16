@@ -47,12 +47,12 @@
  */
 var maxDepth = function(root) {
   if (!root) return 0;
-  return 1 + Math.max(dp(root.left), dp(root.right))
+  return 1 + Math.max(dp(root.left), dp(root.right));
 };
 
 function dp(head) {
   if (head === null) return 0;
-  let sum = 1 + Math.max(dp(head.left), dp(head.right))
+  let sum = 1 + Math.max(dp(head.left), dp(head.right));
   return sum;
 }
 // @lc code=end

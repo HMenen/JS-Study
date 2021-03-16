@@ -21,3 +21,21 @@ function depth(node, num) {
    num++;
    return Math.max(depth(node.left, num), depth(node.right, num));
 }
+
+//非递归 广度优先遍历
+var maxDepth = function(root) {
+  let queue = [];
+  let depth = 0;
+  if (root === null) return 0;
+  queue.push(root);
+  while(queue.length > 0) {
+    let len = queue.length;
+    for(let i = 0; i < len; i++) {
+      let node = queue.shift();
+      if (node && node.left) queue.push(node.left);
+      if (node && node.right) queue.push(node.right);
+    }
+    depth++;
+  }
+  return depth;
+};
