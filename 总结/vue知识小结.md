@@ -1,3 +1,4 @@
+##### https://github.com/raphealguo/how-to-learn-vue2-blob/blob/master/articles/2.3.2.md
 ##### vue-router
 https://www.jianshu.com/p/4295aec31302            
 1. vue-router 默认hash模式,使用url的hash来模拟一个完整的url。所以当url改变时，页面不会重新加载。Hash模式通过锚点值的改变，根据不同的值渲染指定DOM位置的不同数据
