@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  *{
+      margin:0px;
+      padding:0px;
+   }
+  /* .li{
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+    height: 30px;
+    width: 100px;
+    background-color: yellowgreen;
+  } */
+  .wrap{
+    /* background-color: #064FFF; */
+    /* overflow: hidden;
+    height: 30px;
+    width: 100px;
+    margin: 100 auto; */
+    position: relative;
+    margin: 50px auto;
+    padding: 0;
+    width: 500px;
+    height: 309px;
+    overflow: hidden;
+  }
+  .outer{
+    /* width: 300px;
+    background-color: #064FFF;
+    list-style: none; */
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 3000px;           /*多留出一张图片的宽度！*/
+    list-style: none;
+    background-color: yellowgreen;
+  }
+  .outer li{
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 500px;
+    height: 309px;
+}
+</style>
+<body>
+  <!-- <div class="wrap">
+    <ul class="outer">
+      <li class="li">1</li>
+      <li class="li">2</li>
+      <li class="li">3</li>
+      <li class="li">4</li>
+      <li class="li">5</li>
+    </ul>
+  </div> -->
+ <button onclick="console.log('----', this)">1</button>
+ <button onclick="(function() {console.log('----', this)})()">1</button>
+</body>
+<script>
+  
+</script>
+</html>
