@@ -1,0 +1,18 @@
+.lazyimg-container{
+  background: #fff;
+  max-width: 600px;
+  max-height: 1000px;
+  overflow: auto;
+}
+.app {
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+}
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+.wrapper {
+  padding: 1em 0;
+}

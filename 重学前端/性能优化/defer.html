@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script type="text/javascript" defer>
+  console.log('---111', document.getElementById('ele')); // null
+</script>
+<script>
+  const div = document.querySelector('div');
+  console.log('-1-----', div);
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('-DOMContentLoaded----');
+  })
+</script>
+<script type="text/javascript" async>
+  console.log('---222', document.getElementById('ele')); // <div id="ele"></div>
+  </script>
+<body>
+  <div id="ele"></div>
+</body>
+</html>
