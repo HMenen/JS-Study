@@ -39,7 +39,7 @@ function sweap (arr, i, j) {
     let temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
-  }
+}
 function heapSort (arr) {
     let n = Math.floor(arr.length / 2);
     for (let i = n; i >=0; i--) {

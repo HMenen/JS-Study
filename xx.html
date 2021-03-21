@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+   function uuid() {
+     return 'A';
+   }
+
+  function JSONP(callback, url) {
+    const id = uuid();
+    window[id] = callback;;
+
+    
+
+    const script = document.createElement('script');
+    script.src = `${url}?callback=${id}`;
+    script.onload= () => {
+      delete window[id];
+    }
+    document.body.appendChild(script);
+  }
+
+  JSONP((name) => {
+
+  }, './temp.js');
+
+
+
+
+  </script>
+</body>
+</html>

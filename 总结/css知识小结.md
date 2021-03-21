@@ -47,6 +47,7 @@ Link 引入样式的权重大于@import 的引用（@import 是将引用的样�
 ```
 伪元素：伪元素添加了一个页面中没有的元素（只是从视觉效果上添加了，不是在文档树中添加
 ::before, ::after, ::section, ::placeholder, ::first-line, ::first-letter
+伪元素在DOM树中创建了一些抽象元素，这些抽象元素是不存在于文档语言里的（可以理解为html源码）。比如：documen接口不提供访问元素内容的第一个字或者第一行的机制，而伪元素可以使开发者可以提取到这些信息。并且，一些伪元素可以使开发者获取到不存在于源文档中的内容（比如常见的::before,::after）。
 
 伪类：伪类是给页面中已经存在的元素添加一个类
 :hover, :link, :active, :focus, :target
