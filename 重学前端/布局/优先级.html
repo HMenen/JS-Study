@@ -1,0 +1,27 @@
+<!--
+  当两个样式都使用!important时，权重值大的优先级更高
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: red !important;
+    }
+
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: green !important;
+    }
+  </style>
+</head>
+<body>
+  <div class='box'></div>
+</body>
+</html>
