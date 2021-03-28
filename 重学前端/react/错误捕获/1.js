@@ -1,5 +1,11 @@
 /**
  * react错误边界
+ * 它能捕获子组件生命周期函数中的异常，包括构造函数（constructor）和render函数
+    而不能捕获以下异常：
+    Event handlers（事件处理函数）
+    Asynchronous code（异步代码，如setTimeout、promise等）
+    Server side rendering（服务端渲染）
+    Errors thrown in the error boundary itself (rather than its children)（异常边界组件本身抛出的异常）
  */
 
  class ErrorBoundary extends React.Component{
