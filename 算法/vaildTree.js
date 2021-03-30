@@ -36,15 +36,41 @@ function filterTree(tree, id) {
   return tree;
 }
 
+/**
+ * 指定路径中的删除无效结点
+ * @param {*} list 
+ * @param {*} id
+ * @returns 
+ */
+function judgeList(list, id) {
+  let p, parent = [];
+  let target = search(list, id, parent);
+  if (target.children.length) {
+    return list;
+  }
+  if (target) {
+    p = parent.pop();
+    let index = p.children.indexOf(target);
+    p.children.splice(index, 1);
+  }
+  while(parent.length) {
+    p = parent.pop();
+    p.children.filter(node => node.children.length > 0)
+  }
+  return list;
+}
 
-
-
-
-
-
-
-
-
+function search(list, id, parent = []) {
+  for(let i = 0; i < list.length; i++) {
+    let item = list[i];
+    if (item.id === id) {
+      return item;
+    } else if (item.children.length > 0) {
+      parent.push(item);
+      return search(item.children, id, parent);
+    }
+  }
+}
 
 const arr =[
   {id: 1, pid: null, 
@@ -65,3 +91,6 @@ const arr =[
 ]
 
 console.log(filterTree(arr, 3)[0].children);
+
+// console.log(judgeList(arr, 3)[0].children[0])
+// console.log(filterTree(arr, 3)[0].children)
