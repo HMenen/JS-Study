@@ -51,4 +51,23 @@ var maxSubArray = function(nums) {
   return maxSum
 };
 // @lc code=end
-console.log('=========', maxSubArray([-2, -1]))
+console.log('=========', maxSubArray([1, -2, -3, 1]))
+
+
+function maxSubArray1(nums) {
+  let sum = nums[0];
+  let maxSum = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    if (sum > 0) {
+      sum += nums[i];
+      maxSum = Math.max(sum, maxSum);
+    } else {
+      if (nums[i] > sum) {
+        sum = nums[i];
+        maxSum = Math.max(sum, maxSum);
+      }
+    }
+  }
+  return maxSum;
+}
+console.log('=========', maxSubArray1([1, -2, -3, 1, 10, -1]))

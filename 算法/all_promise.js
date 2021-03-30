@@ -141,7 +141,7 @@ function handleSeqPromise(list) {
 async function handleSeqPromise1(list) {
   for(let i = 0; i < list.length; i++) {
     let ret = await list[i];
-    console.lor(ret)
+    console.log(ret)
   }
 }
 

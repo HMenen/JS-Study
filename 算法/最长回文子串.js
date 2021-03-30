@@ -36,3 +36,27 @@ function getPalindrome(s, l, r) {
 
 console.log(longestPalindrome('cbbd'))
 // @lc code=end
+
+
+
+
+
+function longestPalindrome(str) {
+  let ret = '';
+  for(let i = 0; i < str.length; i++) {
+    let s1 = getPalindrome1(str, i, i);
+    let s2 = getPalindrome1(str, i, j);
+    ret = ret.length > s1.length? ret: s1;
+    ret = ret.length > s2.length? ret: s2;
+  }
+  return ret;
+}
+
+function getPalindrome1(str, l , r) {
+  while(l > 0 && r < str.length && str[l] === str[r]) {
+    l--;
+    r++
+  }
+  return str.substr(l + 1, r - l - 1);
+}
+console.log(longestPalindrome('cqbabqd'))

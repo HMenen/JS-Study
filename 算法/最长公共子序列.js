@@ -91,3 +91,28 @@ function dp(text1, i, text2, j, memo){
 // "mhunuzqrkzsnidwbun"
 // "szulspmhwpazoxijwbq"
 console.log('=============', longestCommonSubsequence('mhunuzqrkzsnidwbun', 'szulspmhwpazoxijwbq'));
+
+function longestCommonSubsequence1(text1, text2) {
+  const memo = [];
+  for(let i = 0; i < text1.length; i++) {
+    memo.push(new Array(text2.length).fill(0))
+  }
+  return dp1(text1, text2, 0, 0, memo);
+}
+
+function dp1(text1, text2, i, j, memo) {
+  if(i > text1.length - 1 || j > text2.length - 1) {
+    return 0;
+  }
+  if(memo[i][j]){
+    return memo[i][j]
+  }
+  if(text1[i] === text2[j]) {
+    memo[i][j] = 1 + dp1(text1, text2, i + 1, j + 1, memo)
+  } else {
+    memo[i][j] = Math.max(dp1(text1, text2, i + 1, j, memo), dp1(text1, text2, i, j + 1, memo))
+  }
+  return memo[i][j];
+}
+console.log('=============', longestCommonSubsequence1('mhunuzqrkzsnidwbun', 'szulspmhwpazoxijwbq'));
+
