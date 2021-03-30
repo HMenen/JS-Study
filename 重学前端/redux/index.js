@@ -5,7 +5,7 @@
  * @param {*} enhancer 
  */
 const createStore = (reducer, preloadedState, enhancer) => {
-  let state = preloadedState;
+  let state = preloadedState || {};
   let listeners = [];
 
   const getState = () => state;

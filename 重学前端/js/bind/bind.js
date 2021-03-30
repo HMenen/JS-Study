@@ -267,6 +267,50 @@ Function.prototype.bindAAA = function() {
   return bound;
 }
 
+// var obj = {
+//   name: '1若川',
+// };
+// function original(a, b){
+//   console.log('this', this); // original {}
+//   console.log('typeof this', typeof this); // object
+//   this.name = b;
+//   console.log('name', this.name); // 2
+//   console.log('this', this);  // original {name: 2}
+//   console.log([a, b]); // 1, 2
+// }
+// var bound = original.bindAAA(obj, 1);
+// // bound(111);
+// // var bound = original.bind(obj, 1);
+// var newBoundResult = new bound(2);
+// // console.log(newBoundResult, 'newBoundResult'); // original {name: 2}
+// // console.log('=========-------------', newBoundResult.__proto__, newBoundResult.__proto__ === original.prototype)  //true
+// console.log('=========-------------', bound.prototype)
+// // console.log('=========-------------', newBoundResult.prototype)
+
+Function.prototype.myBind111 = function() {
+  const func = this;
+  const _this = arguments[0];
+  let preArgs = [].slice.call(arguments, 1)
+  const bound = function(...args) {
+    let finalArgs = [...preArgs, ...args];
+    if (this instanceof bound) {
+      if (func.prototype) {
+        function F() {};
+        F.prototype = func.prototype;
+        bound.prototype = new F();
+      }
+      let result = func.apply(this, finalArgs);
+      if (typeof result === 'object' || typeof result === 'function') {
+        return result;
+      }
+      return this;
+    } else{
+      return func.apply(_this, finalArgs);
+    }
+  }
+  return bound;
+}
+
 var obj = {
   name: '1若川',
 };
@@ -278,11 +322,12 @@ function original(a, b){
   console.log('this', this);  // original {name: 2}
   console.log([a, b]); // 1, 2
 }
-var bound = original.bindAAA(obj, 1);
+var bound = original.myBind111(obj, 1);
 // bound(111);
+// console.log('--111obj-----', obj)
 // var bound = original.bind(obj, 1);
 var newBoundResult = new bound(2);
-// console.log(newBoundResult, 'newBoundResult'); // original {name: 2}
+console.log(newBoundResult, 'newBoundResult'); // original {name: 2}
 // console.log('=========-------------', newBoundResult.__proto__, newBoundResult.__proto__ === original.prototype)  //true
-console.log('=========-------------', bound.prototype)
+// console.log('=========-------------', bound.prototype)
 // console.log('=========-------------', newBoundResult.prototype)

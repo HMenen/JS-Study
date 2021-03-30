@@ -3,7 +3,7 @@ function createPerson(name, age){
   o.name = name;
   o.age = age;
   o.sayName = function(){
-        console.log(this.name)
+    console.log(this.name)
   }
   return o;      // 返回这个对象
 }
