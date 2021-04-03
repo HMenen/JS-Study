@@ -11,4 +11,22 @@ function deleteLetters (str) {
   return str1;
  }
 
+
+ function deleteLetters2 (str) {
+  const arr = [];
+  for(let i = 0; i < str.length; i++) {
+    const c = str[i];
+    if (c !== 'y' && c !== 'z') {
+      arr.push(c);
+    } else if (c === 'z') {
+      let lastChar = arr[arr.length - 1];
+      if (lastChar === 'x') {
+        arr.pop();
+      } else {
+        arr.push('z');
+      }
+    }
+  }
+  return arr.join('');
+
  console.log('-------', deleteLetters('xxxyyyzzz'))

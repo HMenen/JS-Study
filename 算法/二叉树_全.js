@@ -114,6 +114,46 @@ function BFS(root) {
   return res
 }
 
+
+/**
+ * 生成一棵树
+ * @param {Array} arr 
+ * @returns 
+ */
+function generateTree(arr) {
+  const map = {};
+  const tree = {};
+  const roots = [];
+  const ret = {};
+  arr.forEach(item => {
+    map[item.id] = {...item, children: []};
+  })
+  Object.keys(map).forEach(key => {
+    let parentId = map[key]['pid'];
+    if (parentId === null) {
+      roots.push(map[key].id);
+      tree[map[key].id] = {...map[parentId], children: []}
+    } else {
+      map[parentId].children.push(map[key])
+      tree[parentId]
+      ? tree[parentId].children.push(map[key])
+      : tree[parentId] = map[parentId]
+    }
+  })
+  roots.forEach(id => ret[id] = tree[id]);
+  return [ ret ];
+}
+
+var arr = [
+  {id: 1, pid: null}, {id: 2, pid: 1}, {id: 3, pid: 1},
+  {id: 4, pid: 2}, 
+  {id: 5, pid: 4},
+  {id: 6, pid: null}, {id: 7, pid: 6},
+]
+
+console.log(generateTree(arr)[0][1].children[0])
+ 
+
 /**
  * 指定路径中的删除无效结点
  * @param {*} list 

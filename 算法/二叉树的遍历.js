@@ -111,3 +111,32 @@ function depthFirstTravel(root) {
   }
   return result;
 }
+
+// 前序遍历
+let dfs1 = function (node) {
+  if (node) {
+      result1.push(node.value);
+      dfs1(node.left);
+      dfs1(node.right);
+  }
+}
+
+// 中序遍历
+let result2 = [];
+let dfs2 = function (node) {
+  if(node) {
+      dfs2(node.left);
+      result2.push(node.value); // 直到该结点无左子树 将该结点存入结果数组 接下来并开始遍历右子树
+      dfs2(node.right);
+  }
+}
+
+// 后序遍历
+let result3 = [];
+let dfs3  = function(node) {
+  if(node) {
+      dfs3(node.left);
+      dfs3(node.right);
+      result3.push(node.value);
+  }
+}
