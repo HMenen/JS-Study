@@ -31,7 +31,7 @@ function sleep(fn, sleep) {
 }
 
 async function showLight() {
-   while(true) {
+  while(true) {
     await sleep(() => console.log('--red--'), 1000);
     await sleep(() => console.log('--yellow--'), 2000);
     await sleep(() => console.log('--blue--'), 1000);

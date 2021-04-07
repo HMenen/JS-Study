@@ -173,7 +173,7 @@ function judgeList(list, id) {
   }
   while(parent.length) {
     p = parent.pop();
-    p.children.filter(node => node.children.length > 0)
+    p.children = p.children.filter(node => node.children.length > 0)
   }
   return list;
 }

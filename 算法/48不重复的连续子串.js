@@ -29,3 +29,23 @@ var lengthOfLongestSubstring = function(s) {
 };
 
 console.log(lengthOfLongestSubstring('tmmzuxt'))
+
+function lengthOfLongestSubstring1(str) {
+  let left = 0;
+  let right = 0;
+  let maxLen = 0;
+  let map = {};
+  while(right < str.length) {
+    let c = str[right];
+    map[c]? map[c]++ : map[c] = 1;
+    right++;
+    while(map[c] > 1) {
+      let text = str[left];
+      map[text]--;
+      left++;
+    }
+    maxLen = Math.max(maxLen, right - left);
+  }
+  return maxLen;
+}
+console.log(lengthOfLongestSubstring1('tmmzuxtaaa'))

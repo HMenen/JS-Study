@@ -41,13 +41,14 @@
 
 // @lc code=start
 /**
+ * 递归
  * @param {number} n
  * @return {number}
  */
 var climbStairs1 = function(n) {
   if (n === 1) return 1;
   if (n === 2) return 2;
-  return climbStairs(n - 1) + climbStairs(n - 2)
+  return climbStairs1(n - 1) + climbStairs1(n - 2)
 };
 
 var climbStairs = function(n) {
@@ -63,3 +64,25 @@ var climbStairs = function(n) {
 console.log('------', climbStairs1(3), climbStairs(3))
 // @lc code=end
 
+
+// function climbStairs2() {
+//   if (n === 1) return 1;
+//   if (n === 2) return 2;
+//   return dp(n -1) + dp(n - 2);
+// }
+
+/**
+ * 动态规划
+ * @param {Number} num 
+ * @returns 
+ */
+function dp(num) {
+  let dp = new Array(num).fill(0);
+  dp[1] = 1;
+  dp[2] = 2;
+  for (let i = 3; i <= num; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2]
+  }
+  return dp[num];
+}
+console.log('------', climbStairs1(15), dp(15))
