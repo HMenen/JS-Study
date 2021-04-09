@@ -84,3 +84,15 @@ console.log('child: ', child); // child:  Child {name: "Child", age: 18}
 Child.sayHello(); // hello
 child.sayName(); // my name is Child
 child.sayAge(); // my age is 18
+
+
+function A() {
+  this.name = 'hahah';
+  this.print = function() {
+    console.log(this.name)
+  }
+  return this;
+}
+
+var a = A();
+a.print()

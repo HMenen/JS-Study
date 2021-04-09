@@ -14,6 +14,7 @@ let getInstance = (function() {
       return instance;
   }
 })();
+
 // 测试单体模式的实例,所以one===two
 let one = getInstance("one");
 let two = getInstance("two");   

@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #container {
+            width: 600px;
+            height: 600px;
+            background: black;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #box {
+            position: absolute;
+            top: 200px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid red;
+            /* transition: 2s; */
+            left: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id='box' class="box" />
+    </div>
+    <script type="text/javascript">
+        const containerEle = document.getElementById('container')
+        const boxEle = document.getElementById('box')
+        const boxEleWidth = boxEle.offsetWidth
+        const containerWidth = document.getElementById('container').offsetWidth
+
+        const initTime = Date.now();
+        let lastTime = 0;
+        const speed = 1; // 60fps下每帧1px
+        const allTimes = (boxEleWidth + containerWidth) / speed;
+
+        function getElapse(now) {
+            const currentTime = Math.pow((now - initTime) / allTimes, 3) * allTimes
+            const elapse = currentTime - lastTime
+            lastTime = currentTime
+            return elapse
+        }
+
+        requestAnimationFrame(function() {
+            const left = parseInt(getComputedStyle(boxEle).left);
+
+            const elapse = getElapse(Date.now());
+
+            const frameNum =  elapse / 1000 * 60;
+            boxEle.style.left = `${left - frameNum * speed}px`;
+
+            // let i = 1000000000;
+            // while(i--);
+            if (left  >= -boxEleWidth) {
+                requestAnimationFrame(arguments.callee);
+            }
+        });
+    
+        // const id = setInterval(function() {
+        //     const left = parseInt(getComputedStyle(boxEle).left);
+        //     if (left  <= -boxEleWidth) {
+        //         clearInterval(id)
+        //     }
+        //     boxEle.style.left = `${left - 5}px`;
+        // }, 20);
+    </script>
+</body>
+</html>

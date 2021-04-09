@@ -1,0 +1,71 @@
+<!--
+  http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html
+  2.2 animation-fill-mode
+  动画结束以后，会立即从结束状态跳回到起始状态。如果想让动画保持在结束状态，需要使用animation-fill-mode属性。
+  div:hover {
+    animation: 1s rainbow forwards;
+  }
+  forwards表示让动画停留在结束状态，效果如下。
+  animation-fill-mode还可以使用下列值。
+（1）none：默认值，回到动画没开始时的状态。
+（2）backwards：让动画回到第一帧的状态。
+（3）both: 根据animation-direction（见后）轮流应用forwards和backwards规则。
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- <style>
+  @keyframes move {
+    0%{
+      margin-left: 0;
+    }
+    100%{
+      margin-left: 190px;
+    }
+  }
+  .box{
+    height: 10px;
+    width: 200px;
+    background-color: aquamarine;
+  }
+  .content{
+    height: 10px;
+    width: 10px;
+    background-color: blue;
+    animation: move 10s linear forwards;
+  }
+</style> -->
+<style>
+  .box{
+    height: 10px;
+    width: 200px;
+    background-color: aquamarine;
+  }
+  .content{
+    height: 10px;
+    width: 10px;
+    background-color: blue;
+  }
+</style>
+<script>
+  function move(i) {
+    const dom = document.getElementById('move');
+    if (i <= 60 * 10) {
+      requestAnimationFrame(() => {
+        dom.style.marginLeft = i * (200 / 60 / 10);
+        move(++i)
+      })
+    }
+  }
+</script>
+<body>
+  <div class="box">
+    <div class="content" id='move'></div>
+  </div>
+  <button onclick="move(1)">btn</button>
+</body>
+</html>

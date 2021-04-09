@@ -26,10 +26,13 @@ function cloneRegExp(data) {
  * deepClone增强版
  * @param {Any}} obj 
  */
-function deepClone2(obj) {
+function deepClone2(obj, hash=new WeakMap()) {
   let ret = obj;
   if (obj === null || typeof obj !== 'object'){
     return obj;
+  }
+  if (hash.has(obj)) {
+    return hash.get(obj);
   }
   const objType = getType(obj)
   switch(objType) {
@@ -50,10 +53,10 @@ function deepClone2(obj) {
       ret = {};
       break;
   }
-
   Object.keys(obj).forEach(key => {
     ret[key] = deepClone2(obj[key]);
-  })
+  });
+  hash.set(obj, ret);
   return ret;
 }
 
@@ -84,31 +87,4 @@ function cloneRegExp1(data) {
   flag += partten.ignoreCase? 'i': '';
   flag += partten.multiline? 'm': '';
   return new RegExp(partten.source, flag);
-}
-
-
-function deepClone2(obj) {
-  switch(objType) {
-    case 'Function':
-      return obj;
-    case 'Date':
-      return new Date(obj.getTime());
-    case 'RegExp':
-      ret = cloneRegExp(obj);
-      break;
-    case 'Array':
-      ret = [];
-      break;
-    default:
-      // if (obj) {
-      //   ret = Object.create(Object.getPrototypeOf(obj));
-      // }
-      ret = {};
-      break;
-  }
-
-  Object.keys(obj).forEach(key => {
-    ret[key] = deepClone2(obj[key]);
-  })
-  return ret;
 }

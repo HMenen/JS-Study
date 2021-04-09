@@ -175,3 +175,10 @@ const a3 = new Promise((resolve, rejected) => {
 Promise.all([a1, a2, a3]).then(res => {
   console.log('--all---', res)
 })
+
+
+function Foo() {
+  var func = function() {
+    
+  }
+}

@@ -25,7 +25,7 @@ W3C（标准和模型）: content    可设置box-sizing:border-box; 转为IE盒
 1) 在浮动的盒子下面再放一个标签，使用 clear:both;来清除浮动（不推荐使用）
 2) 先找到浮动盒子的父元素，给父元素添加一个属性：overflow:hidden;就会清除子元素对页面的影响（不推荐使用）
 3) 使用伪元素清除浮动(用的最多)
-clearfix:after{
+clearfix::after{
   content: "";
   height: 0;
   display: block;

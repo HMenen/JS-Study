@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .g-right {
+    display: inline-block;
+    width: 12px;
+    height: 2px;
+    background: #999;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg);
+  }
+  .g-right:after {
+    content: "/";
+    display: block;
+    width: 12px;
+    height: 2px;
+    background: #999;
+    -webkit-transform: rotate(-90deg);
+  }
+  .box1{
+    height: 1px;
+    width: 50px;
+    background-color: coral;
+    transform: rotate(45deg);
+    /* border-bottom: 1px solid coral; */
+    position: absolute;
+  }
+  .box1:after{
+    content: '';
+    display: block;
+    height: 1px;
+    width: 50px;
+    background-color: coral;
+    /* border-bottom: 1px solid coral; */
+    transform: rotate(-90deg);
+  }
+  .box{
+    margin-top: 100px;
+    border: 1px solid coral;
+    height: 100px;
+    width: 100px;
+    position: relative;
+  }
+</style>
+<body>
+  <div class="g-right"></div>
+  <div class="box">
+    <div class="box1"></div>
+  </div>
+</body>
+</html>
