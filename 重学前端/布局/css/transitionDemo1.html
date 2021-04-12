@@ -6,13 +6,13 @@
   <title>Document</title>
 </head>
 <style>
-  div {
+  .box1 {
     position: relative;
     width: 200px;
     height: 64px;
     box-shadow: inset 0 0 0 3px #ddd;
   }
-  div::before {
+  .box1::before {
     content: "";
     position: absolute;
     width: 0;
@@ -22,14 +22,24 @@
     transition: width .25s, height .25s, border-bottom-color;
     transition-delay: .25s, 0s, .25s;
   }
-  div:hover::before {
+  .box1:hover::before {
     width: 200px;
     height: 64px;
     border-left: 3px solid #00e2ff;
     border-bottom: 3px solid #00e2ff;
   }
+  .box{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    transition: width 1s;
+  }
+  .box:hover{
+    width: 300px;
+  }
 </style>
 <body>
-  <div></div>
+  <div class="box1"></div>
+  <div class="box"></div>
 </body>
 </html>
