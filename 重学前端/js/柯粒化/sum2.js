@@ -29,5 +29,5 @@ function add2() {
   }
   return fn(...arguments);
 }
-var s11 = add2(1)(2, 3)(100);
+var s11 = add2(1,2,3)(2, 3)(100);
 console.log('---------', s11, s11(1) + 2)
