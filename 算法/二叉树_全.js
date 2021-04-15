@@ -136,8 +136,8 @@ function generateTree(arr) {
     } else {
       map[parentId].children.push(map[key])
       tree[parentId]
-      ? tree[parentId].children.push(map[key])
-      : tree[parentId] = map[parentId]
+        ? tree[parentId].children.push(map[key])
+        : tree[parentId] = map[parentId]
     }
   })
   roots.forEach(id => ret[id] = tree[id]);

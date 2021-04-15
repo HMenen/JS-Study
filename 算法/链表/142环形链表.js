@@ -103,14 +103,14 @@ var detectCycle = function(head) {
 // 时间复杂度：O(n)
 // 空间复杂度：O(1)
 let hasCycle = function(head) {
-    if(!head || !head.next) {
-        return false
-    }
-    let fast = head.next.next, slow = head.next
-    while(fast !== slow) {
-        if(!fast || !fast.next) return false
-        fast = fast.next.next
-        slow = slow.next
-    }
-    return true
+  if(!head || !head.next) {
+      return false
+  }
+  let fast = head.next.next, slow = head.next
+  while(fast !== slow) {
+      if(!fast || !fast.next) return false
+      fast = fast.next.next
+      slow = slow.next
+  }
+  return true
 };

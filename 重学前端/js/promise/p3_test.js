@@ -177,8 +177,31 @@ Promise.all([a1, a2, a3]).then(res => {
 })
 
 
-function Foo() {
-  var func = function() {
-    
-  }
+function request(url, calllback) {
+  return setTimeout(() => {
+    console.log('-------url:', url);
+    calllback(url);
+  }, Math.floor(Math.random() * 1000));
 }
+
+function maxPromise(urls, max, callback) {
+  let urlSource = [...urls];
+  let processTask = [];
+
+  function handle() {
+    while(urlSource.length && processTask.length < max) {
+      const url = urlSource.shift();
+      request(url, 1000, () => {
+        processTask = processTask.filter(item => item !== url);
+        handle()
+      });
+
+      processTask.push(url);
+    }
+    if (urlSource.length === 0 && processTask.length === 0) {
+      callback();
+    }
+  }
+  handle();
+}
+

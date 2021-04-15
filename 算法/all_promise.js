@@ -194,10 +194,11 @@ class LazyMan{
     this.init = () => {
       console.log(`Hi This is ${name}`);
       this.next();
-      return this;
+      // return this;
     }
     this.tasks.push(this.init);
     this.next = () => {
+      // console.log('----this.tasks---', this.tasks)
       let task = this.tasks.shift();
       task && task();
     }
@@ -218,8 +219,8 @@ class LazyMan{
       setTimeout(() => {
         console.log(`Wake up after ${delay}`);
           this.next();
-        }, delay);
-      }
+      }, delay);
+    }
     this.tasks.push(task);
     return this;
   }
@@ -244,3 +245,27 @@ function test(name) {
 // test("Hank").eat("dinner").eat("supper");
 // test("Hank").sleep(1000).eat("dinner");
 test("Hank").sleepFirst(1000).eat("supper").eat("dinner");
+
+var list = [];
+Promise.all(list.map(item => item.then(res => resolve(res)).catch(error => console.log(err)))).then()
+
+
+
+Promise.all(
+  [
+    Promise.reject({ code: 500, msg: "服务异常" }),
+    Promise.resolve({ code: 200, list: [] }),
+    Promise.resolve({ code: 200, list: [] })
+  ].map(p => p.catch(e => e))
+)
+  // .then(res => {
+  //   console.log("res=>", res);
+  // })
+
+Promise.all([
+  Promise.reject({ code: 500, msg: "服务异常" }),
+  Promise.resolve({ code: 200, list: [] }),
+  Promise.resolve({ code: 200, list: [] })
+].map(p => p.catch(e => e)))
+
+// Promise.reject(1).then(() => {console.log(1)}, () => {console.log(2)}).catch(() => {console.log(3)}).finally(() => {console.log(333)})

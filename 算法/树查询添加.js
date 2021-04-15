@@ -14,7 +14,7 @@ class Tree {
     	this.queue = []; // Node list
     }
     
-    add(node: Node) {
+    add(node) {
         // this.queue.push();
         let queue = [];
         queue.push(root);
