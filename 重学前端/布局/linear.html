@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .box1{
+    background-image: linear-gradient(red, yellow, blue);
+    margin-top: 20;
+  }
+  .box2{
+    background-image: linear-gradient(45deg, red, yellow, blue);
+    margin-top: 20;
+  }
+  .box3{
+    /* background-image: linear-gradient(to left top, blue, red); */
+    background-image: linear-gradient(0deg, blue, green 40%, red);
+    margin-top: 20;
+  }
+
+  .box11{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .box img{
+      display: block;
+  }
+
+  .back{
+      width: 330px;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: linear-gradient(135deg,transparent 50%,red 50%);
+  }
+  .bin{
+    margin-top: 20;
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, transparent 50%, #655 0);
+    position: relative;
+  }
+  /* @keyframes move {
+    0% {
+      transform: rotate(0);
+      background-color: yellowgreen;
+    }
+    50% {
+      background-color: yellowgreen;
+    }
+    100% {
+      background-color: #655;
+      transform: rotate(100deg);
+    }
+  } */
+  .bin::before{
+    background-color: #655;
+    content: '';
+    height: 100%;
+    display: block;
+    border-radius: 0 100% 100% 0/50% ;
+    margin-left: 50%;
+    transform: rotate(45deg);
+    transform-origin: left;
+    /* animation: move 2s linear forwards; */
+  }
+  .bin-box{
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<body>
+  <div class="box1">1</div>
+  <div class="box2">2</div>
+  <div class="box3">3</div>
+  <div class="box11">
+    <div class="back"></div>
+    <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3681880960,455182084&fm=26&gp=0.jpg">
+</div>
+<div class="bin">
+  <div class="bin-box"></div>
+</div>
+</body>
+</html>
