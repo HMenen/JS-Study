@@ -28,7 +28,7 @@ var lengthOfLongestSubstring = function(s) {
   return maxLen
 };
 
-console.log(lengthOfLongestSubstring('tmmzuxt'))
+console.log(lengthOfLongestSubstring('tmmzuxtwq'))
 
 function lengthOfLongestSubstring1(str) {
   let left = 0;
