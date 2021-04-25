@@ -1,0 +1,81 @@
+<!--
+  https://www.cnblogs.com/webdom/p/10643176.html
+  案例：如下图，父元素没有设置margin-top，而子元素设置了margin-top：20px;可以看出，父元素也一起有了边距。
+  解决这个办法：父元素设置padding-top:20px 或者设置 overflow:hidden，子元素取消margin-top:20px;
+  防止外边距重叠解决方案：
+  虽然外边距的重叠有其一定的意义，但有时候我们在设计上却不想让元素之间产生重叠，那么可以有如下几个建议可供参考：
+    外层元素padding代替
+    内层元素透明边框 border:1px solid transparent;
+    内层元素绝对定位 postion:absolute:
+    外层元素 overflow:hidden;
+    内层元素 加float:left;或display:inline-block;
+    内层元素padding:1px;
+    以上建议可根据实际情况来采取。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      *{
+        margin:0;
+        padding:0;
+      }
+      .demo{
+        height:100px;
+        background: #eee;
+      }
+      .parent{
+        height:200px;
+        background: #88f;
+      }
+      .child{
+        height:100px;
+        margin-top:20px;
+        background: #0ff;
+        width:200px;
+      }
+      .main {
+        display: flex;
+        clear: both;
+        height: 200px;
+        margin-top: 100px;
+        background-color: cornflowerblue;
+      }
+      .left, .right{
+        background-color: coral;
+        width: 200px;
+      }
+      .center{
+        background-color: deeppink;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+  </style>
+</head>
+<script>
+  function test() {
+    console.log('----test-----');
+  }
+</script>
+<body>
+    <!-- <section class="demo">
+        <h2>此部分是能更容易看出让下面的块的margin-top。</h2> -->
+    </section>
+    <section class = "parent">
+      <article class="child">
+        <h2>子元素</h2>
+        margin-top:20px;
+      </article>
+      <h2>父元素</h2>
+      没有设置margin-top
+    </section>
+
+    <div class="main">
+      <div class="left" onclick="test()">左</div>
+      <div class="center">中</div>  
+      <div class="right">右</div>
+    </div>
+</body>
+</html>

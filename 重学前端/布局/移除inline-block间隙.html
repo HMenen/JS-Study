@@ -1,0 +1,73 @@
+<!--
+移除空格
+使用margin负值
+使用font-size:0
+letter-spacing
+word-spacing
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #demo span{
+    display:inline-block;
+    background:#ddd;
+  }
+
+  /* 使用font-size:0;
+  .demo {font-size: 0;}
+  .demo span{
+    background:#ddd;
+    display: inline-block;
+    font-size: 14px;
+  } 
+  */
+
+  /* 使用letter-spacing   使用word-spacing
+  div{
+    letter-spacing: -6px;
+  }
+  a{
+    letter-spacing: 0;
+    background: pink;
+  } 
+  */
+
+  .box1{
+    height: 200px;
+    width: 200px;
+    background-color: aqua;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .box2{
+    height: 200px;
+    width: 200px;
+    background-color: coral;
+    margin-top: 20px;
+    box-sizing: content-box;
+  }
+  .box2-wrap{
+    overflow: hidden;
+  }
+</style>
+<body>
+  <div id="demo">
+    <span>我是一个span1</span>
+    <span>我是一个span2</span>
+    <span>我是一个span3</span>
+    <span>我是一个span123</span>
+  </div>
+
+  <div>
+    <div class="box1"></div>
+    <div class="box2-wrap">
+      <div class="box2"></div>
+    </div>
+  </div>
+</body>
+</html>
