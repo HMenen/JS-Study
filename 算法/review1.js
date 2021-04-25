@@ -261,3 +261,159 @@ function preOrderTraversal(root) {
   }
   return result;
 }
+
+//相交链表
+function getIntersectionNode (headA, headB) {
+  if (headA === null || headB === null) return null;
+  let leftNode = headA, rightNode = headB;
+  while(leftNode !== rightNode) {
+    leftNode ? leftNode = leftNode.next : leftNode = headB;
+    rightNode ? rightNode = rightNode.next : rightNode = headA;
+  }
+  return leftNode;
+}
+
+//[142] 环形链表 II
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ * 时间复杂度：O(n)
+ * 空间复杂度：O(n)
+ */
+function detectCycle (head) {
+  if(!head || !head.next) {
+    return false
+  }
+  let fastNode = head.next.next;
+  let slowNode = head.next;
+  while(slowNode !== fastNode) {
+    if (!fastNode || !slowNode) return false;
+    fastNode = fastNode.next.next;
+    slowNode = slowNode.next;
+  }
+  return true;
+}
+
+/**
+ * [148] 排序链表
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var sortList = function(head) {
+  return mergeSortRec(head);
+};
+
+function mergeSortRec(head) {
+  if (!head || !head.next) {
+    return head;
+  }
+  const midNode = getMidNode(head);
+  const temp = midNode.next;
+  midNode.next = null;
+  let left = mergeSortRec(head);
+  let right = mergeSortRec(temp);
+  return mergeTwoList(left, right);
+}
+
+function getMidNode(head) {
+  let fast = head.next.next;
+  let slow = head.next;
+  while(fast && slow && fast !== slow) {
+    fast = fast.next.next;
+    slow = slow.next;
+  }
+  return slow;
+}
+
+function mergeTwoList(left, right) {
+  let head = new ListNode(-1);
+  let cur = head;
+  while(left && right) {
+    if (left.val >= right.val) {
+      cur.next = right;
+      right = right.next;
+    } else {
+      cur.next = left;
+      left = left.next;
+    }
+    cur = cur.next;
+  }
+  cur.next = left || right;
+  return head.next;
+}
+
+/*
+ * @lc app=leetcode.cn id=21 lang=javascript
+ * [21] 合并两个有序链表
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+function mergeTwoLists(l1, l2) {
+  let cur = new ListNode();
+  while(l1 && l2) {
+    if (l1.value <= l2.value) {
+      cur.next = l1;
+      l1 = l1.next;
+    } else {
+      cur.next = l2;
+      l2 = l2.next;
+    }
+    cur = cur.next;
+  }
+  cur.next = l1 || l2;
+  return cur.next;
+}
+
+/**
+ * [19] 删除链表的倒数第N个节点
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ * 1 2 3 4 5   2
+ */
+function removeNthFromEnd (head, n) {
+  if (!head) return head;
+  let cur = head;
+  let count = 0;
+  let targetNode = null;
+  while(cur) {
+    count++;
+    if (count > n) {
+      targetNode = !targetNode? head: targetNode.next;
+    }
+    cur = cur.next;
+  }
+  if (n > count) return null;
+  if (targetNode) {
+    targetNode.next = targetNode.next.next;
+  }
+  return targetNode? head: head.next;
+}
+
+/*
+ * @lc app=leetcode.cn id=215 lang=javascript
+ * [215] 数组中的第K个最大元素
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var findKthLargest = function(nums, k) {
+  
+}

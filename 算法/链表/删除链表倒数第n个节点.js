@@ -32,6 +32,30 @@ var removeNthFromEnd = function(head, n) {
   return head;
 };
 
+/**
+ * 一次遍历
+ * @param {*} head 
+ * @param {*} n 
+ * @returns 
+ */
+function removeNthFromEnd (head, n) {
+  if (!head) return head;
+  let cur = head;
+  let count = 0;
+  let targetNode = null;
+  while(cur) {
+    count++;
+    if (count > n) {
+      targetNode = !targetNode? head: targetNode.next;
+    }
+    cur = cur.next;
+  }
+  if (n > count) return null;
+  if (targetNode) {
+    targetNode.next = targetNode.next.next;
+  }
+  return targetNode? head: head.next;
+}
 
 
 var hasCycle = function(head) {

@@ -47,6 +47,8 @@
  * 最多调用 3 * 10^4 次 get 和 put
  */
 
+const { delete } = require("vue/types/umd");
+
 function Node(key, value) {
   this.key = key || null;
   this.value = value || null;
