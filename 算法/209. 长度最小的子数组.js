@@ -16,5 +16,19 @@
 */
 
 var minSubArrayLen = function(s, nums) {
-  
+  let left = 0;
+  let sum = 0;
+  let minLen = Infinity;
+  for(let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+    while(sum >= s && left <= i) {
+      minLen = Math.min(minLen, i - left + 1);
+      sum -= nums[left];
+      left++
+    }
+  }
+  return minLen === Infinity? 0: minLen;
 }
+// 11
+// [1,2,3,4,5]
+console.log('------', minSubArrayLen(3, [1,2,3,4,5]))

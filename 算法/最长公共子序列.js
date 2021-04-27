@@ -1,4 +1,4 @@
-/*
+ /*
  * @lc app=leetcode.cn id=1143 lang=javascript
  *
  * [1143] 最长公共子序列

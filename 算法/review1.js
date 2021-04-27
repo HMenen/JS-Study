@@ -415,5 +415,35 @@ function removeNthFromEnd (head, n) {
  * @return {number}
  */
 var findKthLargest = function(nums, k) {
-  
+  return dp(nums, k, 0, nums.length - 1);
+}
+
+function dp(nums, k, start, end) {
+  let index = findK(nums, start, end);
+  if (index === end - k + 1) {
+    return nums[index]
+  } else if (index < end - k + 1) {
+    return dp(nums, k, index + 1, end)
+  } else {
+    return dp(nums, index - (end - k + 1), start, index - 1)
+  }
+}
+
+function findK(arr, start, end) {
+  if (start > right) return
+  let left = start;
+  let right = end;
+  const temp = arr[start];
+  while(left < right) {
+    while (arr[right] > temp && left < right) {
+      right--;
+    }
+    arr[left] = arr[right];
+    while(arr[left] <= temp && left < right) {
+      left++;
+    }
+    arr[right] = arr[left];
+  }
+  arr[left] = temp;
+  return left;
 }
