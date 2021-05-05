@@ -47,8 +47,6 @@
  * 最多调用 3 * 10^4 次 get 和 put
  */
 
-const { delete } = require("vue/types/umd");
-
 function Node(key, value) {
   this.key = key || null;
   this.value = value || null;
@@ -139,3 +137,79 @@ lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=
 lRUCache.get(1);    // 返回 -1 (未找到)
 lRUCache.get(3);    // 返回 3
 lRUCache.get(4);    // 返回 4
+
+
+
+/**
+ * 练习
+ * @param {*} key 
+ * @param {*} value 
+ */
+function Node1(key, value) {
+  this.key = key || null;
+  this.value = value || null;
+  this.next = null;
+  this.prev = null;
+}
+function LRUCache(capacity) {
+  this.capacity = capacity;
+  this.memory = {};
+  this.dummyHead = new Node1();
+  this.dummyTail = new Node1();
+  this.dummyHead.next = this.dummyTail;
+  this.dummyTail.prev = this.dummyHead;
+
+  this.get = function(key) {
+    if (key in this.memory) {
+      const node = this.memory[key];
+      addToHead(removeNode(node), this.dummyHead);
+      return node.value;
+    } else {
+      return -1;
+    }
+  }
+
+  this.put = function(key, value) {
+    if (key in this.memory) {
+      const node = this.memory[key];
+      node.value = value;
+      addToHead(removeNode(node), this.dummyHead);
+    } else {
+      if (Object.keys(this.memory).length >= this.capacity) {
+        const lastNode = this.dummyTail.prev;
+        removeNode(lastNode);
+        delete this.memory[lastNode.key]
+      }
+      const newNode = new Node1(key, value);
+      this.memory[key] = newNode;
+      addToHead(newNode, this.dummyHead);
+    }
+  }
+}
+
+function addToHead(node, dummyHead) {
+  node.next = dummyHead.next;
+  dummyHead.next.prev = node;
+  node.prev = dummyHead;
+  dummyHead.next = node;
+}
+
+function removeNode(node) {
+  node.next.prev = node.prev;
+  node.prev.next = node.next;
+  node.next = null;
+  node.prev = null;
+  return node;
+}
+
+
+var myArray = [1, 2, 10, 30, 100];
+function f() {
+  myArray.forEach((item, index) => {
+    if (index === 3) {
+      return
+    }
+    console.log(index);
+  })
+}
+f();

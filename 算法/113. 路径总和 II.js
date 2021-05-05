@@ -14,7 +14,7 @@
  * @param {number} targetSum
  * @return {number[][]}
  */
- var pathSum = function(root, targetSum) {
+var pathSum = function(root, targetSum) {
   const result = [];
   let sum = targetSum;
   let path = [];

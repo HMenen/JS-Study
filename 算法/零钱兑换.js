@@ -61,3 +61,14 @@ var coinChange = function(coins, amount) {
 
 console.log(coinChange([2], 3))
 
+function coinChange(coins, amount) {
+  let dp = new Array(amount + 1).fill(0);
+  for(let i = 1; i < amount + 1; i++) {
+    dp[i] = Infinity;
+    for(let c = 0; c < coins.length; c++) {
+      if (i - coins[c] < 0) continue;
+      dp[i] = Math.min(dp[i], 1 + dp[i - coins[c]]);
+    }
+  }
+  return dp[amount] === Infinity ? -1 : dp[amount]
+}

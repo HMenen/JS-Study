@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+  <div onclick="test()">
+    <div id="box">点击</div>
+  </div>
+</body>
+<script>
+  function test() {
+    console.log('test');
+  }
+  const box = document.getElementById('box');
+  box.addEventListener('mousedown', () => {
+    console.log('mousedown');
+    // 一般来说，事件触发，应该是 mousedown -> mouseup -> click
+    // 如果mousedown发生后，隐藏了元素，会发生  事件穿透
+    // box.style.height = '0';
+  });
+  box.addEventListener('mouseup', () => {
+    console.log('mouseup');
+  });
+  box.addEventListener('click', () => {
+    console.log('click');
+  });
+</script>
+</html>

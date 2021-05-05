@@ -23,8 +23,8 @@ var hasPathSum = function(root, targetSum) {
   while(path.length) {
     let len = path.length;
     for (let i = 0; i < len; i++) {
-      let node = path.pop();
-      let value = result.pop();
+      let node = path.shift();
+      let value = result.shift();
       if (node.left) {
         path.push(node.left);
         result.push(value + node.left.val);

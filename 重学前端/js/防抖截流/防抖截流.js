@@ -38,6 +38,7 @@ function debounce11(func, sleep=1000, immediate) {
   }
 }
 
+
 //immediate
 function debounce111(func, sleep=1000, immediate) {
   let timer = null;

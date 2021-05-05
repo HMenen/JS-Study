@@ -60,7 +60,6 @@
 var threeSum = function(nums) {
   const arr = [...nums].sort((a, b) => a - b);
   const result = [];
-  console.log(arr)
   for(let i = 0; i < arr.length; i++) {
     if (arr[i] > 0) break;
     if (i > 0 && arr[i] === arr[i - 1]) continue;

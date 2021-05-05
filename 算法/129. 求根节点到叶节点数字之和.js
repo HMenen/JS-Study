@@ -21,7 +21,6 @@
   let allPaths = [];
   let sum = 0;
   dfs(root, path, allPaths);
-  console.log(allPaths)
   for(let i = 0; i < allPaths.length; i++) {
     sum += +allPaths[i].join('')
   }

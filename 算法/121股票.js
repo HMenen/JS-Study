@@ -71,3 +71,19 @@
 console.log(maxProfit([1, 2]))
 // @lc code=end
 
+function maxProfit1(prices) {
+  let max = 0;
+  let startIndex = 0;
+  let endIndex;
+  for(let i = 0; i < prices.length - 1; i++) {
+    endIndex = i + 1;
+    if (prices[i] < prices[startIndex]) {
+      startIndex = i;
+    }
+    max = Math.max(max, prices[endIndex] - prices[startIndex])
+  }
+  return max;
+}
+
+console.log(maxProfit1([7,6,4,3,1]))
+

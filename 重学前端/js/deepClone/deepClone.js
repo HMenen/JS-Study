@@ -34,7 +34,7 @@ function deepClone2(obj, hash=new WeakMap()) {
   if (hash.has(obj)) {
     return hash.get(obj);
   }
-  const objType = getType(obj)
+  const objType = getType(obj);
   switch(objType) {
     case 'Function':
       return obj;

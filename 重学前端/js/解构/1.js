@@ -10,7 +10,7 @@ function fn2({x, y} = {x: 0, y: 0}) {
   console.log('x2---', x, 'y2---', y)
 }
 
-function fn3({x = 0} = {x: 2, y: 3}) {
+function fn3({x = 0, y = 1} = {x: 2, y: 3}) {
   console.log('x2---', x, 'y2---', y)
 }
 

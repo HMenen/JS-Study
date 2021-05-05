@@ -35,13 +35,13 @@ var arr1 = [{
 }];
 
 fetch("url", {
-    method: "post",
-    headers: {//设置请求的头部信息
-        "Content-Type": "application/json"
-        //跨域时可能要加上
-        //"Accept":"allication/json"
-    },    //将arr1对象序列化成json字符串
-    body: JSON.stringify(arr1)//向服务端传入json数据
+  method: "post",
+  headers: {//设置请求的头部信息
+    "Content-Type": "application/json"
+    //跨域时可能要加上
+    //"Accept":"allication/json"
+  },    //将arr1对象序列化成json字符串
+  body: JSON.stringify(arr1)//向服务端传入json数据
 }).then(function(resp) {
     resp.json().then((data) => {
                 
